@@ -14,8 +14,6 @@ namespace BasicFacebookFeatures
         public FormMain()
         {
             InitializeComponent();
-            FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-            m_FormAppSettings = new FormAppSettings();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -27,10 +25,6 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                m_LoginResult = FacebookService.Login(
-                    m_FormAppSettings.AppSettings.AppID,
-                    /// requested permissions:
-                    m_FormAppSettings.AppSettings.Permissions.ToArray());
 
                 if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
                 {
@@ -47,7 +41,6 @@ namespace BasicFacebookFeatures
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            FacebookService.LogoutWithUI();
             buttonLogin.Text = "Login";
         }
 
