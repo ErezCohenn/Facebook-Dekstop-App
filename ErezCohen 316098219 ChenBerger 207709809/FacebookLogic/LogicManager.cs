@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using FacebookWrapper;
+﻿using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System;
 
 namespace FacebookLogic
 {
-    class LogicManager
+    public class LogicManager
     {
         private User m_CurrentUser;
         private AppSettings m_AppSettings;
@@ -18,10 +15,9 @@ namespace FacebookLogic
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             m_AppSettings = new AppSettings();
         }
-        public void LoginAndInit()
+        public void Login()
         {
             m_LoginResult = FacebookService.Login(m_AppSettings.AppID, m_AppSettings.Permissions.ToArray());
-
             if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
                 m_CurrentUser = m_LoginResult.LoggedInUser;
@@ -37,8 +33,12 @@ namespace FacebookLogic
         }
         public void AddPermission(string i_Permission)
         {
-            m_AppSettings.AddPremission(i_Permission);
+            m_AppSettings.AddPermission(i_Permission);
         }
 
+        public void SetAppId(string i_AppId)
+        {
+            m_AppSettings.AppID = i_AppId;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using FacebookLogic;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
@@ -6,13 +8,15 @@ namespace BasicFacebookFeatures
     public partial class FormLogin : Form
     {
         private bool m_FormClosedBySucceedLogin = false;
-        FormAppSettings m_FormAppSettings;
+        private LogicManager m_LogicManager;
+        private FormAppSettings m_FormAppSettings;
 
-        public FormLogin()
+        public FormLogin(LogicManager i_LogicManager)
         {
             InitializeComponent();
             initializeUIDesign();
-            m_FormAppSettings = new FormAppSettings();
+            m_FormAppSettings = new FormAppSettings(i_LogicManager);
+            m_LogicManager = i_LogicManager;
         }
 
         private void initializeUIDesign()
@@ -48,7 +52,7 @@ namespace BasicFacebookFeatures
         {
             if (m_FormAppSettings == null)
             {
-                m_FormAppSettings = new FormAppSettings();
+                m_FormAppSettings = new FormAppSettings(m_LogicManager);
             }
 
             m_FormAppSettings.ShowDialog();
@@ -56,23 +60,15 @@ namespace BasicFacebookFeatures
 
         private void buttonLogin_Click(object sender, System.EventArgs e)
         {
-            if (m_FormAppSettings.AppSettings.AppID == null)
+            try
             {
-                MessageBox.Show("AppId Not Selected! Please go to setting and insert AppId", "Login Failed");
+                m_LogicManager.Login();
+                m_FormClosedBySucceedLogin = true;
+                this.Close();
             }
-            else
+            catch (Exception ex)
             {
-                /*m_LoginResult = FacebookService.Login(m_FormAppSettings.AppSettings.AppID, m_FormAppSettings.AppSettings.Permissions.ToArray());
-                if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
-                {
-                    m_LoggedInUser = m_LoginResult.LoggedInUser;
-                    buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
-                    //fetchUserInfo();
-                }
-                else
-                {
-                    MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
-                }*/
+                MessageBox.Show(ex.Message, "Login Failed");
             }
         }
     }

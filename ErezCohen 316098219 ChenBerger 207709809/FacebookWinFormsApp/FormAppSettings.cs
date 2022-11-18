@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FacebookLogic;
+using System;
 using System.Text;
 using System.Windows.Forms;
 
@@ -6,16 +7,14 @@ namespace BasicFacebookFeatures
 {
     public partial class FormAppSettings : Form
     {
-        AppSettings m_AppSettings;
-        public FormAppSettings()
+        private LogicManager m_LogicManager;
+        public FormAppSettings(LogicManager i_LogicManager)
         {
             InitializeComponent();
-            m_AppSettings = new AppSettings();
+            m_LogicManager = i_LogicManager;
         }
 
         StringBuilder m_PermissionsStringBuilder = new StringBuilder();
-
-        public AppSettings AppSettings { get => m_AppSettings; }
 
         private void buttonRefreshPermissions_Click(object sender, EventArgs e)
         {
@@ -37,7 +36,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                m_AppSettings.AppID = comboAppID.SelectedItem.ToString();
+                m_LogicManager.SetAppId(comboAppID.SelectedItem.ToString());
                 addSelectedPremissions();
                 DialogResult = DialogResult.OK;
                 this.Close();
@@ -51,7 +50,7 @@ namespace BasicFacebookFeatures
                 CheckState premissionCheckState = listBoxPermissions.GetItemCheckState(i);
                 if (premissionCheckState == CheckState.Checked)
                 {
-                    m_AppSettings.AddPremission(listBoxPermissions.Items[i].ToString());
+                    m_LogicManager.AddPermission(listBoxPermissions.Items[i].ToString());
                 }
             }
         }
