@@ -95,6 +95,7 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.pictureBoxFacebook);
             this.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormLogin";
             this.Text = "FormLogin";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).EndInit();
