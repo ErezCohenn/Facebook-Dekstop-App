@@ -66,7 +66,7 @@ namespace BasicFacebookFeatures
                 m_FormClosedBySucceedLogin = true;
                 this.Close();
             }
-            catch (Exception ex)
+            catch (LoginException ex)
             {
                 MessageBox.Show(ex.Message, "Login Failed");
             }
