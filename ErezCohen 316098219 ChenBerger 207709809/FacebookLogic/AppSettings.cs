@@ -17,14 +17,14 @@ namespace FacebookLogic
         public string AppID { get => m_AppID; set => m_AppID = value; }
         public List<string> Permissions { get => m_Permissions; set => m_Permissions = value; }
 
-        public void AddPremission(string i_Premission)
+        public void AddPermission(string i_Permission)
         {
             if (m_Permissions == null)
             {
                 m_Permissions = new List<string>();
             }
 
-            m_Permissions.Add(i_Premission);
+            m_Permissions.Add(i_Permission);
         }
         public void SaveCurrentAccessTokenToFile(string i_CurrentAccessToken)
         {

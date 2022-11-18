@@ -70,6 +70,9 @@
     <Reference Include="Facebook">
       <HintPath>..\FBApi\Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="FacebookLogic">
+      <HintPath>..\FacebookLogic\bin\Debug\FacebookLogic.dll</HintPath>
+    </Reference>
     <Reference Include="FbGraphApiWrapper">
       <HintPath>..\FBApi\FbGraphApiWrapper.dll</HintPath>
     </Reference>
@@ -89,7 +92,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppSettings.cs" />
     <Compile Include="FormAppSettings.cs">
       <SubType>Form</SubType>
     </Compile>
