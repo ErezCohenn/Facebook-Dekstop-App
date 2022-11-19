@@ -1,5 +1,6 @@
 ﻿using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using Project1;
 using System;
 
 namespace FacebookLogic
@@ -17,7 +18,8 @@ namespace FacebookLogic
         }
         public void Login()
         {
-            m_LoginResult = FacebookService.Login(m_AppSettings.AppID, m_AppSettings.Permissions.ToArray());
+            m_LoginResult = m_AppSettings.Permissions.Count > 0 ? FacebookService.Login(m_AppSettings.AppID, m_AppSettings.Permissions.ToArray()) :
+                FacebookService.Login(m_AppSettings.AppID);
             if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
                 m_CurrentUser = m_LoginResult.LoggedInUser;
@@ -27,11 +29,20 @@ namespace FacebookLogic
                 throw new LoginException();
             }
         }
+
+        public string GetUserProfileImageUrl()
+        {
+            return m_CurrentUser.PictureNormalURL;
+        }
+
         public void Logout()
         {
             FacebookService.LogoutWithUI();
+            m_LoginResult = null;
+            m_CurrentUser = null;
             m_AppSettings.ClearAccessToken();
         }
+        
         public void AddPermission(string i_Permission)
         {
             m_AppSettings.AddPermission(i_Permission);
@@ -41,6 +52,20 @@ namespace FacebookLogic
         {
             m_AppSettings.AppID = i_AppId;
         }
+
+        public FriendsListDTO GetFriendsList()
+        {
+            FriendsListDTO friendsListDTO = new FriendsListDTO();
+            FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
+
+            foreach (User friend in friendsList)
+            {
+                friendsListDTO.AddFriend(friend.Name, friend.PictureSmallURL);
+            }
+
+            return friendsListDTO;
+         }
+
         private bool AlreadySignedIn()
         {
             return m_AppSettings.HasAccessToken();
