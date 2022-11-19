@@ -22,12 +22,23 @@ namespace BasicFacebookFeatures
         public void StartApp()
         {
             m_LogicManager = new LogicManager();
-            m_FormLogin = new FormLogin(m_LogicManager);
-            m_FormLogin.ShowDialog();
 
-            if (m_FormLogin.IsLoginSucceed)
+            if (!m_LogicManager.TryAutomaticLogin())
             {
-                startFormMain();
+                m_FormLogin = new FormLogin(m_LogicManager);
+                m_FormLogin.ShowDialog();
+                if (m_FormLogin.IsLoginSucceed)
+                {
+                    startFormMain();
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
+            else
+            {
+               startFormMain();
             }
         }
     }
