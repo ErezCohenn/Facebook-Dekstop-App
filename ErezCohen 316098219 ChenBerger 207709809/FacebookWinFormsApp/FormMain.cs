@@ -1,6 +1,5 @@
-using Project1;
-﻿using FacebookLogic;
 using DTO;
+using FacebookLogic;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,27 +9,23 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
-        FormLogin m_FormLogin;
-        LogicManager m_LogicManager;
-        ImageList m_FriendsImagesList;
+        private LogicManager m_LogicManager;
+        private ImageList m_FriendsImagesList;
+        private bool m_IsLogoutButtonClicked = false;
 
-        public FormMain()
+        public bool IsLogoutButtonClicked { get => m_IsLogoutButtonClicked; }
+
+        public FormMain(LogicManager i_LogicManager)
         {
             InitializeComponent();
+            m_LogicManager = i_LogicManager;
             setFacebookTopLogo();
-            m_LogicManager = new LogicManager();
-            m_FormLogin = new FormLogin(m_LogicManager);
-            registerToEvents();
-        }
+            fetchUserData();
 
-        private void registerToEvents()
-        {
-            this.m_FormLogin.FormClosed += new FormClosedEventHandler(this.FormLogin_FormClosed);
         }
 
         private void fetchUserData()
         {
-
             fetchFriendsList();
             fetchImageProfile();
             fetchProfileData();
@@ -93,31 +88,11 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            m_FormLogin = sender as FormLogin;
-
-            if (e.CloseReason == CloseReason.UserClosing && !m_FormLogin.IsFormClosedBySucceedLogin)
-            {
-                this.Close();
-            }
-            else
-            {
-                this.Show();
-                fetchUserData();
-            }
-        }
-
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             m_LogicManager.Logout();
-            this.Hide();
-            m_FormLogin.ShowDialog();
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            m_FormLogin.ShowDialog();
+            m_IsLogoutButtonClicked = true;
+            this.Close();
         }
     }
 }
