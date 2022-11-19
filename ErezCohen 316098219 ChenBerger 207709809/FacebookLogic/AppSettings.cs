@@ -32,11 +32,13 @@ namespace FacebookLogic
         }
         public void SaveToFile(string i_CurrentAccessToken)
         {
+            LastAccessToken = i_CurrentAccessToken;
             try
             {
                 using (Stream stream = new FileStream(r_FullFilePath, FileMode.CreateNew))
                 {
                     XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
+                    xmlSerializer.Serialize(stream, this);
 
                 }
             }

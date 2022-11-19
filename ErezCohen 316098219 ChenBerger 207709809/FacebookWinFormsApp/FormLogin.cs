@@ -56,6 +56,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
+                m_LogicManager.RememberLastUser(m_IsRememberMeCheckBoxChecked);
                 m_LogicManager.Login();
                 m_IsLoginSucceed = true;
                 this.Close();
