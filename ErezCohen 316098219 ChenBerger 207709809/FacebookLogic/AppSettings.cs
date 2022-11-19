@@ -9,14 +9,13 @@ namespace FacebookLogic
     {
         private string m_AppID;
         private List<string> m_Permissions;
-        private readonly string r_FullFilePath;
+        public static readonly string sr_FullFilePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, @"FacebookAppSettings.xml");
         public bool RememberUser { get; set; }
         public string LastAccessToken { get; set; }
 
-        public AppSettings()
+        private AppSettings()
         {
             m_Permissions = new List<string>();
-            r_FullFilePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, @"FacebookAppSettings.xml");
         }
 
         public string AppID { get => m_AppID; set => m_AppID = value; }
@@ -35,7 +34,7 @@ namespace FacebookLogic
             LastAccessToken = i_CurrentAccessToken;
             try
             {
-                using (Stream stream = new FileStream(r_FullFilePath, FileMode.CreateNew))
+                using (Stream stream = new FileStream(sr_FullFilePath, FileMode.CreateNew))
                 {
                     XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
                     xmlSerializer.Serialize(stream, this);
@@ -44,7 +43,7 @@ namespace FacebookLogic
             }
             catch (IOException ioExeption)
             {
-                using (Stream stream = new FileStream(r_FullFilePath, FileMode.Truncate))
+                using (Stream stream = new FileStream(sr_FullFilePath, FileMode.Truncate))
                 {
                     XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
                     xmlSerializer.Serialize(stream, this);
@@ -56,29 +55,27 @@ namespace FacebookLogic
             //}
 
         }
-        public string LoadFromFile()
+        public static AppSettings LoadFromFile()
         {
+            AppSettings obj = null;
 
-            string accessToken = string.Empty;
             try
             {
-                using (Stream stream = new FileStream(r_FullFilePath, FileMode.Truncate))
+                using (Stream stream = new FileStream(sr_FullFilePath, FileMode.Open))
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
-                    AppSettings obj = xmlSerializer.Deserialize(stream) as AppSettings;
-                    if (obj.RememberUser)
-                    {
-                        accessToken = obj.LastAccessToken;
-                    }
-
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(AppSettings));
+                    obj = xmlSerializer.Deserialize(stream) as AppSettings;
                 }
             }
-            catch (IOException ioException) { }
-            return accessToken;
+            catch (Exception ioException)
+            {
+                obj = new AppSettings();
+            }
+            return obj;
         }
-        public bool WantedToRememberUser()
-        {
-            return !string.IsNullOrEmpty(LoadFromFile());
-        }
+        //public bool WantedToRememberUser()
+        //{
+        //    return !string.IsNullOrEmpty(LoadFromFile());
+        //}
     }
 }
