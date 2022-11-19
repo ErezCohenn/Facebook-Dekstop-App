@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using FacebookWrapper;
+using System;
 using System.Windows.Forms;
-using FacebookWrapper;
 
 namespace BasicFacebookFeatures
 {
@@ -14,11 +12,13 @@ namespace BasicFacebookFeatures
         [STAThread]
         static void Main()
         {
+            UIManager uIManager = new UIManager();
+
             Clipboard.SetText("design.patterns20cc");
             FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            uIManager.StartApp();
         }
     }
 }
