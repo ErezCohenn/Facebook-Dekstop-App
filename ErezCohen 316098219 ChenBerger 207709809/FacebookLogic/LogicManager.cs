@@ -24,6 +24,10 @@ namespace FacebookLogic
             if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
                 m_CurrentUser = m_LoginResult.LoggedInUser;
+                if (m_AppSettings.RememberUser)
+                {
+                    m_AppSettings.SaveToFile(m_LoginResult.AccessToken);
+                }
             }
             else
             {
@@ -66,7 +70,19 @@ namespace FacebookLogic
 
             return friendsListDTO;
         }
-
+        public FriendsListDTO GetSameHomeTownFriends()
+        {
+            FriendsListDTO sameHomeTownfriendsListDTO = new FriendsListDTO();
+            FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
+            foreach (User friend in friendsList)
+            {
+                if (friend.Hometown == m_CurrentUser.Hometown)
+                {
+                    sameHomeTownfriendsListDTO.AddFriend(friend.Name, friend.PictureSmallURL);
+                }
+            }
+            return sameHomeTownfriendsListDTO;
+        }
         public ProfileDataDTO GetProfileData()
         {
             ProfileDataDTO profileDataDTO = new ProfileDataDTO();
@@ -103,7 +119,7 @@ namespace FacebookLogic
 
             return alreadySignedIn;
         }
-        
+
         public void RememberLastUser(bool i_CheckBoxState)
         {
             m_AppSettings.RememberUser = i_CheckBoxState;
@@ -111,6 +127,7 @@ namespace FacebookLogic
         private void ForgetUser()
         {
             m_AppSettings.RememberUser = false;
+            m_AppSettings.SaveToFile(m_AppSettings.LastAccessToken);
         }
     }
 }
