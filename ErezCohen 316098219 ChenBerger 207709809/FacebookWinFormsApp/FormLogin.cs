@@ -7,7 +7,8 @@ namespace BasicFacebookFeatures
 {
     public partial class FormLogin : Form
     {
-        private bool m_IsQuitButtonClicked = false;
+        private bool m_IsFormClosedBySucceedLogin = false;
+        private bool m_IsRememberMeCheckBoxChecked = false;
         private LogicManager m_LogicManager;
         private FormAppSettings m_FormAppSettings;
 
@@ -36,11 +37,11 @@ namespace BasicFacebookFeatures
 
         private void buttonQuit_Click(object sender, System.EventArgs e)
         {
-            m_IsQuitButtonClicked = true;
+            m_IsFormClosedBySucceedLogin = true;
             this.Close();
         }
 
-        public bool IsQuitButtonClicked { get => m_IsQuitButtonClicked; }
+        public bool IsFormClosedBySucceedLogin { get => m_IsFormClosedBySucceedLogin; }
 
         private void buttonSettings_Click(object sender, System.EventArgs e)
         {
@@ -57,12 +58,17 @@ namespace BasicFacebookFeatures
             try
             {
                 m_LogicManager.Login();
+                m_IsFormClosedBySucceedLogin = true;
                 this.Close();
             }
-            catch (LoginException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Login Failed");
+                MessageBox.Show("Login process failed!!! please check that the App Id exist and you gave permissions", "Login Failed");
             }
+        }
+        private void checkBoxRememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+            m_IsRememberMeCheckBoxChecked = checkBoxRememberMe.Checked;
         }
     }
 }

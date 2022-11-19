@@ -1,5 +1,5 @@
 ﻿using FacebookLogic;
-using Project1;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -63,7 +63,7 @@ namespace BasicFacebookFeatures
         {
             m_FormLogin = sender as FormLogin;
 
-            if (e.CloseReason == CloseReason.UserClosing || m_FormLogin.IsQuitButtonClicked)
+            if (e.CloseReason == CloseReason.UserClosing && !m_FormLogin.IsFormClosedBySucceedLogin)
             {
                 this.Close();
             }

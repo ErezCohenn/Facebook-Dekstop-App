@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-namespace Project1
+namespace DTO
 {
     public class FriendsListDTO
     {

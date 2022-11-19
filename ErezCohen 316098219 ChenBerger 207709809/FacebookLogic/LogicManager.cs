@@ -1,6 +1,6 @@
 ﻿using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
-using Project1;
+using DTO;
 using System;
 
 namespace FacebookLogic
@@ -38,11 +38,11 @@ namespace FacebookLogic
         public void Logout()
         {
             FacebookService.LogoutWithUI();
+            ForgetUser();
             m_LoginResult = null;
             m_CurrentUser = null;
-            m_AppSettings.ClearAccessToken();
         }
-        
+
         public void AddPermission(string i_Permission)
         {
             m_AppSettings.AddPermission(i_Permission);
@@ -64,11 +64,11 @@ namespace FacebookLogic
             }
 
             return friendsListDTO;
-         }
+        }
 
         private bool AlreadySignedIn()
         {
-            return m_AppSettings.HasAccessToken();
+            return m_AppSettings.WantedToRememberUser();
         }
         public bool TryAutomaticLogin()
         {
@@ -77,7 +77,7 @@ namespace FacebookLogic
             {
                 try
                 {
-                    m_LoginResult = FacebookService.Connect(m_AppSettings.GetAccessTokenFromFile());
+                    m_LoginResult = FacebookService.Connect(m_AppSettings.LoadFromFile());
                     m_CurrentUser = m_LoginResult.LoggedInUser;
                 }
                 catch (Exception exception)
@@ -87,6 +87,14 @@ namespace FacebookLogic
             }
 
             return alreadySignedIn;
+        }
+        public void RememberLastUser(bool i_CheckBoxState)
+        {
+            m_AppSettings.RememberUser = i_CheckBoxState;
+        }
+        private void ForgetUser()
+        {
+            m_AppSettings.RememberUser = false;
         }
     }
 }
