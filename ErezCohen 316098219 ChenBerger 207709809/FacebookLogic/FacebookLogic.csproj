@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="LogicManager.cs" />
+    <Compile Include="LoginException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DTO">
@@ -52,6 +53,7 @@
       <HintPath>..\FBApi\FbGraphApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

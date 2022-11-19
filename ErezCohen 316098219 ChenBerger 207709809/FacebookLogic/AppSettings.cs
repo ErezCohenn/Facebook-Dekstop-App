@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Xml.Serialization;
 
 namespace FacebookLogic
 {
@@ -7,11 +9,14 @@ namespace FacebookLogic
     {
         private string m_AppID;
         private List<string> m_Permissions;
-        private const string k_FullLastAccessTokenFilePath = "";
+        private readonly string r_FullFilePath;
+        public bool RememberUser { get; set; }
+        public string LastAccessToken { get; set; }
 
         public AppSettings()
         {
             m_Permissions = new List<string>();
+            r_FullFilePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, @"FacebookAppSettings.xml");
         }
 
         public string AppID { get => m_AppID; set => m_AppID = value; }
@@ -23,19 +28,55 @@ namespace FacebookLogic
             {
                 m_Permissions = new List<string>();
             }
-
             m_Permissions.Add(i_Permission);
         }
-        public void SaveCurrentAccessTokenToFile(string i_CurrentAccessToken)
+        public void SaveToFile(string i_CurrentAccessToken)
         {
-            using (StreamWriter streamWriter = new StreamWriter(k_FullLastAccessTokenFilePath))
+            try
             {
-                streamWriter.WriteLine(i_CurrentAccessToken);
+                using (Stream stream = new FileStream(r_FullFilePath, FileMode.CreateNew))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
+
+                }
             }
+            catch (IOException ioExeption)
+            {
+                using (Stream stream = new FileStream(r_FullFilePath, FileMode.Truncate))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
+                    xmlSerializer.Serialize(stream, this);
+                }
+            }
+            //using (StreamWriter streamWriter = new StreamWriter(r_FullFilePath))
+            //{
+            //    streamWriter.WriteLine(i_CurrentAccessToken);
+            //}
+
         }
-        public void loadAccessTokenFromFile()
+        public string LoadFromFile()
         {
 
+            string accessToken = string.Empty;
+            try
+            {
+                using (Stream stream = new FileStream(r_FullFilePath, FileMode.Truncate))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
+                    AppSettings obj = xmlSerializer.Deserialize(stream) as AppSettings;
+                    if (obj.RememberUser)
+                    {
+                        accessToken = obj.LastAccessToken;
+                    }
+
+                }
+            }
+            catch (IOException ioException) { }
+            return accessToken;
+        }
+        public bool WantedToRememberUser()
+        {
+            return !string.IsNullOrEmpty(LoadFromFile());
         }
     }
 }
