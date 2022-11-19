@@ -37,7 +37,6 @@ namespace BasicFacebookFeatures
 
         private void buttonQuit_Click(object sender, System.EventArgs e)
         {
-            m_IsFormClosedBySucceedLogin = true;
             this.Close();
         }
 

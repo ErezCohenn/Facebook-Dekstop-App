@@ -1,3 +1,4 @@
+using Project1;
 ﻿using FacebookLogic;
 using DTO;
 using System;
@@ -16,15 +17,48 @@ namespace BasicFacebookFeatures
         public FormMain()
         {
             InitializeComponent();
+            setFacebookTopLogo();
             m_LogicManager = new LogicManager();
             m_FormLogin = new FormLogin(m_LogicManager);
+            registerToEvents();
+        }
+
+        private void registerToEvents()
+        {
             this.m_FormLogin.FormClosed += new FormClosedEventHandler(this.FormLogin_FormClosed);
         }
 
         private void fetchUserData()
         {
+
             fetchFriendsList();
             fetchImageProfile();
+            fetchProfileData();
+        }
+
+        private void fetchProfileData()
+        {
+            ProfileDataDTO profileDataDTO = m_LogicManager.GetProfileData();
+            //Location userLocation = profileDataDTO.HomeTown.Location;
+
+            this.labelFirstName.Text += profileDataDTO.FirstName;
+            this.labelLastName.Text += profileDataDTO.LastName;
+            this.labelEmail.Text += profileDataDTO.Email;
+            this.labelBirthday.Text += profileDataDTO.Birthday;
+
+            //if (userLocation != null)
+            {
+                //   this.labelHomeTown.Text = userLocation.Country + " " + userLocation.City + " " + userLocation.Street;
+            }
+
+            //pictureBoxProfile.LoadAsync(profileDataDTO.HomeTown.PictureURL);
+        }
+
+        private void setFacebookTopLogo()
+        {
+            pictureBoxTopLogo.Image = Image.FromFile(Resources.FacebookLogoFullPath);
+            pictureBoxTopLogo.Enabled = false;
+            pictureBoxTopLogo.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void fetchImageProfile()
@@ -69,11 +103,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                if (!this.Visible)
-                {
-                    this.Show();
-                }
-
+                this.Show();
                 fetchUserData();
             }
         }

@@ -1,4 +1,5 @@
-﻿using FacebookWrapper;
+﻿using DTO;
+using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using DTO;
 using System;
@@ -66,6 +67,20 @@ namespace FacebookLogic
             return friendsListDTO;
         }
 
+        public ProfileDataDTO GetProfileData()
+        {
+            ProfileDataDTO profileDataDTO = new ProfileDataDTO();
+
+            profileDataDTO.FirstName = m_CurrentUser.FirstName;
+            profileDataDTO.LastName = m_CurrentUser.LastName;
+            profileDataDTO.Birthday = m_CurrentUser.Birthday;
+            profileDataDTO.HomeTown = m_CurrentUser.Hometown;
+            profileDataDTO.Email = m_CurrentUser.Email;
+            profileDataDTO.About = m_CurrentUser.About;
+
+            return profileDataDTO;
+        }
+
         private bool AlreadySignedIn()
         {
             return m_AppSettings.WantedToRememberUser();
@@ -88,6 +103,7 @@ namespace FacebookLogic
 
             return alreadySignedIn;
         }
+        
         public void RememberLastUser(bool i_CheckBoxState)
         {
             m_AppSettings.RememberUser = i_CheckBoxState;
