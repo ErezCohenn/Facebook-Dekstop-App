@@ -5,7 +5,7 @@ namespace FacebookLogic
 {
     public class AppSettings
     {
-        private string m_AppID = "852667072827918";
+        private string m_AppID;
         private List<string> m_Permissions;
         private const string k_FullLastAccessTokenFilePath = "";
 

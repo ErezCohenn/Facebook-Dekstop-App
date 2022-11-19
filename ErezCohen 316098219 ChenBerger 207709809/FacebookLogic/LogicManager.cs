@@ -1,5 +1,6 @@
 ﻿using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using Project1;
 using System;
 
 namespace FacebookLogic
@@ -17,19 +18,28 @@ namespace FacebookLogic
         }
         public void Login()
         {
-            m_LoginResult = FacebookService.Login(m_AppSettings.AppID, m_AppSettings.Permissions.ToArray());
+            m_LoginResult = m_AppSettings.Permissions.Count > 0 ? FacebookService.Login(m_AppSettings.AppID, m_AppSettings.Permissions.ToArray()) :
+                FacebookService.Login(m_AppSettings.AppID);
             if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
                 m_CurrentUser = m_LoginResult.LoggedInUser;
             }
             else
             {
-                throw new Exception("Login Failed");
+                throw new Exception(m_LoginResult.ErrorMessage);
             }
         }
+
+        public string GetUserProfileImageUrl()
+        {
+            return m_CurrentUser.PictureNormalURL;
+        }
+
         public void Logout()
         {
             FacebookService.LogoutWithUI();
+            m_LoginResult = null;
+            m_CurrentUser = null;
         }
         public void AddPermission(string i_Permission)
         {
@@ -39,6 +49,19 @@ namespace FacebookLogic
         public void SetAppId(string i_AppId)
         {
             m_AppSettings.AppID = i_AppId;
+        }
+
+        public FriendsListDTO GetFriendsList()
+        {
+            FriendsListDTO friendsListDTO = new FriendsListDTO();
+            FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
+
+            foreach (User friend in friendsList)
+            {
+                friendsListDTO.AddFriend(friend.Name, friend.PictureSmallURL);
+            }
+
+            return friendsListDTO;
         }
     }
 }

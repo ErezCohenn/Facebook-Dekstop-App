@@ -7,7 +7,7 @@ namespace BasicFacebookFeatures
 {
     public partial class FormLogin : Form
     {
-        private bool m_FormClosedBySucceedLogin = false;
+        private bool m_IsQuitButtonClicked = false;
         private LogicManager m_LogicManager;
         private FormAppSettings m_FormAppSettings;
 
@@ -36,17 +36,11 @@ namespace BasicFacebookFeatures
 
         private void buttonQuit_Click(object sender, System.EventArgs e)
         {
+            m_IsQuitButtonClicked = true;
             this.Close();
         }
 
-
-        public bool IsFormClosedBySucceedLogin
-        {
-            get
-            {
-                return m_FormClosedBySucceedLogin;
-            }
-        }
+        public bool IsQuitButtonClicked { get => m_IsQuitButtonClicked; }
 
         private void buttonSettings_Click(object sender, System.EventArgs e)
         {
@@ -63,7 +57,6 @@ namespace BasicFacebookFeatures
             try
             {
                 m_LogicManager.Login();
-                m_FormClosedBySucceedLogin = true;
                 this.Close();
             }
             catch (Exception ex)
