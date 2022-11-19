@@ -33,6 +33,7 @@ namespace BasicFacebookFeatures
             this.buttonSettings = new System.Windows.Forms.Button();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonQuit = new System.Windows.Forms.Button();
+            this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,12 +84,25 @@ namespace BasicFacebookFeatures
             this.buttonQuit.UseVisualStyleBackColor = true;
             this.buttonQuit.Click += new System.EventHandler(this.buttonQuit_Click);
             // 
+            // checkBoxRememberMe
+            // 
+            this.checkBoxRememberMe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBoxRememberMe.AutoSize = true;
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(12, 444);
+            this.checkBoxRememberMe.Name = "checkBoxRememberMe";
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(122, 21);
+            this.checkBoxRememberMe.TabIndex = 59;
+            this.checkBoxRememberMe.Text = "Remember Me";
+            this.checkBoxRememberMe.UseVisualStyleBackColor = true;
+            this.checkBoxRememberMe.CheckedChanged += new System.EventHandler(this.checkBoxRememberMe_CheckedChanged);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(944, 489);
+            this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.buttonLogin);
@@ -100,6 +114,7 @@ namespace BasicFacebookFeatures
             this.Text = "FormLogin";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -109,5 +124,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Button buttonQuit;
+        private System.Windows.Forms.CheckBox checkBoxRememberMe;
     }
 }
