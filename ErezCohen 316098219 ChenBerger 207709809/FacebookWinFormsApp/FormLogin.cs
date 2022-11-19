@@ -7,10 +7,12 @@ namespace BasicFacebookFeatures
 {
     public partial class FormLogin : Form
     {
-        private bool m_IsFormClosedBySucceedLogin = false;
         private bool m_IsRememberMeCheckBoxChecked = false;
+        private bool m_IsLoginSucceed = false;
         private LogicManager m_LogicManager;
         private FormAppSettings m_FormAppSettings;
+
+        public bool IsLoginSucceed { get => m_IsLoginSucceed; }
 
         public FormLogin(LogicManager i_LogicManager)
         {
@@ -40,8 +42,6 @@ namespace BasicFacebookFeatures
             this.Close();
         }
 
-        public bool IsFormClosedBySucceedLogin { get => m_IsFormClosedBySucceedLogin; }
-
         private void buttonSettings_Click(object sender, System.EventArgs e)
         {
             if (m_FormAppSettings == null)
@@ -58,7 +58,7 @@ namespace BasicFacebookFeatures
             {
                 m_LogicManager.RememberLastUser(m_IsRememberMeCheckBoxChecked);
                 m_LogicManager.Login();
-                m_IsFormClosedBySucceedLogin = true;
+                m_IsLoginSucceed = true;
                 this.Close();
             }
             catch (Exception ex)
