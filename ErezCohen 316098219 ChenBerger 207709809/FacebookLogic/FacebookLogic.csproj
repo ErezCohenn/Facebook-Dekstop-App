@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="LogicManager.cs" />
+    <Compile Include="LoginException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DTO">
