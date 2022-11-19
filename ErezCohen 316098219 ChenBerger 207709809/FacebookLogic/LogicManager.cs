@@ -1,7 +1,6 @@
 ﻿using DTO;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
-using DTO;
 using System;
 
 namespace FacebookLogic
@@ -35,7 +34,7 @@ namespace FacebookLogic
             }
         }
 
-        public string GetUserProfileImageUrl()
+        public string FetchUserProfileImageUrl()
         {
             return m_CurrentUser.PictureNormalURL;
         }
@@ -58,7 +57,7 @@ namespace FacebookLogic
             m_AppSettings.AppID = i_AppId;
         }
 
-        public FriendsListDTO GetFriendsList()
+        public FriendsListDTO FetchFriendsList()
         {
             FriendsListDTO friendsListDTO = new FriendsListDTO();
             FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
@@ -70,7 +69,7 @@ namespace FacebookLogic
 
             return friendsListDTO;
         }
-        public FriendsListDTO GetSameHomeTownFriends()
+        public FriendsListDTO FetchSameHomeTownFriends()
         {
             FriendsListDTO sameHomeTownfriendsListDTO = new FriendsListDTO();
             FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
@@ -83,7 +82,7 @@ namespace FacebookLogic
             }
             return sameHomeTownfriendsListDTO;
         }
-        public ProfileDataDTO GetProfileData()
+        public ProfileDataDTO FetchProfileData()
         {
             ProfileDataDTO profileDataDTO = new ProfileDataDTO();
 
@@ -128,6 +127,11 @@ namespace FacebookLogic
         {
             m_AppSettings.RememberUser = false;
             m_AppSettings.SaveToFile(m_AppSettings.LastAccessToken);
+        }
+
+        public FacebookObjectCollection<Post> FetchPosts()
+        {
+            return m_CurrentUser.Posts;
         }
     }
 }

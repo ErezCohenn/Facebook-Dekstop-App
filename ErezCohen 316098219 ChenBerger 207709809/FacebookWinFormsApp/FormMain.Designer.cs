@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.labelAbout = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelBirthday = new System.Windows.Forms.Label();
+            this.labelHomeTown = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
+            this.labelFirstName = new System.Windows.Forms.Label();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tabControlFeed = new System.Windows.Forms.TabControl();
@@ -39,12 +45,7 @@
             this.listViewFriends = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pictureBoxTopLogo = new System.Windows.Forms.PictureBox();
-            this.labelFirstName = new System.Windows.Forms.Label();
-            this.labelLastName = new System.Windows.Forms.Label();
-            this.labelHomeTown = new System.Windows.Forms.Label();
-            this.labelBirthday = new System.Windows.Forms.Label();
-            this.labelEmail = new System.Windows.Forms.Label();
-            this.labelAbout = new System.Windows.Forms.Label();
+            this.listBoxFeed = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -55,6 +56,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.tabControlFeed.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTopLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,6 +93,66 @@
             this.splitContainer1.Size = new System.Drawing.Size(1477, 692);
             this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.TabIndex = 53;
+            // 
+            // labelAbout
+            // 
+            this.labelAbout.AutoSize = true;
+            this.labelAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelAbout.Location = new System.Drawing.Point(25, 417);
+            this.labelAbout.Name = "labelAbout";
+            this.labelAbout.Size = new System.Drawing.Size(70, 25);
+            this.labelAbout.TabIndex = 60;
+            this.labelAbout.Text = "About:";
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelEmail.Location = new System.Drawing.Point(25, 374);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(66, 25);
+            this.labelEmail.TabIndex = 59;
+            this.labelEmail.Text = "Email:";
+            // 
+            // labelBirthday
+            // 
+            this.labelBirthday.AutoSize = true;
+            this.labelBirthday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelBirthday.Location = new System.Drawing.Point(25, 333);
+            this.labelBirthday.Name = "labelBirthday";
+            this.labelBirthday.Size = new System.Drawing.Size(89, 25);
+            this.labelBirthday.TabIndex = 58;
+            this.labelBirthday.Text = "Birthday:";
+            // 
+            // labelHomeTown
+            // 
+            this.labelHomeTown.AutoSize = true;
+            this.labelHomeTown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelHomeTown.Location = new System.Drawing.Point(25, 291);
+            this.labelHomeTown.Name = "labelHomeTown";
+            this.labelHomeTown.Size = new System.Drawing.Size(124, 25);
+            this.labelHomeTown.TabIndex = 57;
+            this.labelHomeTown.Text = "Home Town:";
+            // 
+            // labelLastName
+            // 
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelLastName.Location = new System.Drawing.Point(25, 251);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(112, 25);
+            this.labelLastName.TabIndex = 56;
+            this.labelLastName.Text = "Last Name:";
+            // 
+            // labelFirstName
+            // 
+            this.labelFirstName.AutoSize = true;
+            this.labelFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelFirstName.Location = new System.Drawing.Point(25, 211);
+            this.labelFirstName.Name = "labelFirstName";
+            this.labelFirstName.Size = new System.Drawing.Size(112, 25);
+            this.labelFirstName.TabIndex = 55;
+            this.labelFirstName.Text = "First Name:";
             // 
             // pictureBoxProfile
             // 
@@ -130,6 +192,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.listBoxFeed);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -175,65 +238,15 @@
             this.pictureBoxTopLogo.TabIndex = 54;
             this.pictureBoxTopLogo.TabStop = false;
             // 
-            // labelFirstName
+            // listBoxFeed
             // 
-            this.labelFirstName.AutoSize = true;
-            this.labelFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFirstName.Location = new System.Drawing.Point(25, 211);
-            this.labelFirstName.Name = "labelFirstName";
-            this.labelFirstName.Size = new System.Drawing.Size(140, 31);
-            this.labelFirstName.TabIndex = 55;
-            this.labelFirstName.Text = "First Name:";
-            // 
-            // labelLastName
-            // 
-            this.labelLastName.AutoSize = true;
-            this.labelLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelLastName.Location = new System.Drawing.Point(25, 251);
-            this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(140, 31);
-            this.labelLastName.TabIndex = 56;
-            this.labelLastName.Text = "Last Name:";
-            // 
-            // labelHomeTown
-            // 
-            this.labelHomeTown.AutoSize = true;
-            this.labelHomeTown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelHomeTown.Location = new System.Drawing.Point(25, 291);
-            this.labelHomeTown.Name = "labelHomeTown";
-            this.labelHomeTown.Size = new System.Drawing.Size(155, 31);
-            this.labelHomeTown.TabIndex = 57;
-            this.labelHomeTown.Text = "Home Town:";
-            // 
-            // labelBirthday
-            // 
-            this.labelBirthday.AutoSize = true;
-            this.labelBirthday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelBirthday.Location = new System.Drawing.Point(25, 333);
-            this.labelBirthday.Name = "labelBirthday";
-            this.labelBirthday.Size = new System.Drawing.Size(111, 31);
-            this.labelBirthday.TabIndex = 58;
-            this.labelBirthday.Text = "Birthday:";
-            // 
-            // labelEmail
-            // 
-            this.labelEmail.AutoSize = true;
-            this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelEmail.Location = new System.Drawing.Point(25, 374);
-            this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(83, 31);
-            this.labelEmail.TabIndex = 59;
-            this.labelEmail.Text = "Email:";
-            // 
-            // labelAbout
-            // 
-            this.labelAbout.AutoSize = true;
-            this.labelAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelAbout.Location = new System.Drawing.Point(25, 417);
-            this.labelAbout.Name = "labelAbout";
-            this.labelAbout.Size = new System.Drawing.Size(88, 31);
-            this.labelAbout.TabIndex = 60;
-            this.labelAbout.Text = "About:";
+            this.listBoxFeed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxFeed.FormattingEnabled = true;
+            this.listBoxFeed.ItemHeight = 16;
+            this.listBoxFeed.Location = new System.Drawing.Point(3, 3);
+            this.listBoxFeed.Name = "listBoxFeed";
+            this.listBoxFeed.Size = new System.Drawing.Size(782, 657);
+            this.listBoxFeed.TabIndex = 0;
             // 
             // FormMain
             // 
@@ -258,6 +271,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.tabControlFeed.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTopLogo)).EndInit();
             this.ResumeLayout(false);
 
@@ -280,5 +294,6 @@
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Label labelBirthday;
         private System.Windows.Forms.Label labelHomeTown;
+        private System.Windows.Forms.ListBox listBoxFeed;
     }
 }

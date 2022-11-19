@@ -1,6 +1,7 @@
 using DTO;
 
 using FacebookLogic;
+using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -30,11 +31,40 @@ namespace BasicFacebookFeatures
             fetchFriendsList();
             fetchImageProfile();
             fetchProfileData();
+            fetchPosts();
+        }
+
+        private void fetchPosts()
+        {
+            FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
+
+            listBoxFeed.Items.Clear();
+
+            foreach (Post post in posts)
+            {
+                if (post.Message != null)
+                {
+                    listBoxFeed.Items.Add(post.Message);
+                }
+                else if (post.Caption != null)
+                {
+                    listBoxFeed.Items.Add(post.Caption);
+                }
+                else
+                {
+                    listBoxFeed.Items.Add(string.Format("[{0}]", post.Type));
+                }
+            }
+
+            if (listBoxFeed.Items.Count == 0)
+            {
+                MessageBox.Show("No Posts to retrieve :(");
+            }
         }
 
         private void fetchProfileData()
         {
-            ProfileDataDTO profileDataDTO = m_LogicManager.GetProfileData();
+            ProfileDataDTO profileDataDTO = m_LogicManager.FetchProfileData();
             //Location userLocation = profileDataDTO.HomeTown.Location;
 
             this.labelFirstName.Text += profileDataDTO.FirstName;
@@ -59,7 +89,7 @@ namespace BasicFacebookFeatures
 
         private void fetchImageProfile()
         {
-            pictureBoxProfile.LoadAsync(m_LogicManager.GetUserProfileImageUrl());
+            pictureBoxProfile.LoadAsync(m_LogicManager.FetchUserProfileImageUrl());
         }
 
         private void fetchFriendsList()
@@ -74,7 +104,7 @@ namespace BasicFacebookFeatures
 
             try
             {
-                friendsListDTO = m_LogicManager.GetFriendsList();
+                friendsListDTO = m_LogicManager.FetchFriendsList();
                 foreach (KeyValuePair<string, Image> friend in friendsListDTO.FriendsList)
                 {
                     listViewFriends.Items.Add(friend.Key, friendIndex++);

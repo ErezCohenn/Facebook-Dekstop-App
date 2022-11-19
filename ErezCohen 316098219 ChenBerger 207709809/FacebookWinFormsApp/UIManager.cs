@@ -1,5 +1,4 @@
 ﻿using FacebookLogic;
-using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
@@ -18,10 +17,6 @@ namespace BasicFacebookFeatures
             {
                 StartApp();
             }
-            else
-            {
-                Application.Exit();
-            }
         }
 
         public void StartApp()
@@ -33,10 +28,6 @@ namespace BasicFacebookFeatures
             if (m_FormLogin.IsLoginSucceed)
             {
                 startFormMain();
-            }
-            else
-            {
-                Application.Exit();
             }
         }
     }
