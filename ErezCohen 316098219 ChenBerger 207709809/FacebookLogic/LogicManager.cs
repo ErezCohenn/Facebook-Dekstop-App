@@ -15,7 +15,7 @@ namespace FacebookLogic
         public LogicManager()
         {
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-            m_AppSettings = new AppSettings();
+            m_AppSettings = AppSettings.LoadFromFile();
         }
         public void Login()
         {
@@ -97,23 +97,24 @@ namespace FacebookLogic
             return profileDataDTO;
         }
 
-        private bool AlreadySignedIn()
-        {
-            return m_AppSettings.WantedToRememberUser();
-        }
+        //private bool AlreadySignedIn()
+        //{
+        //    return m_AppSettings.WantedToRememberUser();
+        //}
         public bool TryAutomaticLogin()
         {
-            bool alreadySignedIn = AlreadySignedIn();
+            bool alreadySignedIn = m_AppSettings.RememberUser;
+
             if (alreadySignedIn)
             {
                 try
                 {
-                    m_LoginResult = FacebookService.Connect(m_AppSettings.LoadFromFile());
+                    m_LoginResult = FacebookService.Connect(m_AppSettings.LastAccessToken);
                     m_CurrentUser = m_LoginResult.LoggedInUser;
                 }
                 catch (Exception exception)
                 {
-                    throw new LoginException();
+                    alreadySignedIn = false;
                 }
             }
 
