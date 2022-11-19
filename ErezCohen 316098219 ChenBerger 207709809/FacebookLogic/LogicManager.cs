@@ -38,7 +38,14 @@ namespace FacebookLogic
         {
             return m_CurrentUser.PictureNormalURL;
         }
-
+        public FacebookObjectCollection<Page> FetchLikedPages()
+        {
+            return m_CurrentUser.LikedPages;
+        }
+        public Page[] FetchFavoriteTeams()
+        {
+            return m_CurrentUser.FavofriteTeams;
+        }
         public void Logout()
         {
             FacebookService.LogoutWithUI();
@@ -132,7 +139,18 @@ namespace FacebookLogic
 
         public FacebookObjectCollection<Post> FetchPosts()
         {
-            return m_CurrentUser.Posts;
+            FacebookObjectCollection<Post> posts = null;
+            try
+            {
+                posts = m_CurrentUser.Posts;
+            }
+            catch (Facebook.FacebookOAuthException ex) { }
+            return posts != null ? posts : null;
+        }
+
+        public FacebookObjectCollection<Group> FetchGroups()
+        {
+            return m_CurrentUser.Groups;
         }
     }
 }
