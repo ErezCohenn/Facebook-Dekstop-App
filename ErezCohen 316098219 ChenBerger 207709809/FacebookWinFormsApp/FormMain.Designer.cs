@@ -31,34 +31,40 @@
             this.components = new System.ComponentModel.Container();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.listViewFriends = new System.Windows.Forms.ListView();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControlFeed = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.listViewFriends = new System.Windows.Forms.ListView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.pictureBoxTopLogo = new System.Windows.Forms.PictureBox();
+            this.labelFirstName = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
+            this.labelHomeTown = new System.Windows.Forms.Label();
+            this.labelBirthday = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelAbout = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.tabControlFeed.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTopLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogout
             // 
             this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLogout.Location = new System.Drawing.Point(1147, 752);
+            this.buttonLogout.Location = new System.Drawing.Point(1340, 849);
             this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(215, 28);
+            this.buttonLogout.Size = new System.Drawing.Size(149, 36);
             this.buttonLogout.TabIndex = 52;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
@@ -66,19 +72,33 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(12, 88);
+            this.splitContainer1.Location = new System.Drawing.Point(12, 150);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer1.Panel1.Controls.Add(this.labelAbout);
+            this.splitContainer1.Panel1.Controls.Add(this.labelEmail);
+            this.splitContainer1.Panel1.Controls.Add(this.labelBirthday);
+            this.splitContainer1.Panel1.Controls.Add(this.labelHomeTown);
+            this.splitContainer1.Panel1.Controls.Add(this.labelLastName);
+            this.splitContainer1.Panel1.Controls.Add(this.labelFirstName);
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBoxProfile);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1350, 657);
-            this.splitContainer1.SplitterDistance = 369;
+            this.splitContainer1.Size = new System.Drawing.Size(1477, 692);
+            this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.TabIndex = 53;
+            // 
+            // pictureBoxProfile
+            // 
+            this.pictureBoxProfile.Location = new System.Drawing.Point(28, 25);
+            this.pictureBoxProfile.Name = "pictureBoxProfile";
+            this.pictureBoxProfile.Size = new System.Drawing.Size(293, 169);
+            this.pictureBoxProfile.TabIndex = 0;
+            this.pictureBoxProfile.TabStop = false;
             // 
             // splitContainer2
             // 
@@ -93,25 +113,9 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.listViewFriends);
-            this.splitContainer2.Size = new System.Drawing.Size(977, 657);
-            this.splitContainer2.SplitterDistance = 869;
+            this.splitContainer2.Size = new System.Drawing.Size(1132, 692);
+            this.splitContainer2.SplitterDistance = 796;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // listViewFriends
-            // 
-            this.listViewFriends.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewFriends.HideSelection = false;
-            this.listViewFriends.Location = new System.Drawing.Point(0, 0);
-            this.listViewFriends.Name = "listViewFriends";
-            this.listViewFriends.Size = new System.Drawing.Size(104, 657);
-            this.listViewFriends.TabIndex = 54;
-            this.listViewFriends.UseCompatibleStateImageBehavior = false;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // tabControlFeed
             // 
@@ -121,7 +125,7 @@
             this.tabControlFeed.Location = new System.Drawing.Point(0, 0);
             this.tabControlFeed.Name = "tabControlFeed";
             this.tabControlFeed.SelectedIndex = 0;
-            this.tabControlFeed.Size = new System.Drawing.Size(869, 657);
+            this.tabControlFeed.Size = new System.Drawing.Size(796, 692);
             this.tabControlFeed.TabIndex = 0;
             // 
             // tabPage1
@@ -129,7 +133,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(861, 628);
+            this.tabPage1.Size = new System.Drawing.Size(788, 663);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Feed";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -139,58 +143,123 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(861, 628);
+            this.tabPage2.Size = new System.Drawing.Size(788, 663);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Photos";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // listViewFriends
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.pictureBoxProfile, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(369, 657);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.listViewFriends.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewFriends.HideSelection = false;
+            this.listViewFriends.Location = new System.Drawing.Point(0, 0);
+            this.listViewFriends.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.listViewFriends.Name = "listViewFriends";
+            this.listViewFriends.Size = new System.Drawing.Size(332, 692);
+            this.listViewFriends.SmallImageList = this.imageList1;
+            this.listViewFriends.TabIndex = 54;
+            this.listViewFriends.UseCompatibleStateImageBehavior = false;
             // 
-            // pictureBoxProfile
+            // imageList1
             // 
-            this.pictureBoxProfile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxProfile.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(178, 322);
-            this.pictureBoxProfile.TabIndex = 0;
-            this.pictureBoxProfile.TabStop = false;
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // pictureBoxTopLogo
+            // 
+            this.pictureBoxTopLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBoxTopLogo.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxTopLogo.Name = "pictureBoxTopLogo";
+            this.pictureBoxTopLogo.Size = new System.Drawing.Size(1601, 147);
+            this.pictureBoxTopLogo.TabIndex = 54;
+            this.pictureBoxTopLogo.TabStop = false;
+            // 
+            // labelFirstName
+            // 
+            this.labelFirstName.AutoSize = true;
+            this.labelFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelFirstName.Location = new System.Drawing.Point(25, 211);
+            this.labelFirstName.Name = "labelFirstName";
+            this.labelFirstName.Size = new System.Drawing.Size(140, 31);
+            this.labelFirstName.TabIndex = 55;
+            this.labelFirstName.Text = "First Name:";
+            // 
+            // labelLastName
+            // 
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelLastName.Location = new System.Drawing.Point(25, 251);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(140, 31);
+            this.labelLastName.TabIndex = 56;
+            this.labelLastName.Text = "Last Name:";
+            // 
+            // labelHomeTown
+            // 
+            this.labelHomeTown.AutoSize = true;
+            this.labelHomeTown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelHomeTown.Location = new System.Drawing.Point(25, 291);
+            this.labelHomeTown.Name = "labelHomeTown";
+            this.labelHomeTown.Size = new System.Drawing.Size(155, 31);
+            this.labelHomeTown.TabIndex = 57;
+            this.labelHomeTown.Text = "Home Town:";
+            // 
+            // labelBirthday
+            // 
+            this.labelBirthday.AutoSize = true;
+            this.labelBirthday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelBirthday.Location = new System.Drawing.Point(25, 333);
+            this.labelBirthday.Name = "labelBirthday";
+            this.labelBirthday.Size = new System.Drawing.Size(111, 31);
+            this.labelBirthday.TabIndex = 58;
+            this.labelBirthday.Text = "Birthday:";
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelEmail.Location = new System.Drawing.Point(25, 374);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(83, 31);
+            this.labelEmail.TabIndex = 59;
+            this.labelEmail.Text = "Email:";
+            // 
+            // labelAbout
+            // 
+            this.labelAbout.AutoSize = true;
+            this.labelAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelAbout.Location = new System.Drawing.Point(25, 417);
+            this.labelAbout.Name = "labelAbout";
+            this.labelAbout.Size = new System.Drawing.Size(88, 31);
+            this.labelAbout.TabIndex = 60;
+            this.labelAbout.Text = "About:";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1375, 809);
-            this.Controls.Add(this.splitContainer1);
+            this.ClientSize = new System.Drawing.Size(1601, 908);
+            this.Controls.Add(this.pictureBoxTopLogo);
             this.Controls.Add(this.buttonLogout);
+            this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.tabControlFeed.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTopLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -201,10 +270,16 @@
         private System.Windows.Forms.ListView listViewFriends;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TabControl tabControlFeed;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.PictureBox pictureBoxTopLogo;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
+        private System.Windows.Forms.Label labelLastName;
+        private System.Windows.Forms.Label labelFirstName;
+        private System.Windows.Forms.Label labelAbout;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.Label labelBirthday;
+        private System.Windows.Forms.Label labelHomeTown;
     }
 }

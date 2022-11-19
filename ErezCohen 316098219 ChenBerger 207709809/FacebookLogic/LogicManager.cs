@@ -1,4 +1,5 @@
-﻿using FacebookWrapper;
+﻿using DTO;
+using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using Project1;
 using System;
@@ -62,6 +63,20 @@ namespace FacebookLogic
             }
 
             return friendsListDTO;
+        }
+
+        public ProfileDataDTO GetProfileData()
+        {
+            ProfileDataDTO profileDataDTO = new ProfileDataDTO();
+
+            profileDataDTO.FirstName = m_CurrentUser.FirstName;
+            profileDataDTO.LastName = m_CurrentUser.LastName;
+            profileDataDTO.Birthday = m_CurrentUser.Birthday;
+            profileDataDTO.HomeTown = m_CurrentUser.Hometown;
+            profileDataDTO.Email = m_CurrentUser.Email;
+            profileDataDTO.About = m_CurrentUser.About;
+
+            return profileDataDTO;
         }
     }
 }
