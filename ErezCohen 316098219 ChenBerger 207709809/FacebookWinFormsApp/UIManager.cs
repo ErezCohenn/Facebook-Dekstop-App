@@ -31,14 +31,10 @@ namespace BasicFacebookFeatures
                 {
                     startFormMain();
                 }
-                else
-                {
-                    Application.Exit();
-                }
             }
             else
             {
-               startFormMain();
+                startFormMain();
             }
         }
     }
