@@ -1,5 +1,4 @@
 ﻿using FacebookLogic;
-using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
@@ -17,10 +16,6 @@ namespace BasicFacebookFeatures
             if (m_FormMain.IsLogoutButtonClicked)
             {
                 StartApp();
-            }
-            else
-            {
-                Application.Exit();
             }
         }
 
@@ -41,9 +36,10 @@ namespace BasicFacebookFeatures
                     Application.Exit();
                 }
             }
-            startFormMain();
-
-
+            else
+            {
+               startFormMain();
+            }
         }
     }
 }
