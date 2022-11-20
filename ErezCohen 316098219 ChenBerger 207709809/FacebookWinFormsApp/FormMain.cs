@@ -1,5 +1,4 @@
-using DTO;
-
+﻿using DTO;
 using FacebookLogic;
 using FacebookWrapper.ObjectModel;
 using System;
@@ -21,7 +20,6 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             m_LogicManager = i_LogicManager;
-            setFacebookTopLogo();
             fetchUserData();
 
         }
@@ -32,59 +30,53 @@ namespace BasicFacebookFeatures
             fetchImageProfile();
             fetchProfileData();
             fetchPosts();
+            fetchAlbums();
+        }
+
+        private void fetchAlbums()
+        {
+            FacebookObjectCollection<Album> albums = m_LogicManager.FetchAlbums();
+
+            foreach (Album album in albums)
+            {
+                //album.
+            }
         }
 
         private void fetchPosts()
         {
             FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
 
-            listBoxFeed.Items.Clear();
-
+            flowLayoutPanelPosts.Controls.Clear();
             foreach (Post post in posts)
             {
-                if (post.Message != null)
-                {
-                    listBoxFeed.Items.Add(post.Message);
-                }
-                else if (post.Caption != null)
-                {
-                    listBoxFeed.Items.Add(post.Caption);
-                }
-                else
-                {
-                    listBoxFeed.Items.Add(string.Format("[{0}]", post.Type));
-                }
+                PostPanel postPanel = new PostPanel(post);
+                flowLayoutPanelPosts.Controls.Add(postPanel);
             }
 
-            if (listBoxFeed.Items.Count == 0)
+            if (flowLayoutPanelPosts.Controls.Count == 0)
             {
-                MessageBox.Show("No Posts to retrieve :(");
+                MessageBox.Show("No Posts to retrieve");
             }
         }
 
         private void fetchProfileData()
         {
             ProfileDataDTO profileDataDTO = m_LogicManager.FetchProfileData();
-            //Location userLocation = profileDataDTO.HomeTown.Location;
+            City userCity = profileDataDTO.HomeTown;
+            Location userLocation = null;
 
-            this.labelFirstName.Text += profileDataDTO.FirstName;
-            this.labelLastName.Text += profileDataDTO.LastName;
-            this.labelEmail.Text += profileDataDTO.Email;
-            this.labelBirthday.Text += profileDataDTO.Birthday;
+            this.labelFirstName.Text = "First Name: " + profileDataDTO.FirstName;
+            this.labelLastName.Text = "Last Name: " + profileDataDTO.LastName;
+            this.labelEmail.Text = "Email: " + profileDataDTO.Email;
+            this.labelBirthdate.Text = "Birthday Date: " + profileDataDTO.Birthday;
+            this.labelFacebook.Text = profileDataDTO.FirstName + "book";
 
-            //if (userLocation != null)
+            if (userCity != null)
             {
-                //   this.labelHomeTown.Text = userLocation.Country + " " + userLocation.City + " " + userLocation.Street;
+                userLocation = userCity.Location;
+                this.labelHomeTown.Text = userLocation.Country + " " + userLocation.City + " " + userLocation.Street;
             }
-
-            //pictureBoxProfile.LoadAsync(profileDataDTO.HomeTown.PictureURL);
-        }
-
-        private void setFacebookTopLogo()
-        {
-            pictureBoxTopLogo.Image = Image.FromFile(Resources.FacebookLogoFullPath);
-            pictureBoxTopLogo.Enabled = false;
-            pictureBoxTopLogo.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void fetchImageProfile()
@@ -97,6 +89,7 @@ namespace BasicFacebookFeatures
             FriendsListDTO friendsListDTO;
             int friendIndex = 0;
 
+            listViewFriends.Items.Clear();
             listViewFriends.View = View.Details;
             listViewFriends.Columns.Add("Friends:", 200);
             m_FriendsImagesList = new ImageList();
@@ -119,7 +112,12 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void buttonLogout_Click(object sender, EventArgs e)
+        private void buttonPost_Click_1(object sender, EventArgs e)
+        {
+            m_LogicManager.AddPost(richtextBoxPostContent.Text);
+        }
+
+        private void buttonLogout_Click_1(object sender, EventArgs e)
         {
             m_LogicManager.Logout();
             m_IsLogoutButtonClicked = true;
