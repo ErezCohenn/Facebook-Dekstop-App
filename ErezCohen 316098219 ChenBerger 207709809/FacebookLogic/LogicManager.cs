@@ -2,6 +2,7 @@
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using System;
+using System.Windows.Forms;
 
 namespace FacebookLogic
 {
@@ -49,7 +50,7 @@ namespace FacebookLogic
         public void Logout()
         {
             FacebookService.LogoutWithUI();
-            ForgetUser();
+            forgetUser();
             m_LoginResult = null;
             m_CurrentUser = null;
         }
@@ -131,10 +132,23 @@ namespace FacebookLogic
         {
             m_AppSettings.RememberUser = i_CheckBoxState;
         }
-        private void ForgetUser()
+        private void forgetUser()
         {
             m_AppSettings.RememberUser = false;
             m_AppSettings.SaveToFile(m_AppSettings.LastAccessToken);
+        }
+
+        public void AddPost(string i_PostContent)
+        {
+            try
+            {
+                Status postedStatus = m_CurrentUser.PostStatus(i_PostContent);
+                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         public FacebookObjectCollection<Post> FetchPosts()
@@ -151,6 +165,11 @@ namespace FacebookLogic
         public FacebookObjectCollection<Group> FetchGroups()
         {
             return m_CurrentUser.Groups;
+        }
+
+        public FacebookObjectCollection<Album> FetchAlbums()
+        {
+            return m_CurrentUser.Albums;
         }
     }
 }

@@ -17,6 +17,7 @@ namespace DTO
         public void AddFriend(string i_FriendName, string i_FriendImageURL)
         {
             Image friendImage = Image.FromFile(i_FriendImageURL);
+
             friendsList.Add(new KeyValuePair<string, Image>(i_FriendName, friendImage));
         }
     }
