@@ -46,7 +46,6 @@ namespace BasicFacebookFeatures
         private void fetchPosts()
         {
             FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
-
             flowLayoutPanelPosts.Controls.Clear();
             foreach (Post post in posts)
             {
@@ -117,7 +116,82 @@ namespace BasicFacebookFeatures
             m_LogicManager.AddPost(richtextBoxPostContent.Text);
         }
 
-        private void buttonLogout_Click_1(object sender, EventArgs e)
+        //private void fetchLikedPages()
+        //{
+        //    listBoxPages.Items.Clear();
+        //    listBoxPages.DisplayMember = "Name";
+        //    
+        //    try
+        //    {
+        //        FacebookObjectCollection<Page> pages = m_LogicManager.fetchLikedPages();
+        //        foreach (Page page in pages)
+        //        {
+        //            listBoxPages.Items.Add(page);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //
+        //    if (listBoxPages.Items.Count == 0)
+        //    {
+        //        MessageBox.Show("No liked pages to retrieve :(");
+        //    }
+        //}
+        //
+        //private void fetchFavoriteTeams()
+        //{
+        //
+        //    try
+        //    {
+        //        listBoxFavoriteTeams.Items.Clear();
+        //        listBoxFavoriteTeams.DisplayMember = "Name";
+        //        Page[] favoriteTeams = m_LogicManager.FetchFavoriteTeams();
+        //        foreach (Page team in favoriteTeams)
+        //        {
+        //            listBoxFavoriteTeams.Items.Add(team);
+        //        }
+        //
+        //        if (listBoxFavoriteTeams.Items.Count == 0)
+        //        {
+        //            MessageBox.Show("No teams to retrieve :(");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //
+        //    if (listBoxFavoriteTeams.Items.Count == 0)
+        //    {
+        //        MessageBox.Show("No favorite teams to retrieve :(");
+        //    }
+        //}
+        //private void fetchGroups()
+        //{
+        //    listBoxGroups.Items.Clear();
+        //    listBoxGroups.DisplayMember = "Name";
+        //
+        //    try
+        //    {
+        //        FacebookObjectCollection<Group> groups = m_LogicManager.FetchGroups();
+        //        foreach (Group group in groups)
+        //        {
+        //            listBoxGroups.Items.Add(group);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //
+        //    if (listBoxGroups.Items.Count == 0)
+        //    {
+        //        MessageBox.Show("No groups to retrieve :(");
+        //    }
+        //}
+        private void buttonLogout_Click(object sender, EventArgs e)
         {
             m_LogicManager.Logout();
             m_IsLogoutButtonClicked = true;
