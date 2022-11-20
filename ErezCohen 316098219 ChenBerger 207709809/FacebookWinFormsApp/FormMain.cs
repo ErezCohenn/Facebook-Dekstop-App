@@ -31,31 +31,51 @@ namespace BasicFacebookFeatures
             fetchProfileData();
             fetchPosts();
             fetchAlbums();
+            fetchGroups();
+            fetchEvents();
         }
 
         private void fetchAlbums()
         {
             FacebookObjectCollection<Album> albums = m_LogicManager.FetchAlbums();
+            AlbumItem albumItem = null;
+
+            flowLayoutPanelAlbums.Controls.Clear();
 
             foreach (Album album in albums)
             {
-                //album.
+                albumItem = new AlbumItem(album);
+                flowLayoutPanelAlbums.Controls.Add(albumItem);
+            }
+
+            if (flowLayoutPanelAlbums.Controls.Count == 0)
+            {
+                flowLayoutPanelAlbums.Controls.Add(new Label()
+                {
+                    Text = "No items to retrieve"
+                });
             }
         }
 
         private void fetchPosts()
         {
             FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
+            PostItem postItem = null;
+
             flowLayoutPanelPosts.Controls.Clear();
+
             foreach (Post post in posts)
             {
-                PostPanel postPanel = new PostPanel(post);
-                flowLayoutPanelPosts.Controls.Add(postPanel);
+                postItem = new PostItem(post);
+                flowLayoutPanelPosts.Controls.Add(postItem);
             }
 
             if (flowLayoutPanelPosts.Controls.Count == 0)
             {
-                MessageBox.Show("No Posts to retrieve");
+                flowLayoutPanelPosts.Controls.Add(new Label()
+                {
+                    Text = "No items to retrieve"
+                });
             }
         }
 
@@ -68,7 +88,7 @@ namespace BasicFacebookFeatures
             this.labelFirstName.Text = "First Name: " + profileDataDTO.FirstName;
             this.labelLastName.Text = "Last Name: " + profileDataDTO.LastName;
             this.labelEmail.Text = "Email: " + profileDataDTO.Email;
-            this.labelBirthdate.Text = "Birthday Date: " + profileDataDTO.Birthday;
+            this.labelBirthdate.Text = "Birthday: " + profileDataDTO.Birthday;
             this.labelFacebook.Text = profileDataDTO.FirstName + "book";
 
             if (userCity != null)
@@ -90,7 +110,7 @@ namespace BasicFacebookFeatures
 
             listViewFriends.Items.Clear();
             listViewFriends.View = View.Details;
-            listViewFriends.Columns.Add("Friends:", 200);
+            listViewFriends.Columns.Add("Friends list:", 200);
             m_FriendsImagesList = new ImageList();
             m_FriendsImagesList.ImageSize = new Size(50, 50);
 
@@ -108,6 +128,50 @@ namespace BasicFacebookFeatures
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Failed to load friends list");
+            }
+        }
+
+        private void fetchGroups()
+        {
+            FacebookObjectCollection<Group> groups = m_LogicManager.FetchGroups();
+            GroupItem groupItem = null;
+
+            flowLayoutPanelGroups.Controls.Clear();
+
+            foreach (Group group in groups)
+            {
+                groupItem = new GroupItem(group);
+                flowLayoutPanelGroups.Controls.Add(groupItem);
+            }
+
+            if (flowLayoutPanelGroups.Controls.Count == 0)
+            {
+                flowLayoutPanelGroups.Controls.Add(new Label()
+                {
+                    Text = "No items to retrieve"
+                });
+            }
+        }
+
+        private void fetchEvents()
+        {
+            FacebookObjectCollection<Event> events = m_LogicManager.FetchEvents();
+            EventItem eventItem = null;
+
+            flowLayoutPanelEvents.Controls.Clear();
+
+            foreach (Event eventToAdd in events)
+            {
+                eventItem = new EventItem(eventToAdd);
+                flowLayoutPanelEvents.Controls.Add(eventItem);
+            }
+
+            if (flowLayoutPanelEvents.Controls.Count == 0)
+            {
+                flowLayoutPanelEvents.Controls.Add(new Label()
+                {
+                    Text = "No items to retrieve"
+                });
             }
         }
 
@@ -168,29 +232,7 @@ namespace BasicFacebookFeatures
         //        MessageBox.Show("No favorite teams to retrieve :(");
         //    }
         //}
-        //private void fetchGroups()
-        //{
-        //    listBoxGroups.Items.Clear();
-        //    listBoxGroups.DisplayMember = "Name";
-        //
-        //    try
-        //    {
-        //        FacebookObjectCollection<Group> groups = m_LogicManager.FetchGroups();
-        //        foreach (Group group in groups)
-        //        {
-        //            listBoxGroups.Items.Add(group);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //
-        //    if (listBoxGroups.Items.Count == 0)
-        //    {
-        //        MessageBox.Show("No groups to retrieve :(");
-        //    }
-        //}
+
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             m_LogicManager.Logout();

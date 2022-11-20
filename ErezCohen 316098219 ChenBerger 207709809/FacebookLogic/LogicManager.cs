@@ -162,6 +162,11 @@ namespace FacebookLogic
             return posts != null ? posts : null;
         }
 
+        public FacebookObjectCollection<Event> FetchEvents()
+        {
+            return m_CurrentUser.Events;
+        }
+
         public FacebookObjectCollection<Group> FetchGroups()
         {
             return m_CurrentUser.Groups;
