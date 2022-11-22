@@ -2,6 +2,7 @@
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace FacebookLogic
@@ -11,12 +12,15 @@ namespace FacebookLogic
         private User m_CurrentUser;
         private AppSettings m_AppSettings;
         private LoginResult m_LoginResult;
+        private FriendsCitiesManager m_FriendsCitiesManager;
 
         public LogicManager()
         {
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             m_AppSettings = AppSettings.LoadFromFile();
+            m_FriendsCitiesManager = new FriendsCitiesManager();
         }
+
         public void Login()
         {
             m_LoginResult = m_AppSettings.Permissions.Count > 0 ? FacebookService.Login(m_AppSettings.AppID, m_AppSettings.Permissions.ToArray()) :
@@ -33,6 +37,11 @@ namespace FacebookLogic
             {
                 throw new LoginException();
             }
+        }
+
+        internal FacebookObjectCollection<User> FetchFriends()
+        {
+            return m_CurrentUser.Friends;
         }
 
         public string FetchUserProfileImageUrl()
@@ -175,6 +184,13 @@ namespace FacebookLogic
         public FacebookObjectCollection<Album> FetchAlbums()
         {
             return m_CurrentUser.Albums;
+        }
+
+        public Dictionary<City, int> FetchFriendsCities()
+        {
+            m_FriendsCitiesManager.FetchFriendsCities(m_CurrentUser.Friends);
+
+            return m_FriendsCitiesManager.GetFriendsCities();
         }
     }
 }
