@@ -33,6 +33,25 @@ namespace BasicFacebookFeatures
             fetchAlbums();
             fetchGroups();
             fetchEvents();
+            fetchFriendsCitiesChart();
+        }
+
+        private void fetchFriendsCitiesChart()
+        {
+            Dictionary<City, int> friendsCitiesList = m_LogicManager.FetchFriendsCities();
+
+            chart.Series.Clear();
+            try
+            {
+                foreach (KeyValuePair<City, int> city in friendsCitiesList)
+                {
+                    chart.Series["FriendsCitiesChart"].Points.AddXY(city.Key.ToString(), city.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void fetchAlbums()
@@ -41,11 +60,17 @@ namespace BasicFacebookFeatures
             AlbumItem albumItem = null;
 
             flowLayoutPanelAlbums.Controls.Clear();
-
-            foreach (Album album in albums)
+            try
             {
-                albumItem = new AlbumItem(album);
-                flowLayoutPanelAlbums.Controls.Add(albumItem);
+                foreach (Album album in albums)
+                {
+                    albumItem = new AlbumItem(album);
+                    flowLayoutPanelAlbums.Controls.Add(albumItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             if (flowLayoutPanelAlbums.Controls.Count == 0)
@@ -63,11 +88,17 @@ namespace BasicFacebookFeatures
             PostItem postItem = null;
 
             flowLayoutPanelPosts.Controls.Clear();
-
-            foreach (Post post in posts)
+            try
             {
-                postItem = new PostItem(post);
-                flowLayoutPanelPosts.Controls.Add(postItem);
+                foreach (Post post in posts)
+                {
+                    postItem = new PostItem(post);
+                    flowLayoutPanelPosts.Controls.Add(postItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             if (flowLayoutPanelPosts.Controls.Count == 0)
@@ -85,16 +116,22 @@ namespace BasicFacebookFeatures
             City userCity = profileDataDTO.HomeTown;
             Location userLocation = null;
 
-            this.labelFirstName.Text = "First Name: " + profileDataDTO.FirstName;
-            this.labelLastName.Text = "Last Name: " + profileDataDTO.LastName;
-            this.labelEmail.Text = "Email: " + profileDataDTO.Email;
-            this.labelBirthdate.Text = "Birthday: " + profileDataDTO.Birthday;
-            this.labelFacebook.Text = profileDataDTO.FirstName + "book";
-
-            if (userCity != null)
+            try
             {
-                userLocation = userCity.Location;
-                this.labelHomeTown.Text = userLocation.Country + " " + userLocation.City + " " + userLocation.Street;
+                this.labelFirstName.Text = string.Format("First Name: {0}", profileDataDTO.FirstName);
+                this.labelLastName.Text = string.Format("Last Name: {0}", profileDataDTO.LastName);
+                this.labelEmail.Text = string.Format("Email: {0}", profileDataDTO.Email);
+                this.labelBirthdate.Text = string.Format("Birthday: {0}", profileDataDTO.Birthday);
+                this.labelFacebook.Text = string.Format("{0}book", profileDataDTO.FirstName);
+                if (userCity != null)
+                {
+                    userLocation = userCity.Location;
+                    this.labelHomeTown.Text = string.Format("{0}, {1}, {2}", userLocation.Country, userLocation.City, userLocation.Street);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -137,11 +174,17 @@ namespace BasicFacebookFeatures
             GroupItem groupItem = null;
 
             flowLayoutPanelGroups.Controls.Clear();
-
-            foreach (Group group in groups)
+            try
             {
-                groupItem = new GroupItem(group);
-                flowLayoutPanelGroups.Controls.Add(groupItem);
+                foreach (Group group in groups)
+                {
+                    groupItem = new GroupItem(group);
+                    flowLayoutPanelGroups.Controls.Add(groupItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             if (flowLayoutPanelGroups.Controls.Count == 0)
@@ -159,11 +202,17 @@ namespace BasicFacebookFeatures
             EventItem eventItem = null;
 
             flowLayoutPanelEvents.Controls.Clear();
-
-            foreach (Event eventToAdd in events)
+            try
             {
-                eventItem = new EventItem(eventToAdd);
-                flowLayoutPanelEvents.Controls.Add(eventItem);
+                foreach (Event eventToAdd in events)
+                {
+                    eventItem = new EventItem(eventToAdd);
+                    flowLayoutPanelEvents.Controls.Add(eventItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             if (flowLayoutPanelEvents.Controls.Count == 0)
@@ -238,6 +287,46 @@ namespace BasicFacebookFeatures
             m_LogicManager.Logout();
             m_IsLogoutButtonClicked = true;
             this.Close();
+        }
+
+        private void linkLabelRefreshPosts_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            fetchPosts();
+        }
+
+        private void linkLabelRefreshAlbums_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            fetchAlbums();
+        }
+
+        private void linkLabelRefreshGroups_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            fetchGroups();
+        }
+
+        private void linkLabelRefreshEvents_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            fetchEvents();
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            EventItem eventItem = null;
+
+            fetchEvents();
+            foreach (Control control in flowLayoutPanelEvents.Controls)
+            {
+                if (control is EventItem)
+                {
+                    eventItem = control as EventItem;
+                    listBoxEvents.Items.Add(eventItem);
+                }
+            }
+
+            if (listBoxEvents.Items.Count == 0)
+            {
+                listBoxEvents.Items.Add("No events in this date");
+            }
         }
     }
 }
