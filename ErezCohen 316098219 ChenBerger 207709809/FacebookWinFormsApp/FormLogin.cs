@@ -61,11 +61,16 @@ namespace BasicFacebookFeatures
                 m_IsLoginSucceed = true;
                 this.Close();
             }
+            catch (Facebook.FacebookOAuthException ex) { }
             catch (LoginException ex)
             {
-                MessageBox.Show(ex.Message, "Login Failed");
+                //MessageBox.Show(ex.Message, "Login Failed");
             }
-            catch (Facebook.FacebookOAuthException ex) { }
+            catch (System.ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Notice:You must enter Permission and App Id.", "Login Failed");
+            }
+
         }
         private void checkBoxRememberMe_CheckedChanged(object sender, EventArgs e)
         {
