@@ -5,29 +5,32 @@ namespace FacebookLogic
 {
     public class FriendsCitiesManager
     {
-        private Dictionary<City, int> m_FriendsCities;
+        private Dictionary<string, int> m_FriendsCities;
 
         public FriendsCitiesManager()
         {
-            m_FriendsCities = new Dictionary<City, int>();
+            m_FriendsCities = new Dictionary<string, int>();
         }
 
         public void FetchFriendsCities(FacebookObjectCollection<User> i_FriendsList)
         {
             foreach (User friend in i_FriendsList)
             {
-                if (m_FriendsCities.ContainsKey(friend.Hometown))
+                if (friend.Hometown != null && friend.Hometown.Location != null && friend.Hometown.Location.City != null)
                 {
-                    m_FriendsCities[friend.Hometown]++;
-                }
-                else
-                {
-                    m_FriendsCities.Add(friend.Hometown, 1);
+                    if (m_FriendsCities.ContainsKey(friend.Hometown.Location.City.ToString()))
+                    {
+                        m_FriendsCities[friend.Hometown.Location.City.ToString()]++;
+                    }
+                    else
+                    {
+                        m_FriendsCities.Add(friend.Hometown.Location.City.ToString(), 1);
+                    }
                 }
             }
         }
 
-        public Dictionary<City, int> GetFriendsCities()
+        public Dictionary<string, int> GetFriendsCities()
         {
             return m_FriendsCities;
         }

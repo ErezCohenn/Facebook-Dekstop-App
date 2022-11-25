@@ -25,5 +25,9 @@ namespace BasicFacebookFeatures
                 CreatedTime = i_Group.UpdateTime.Value;
             }
         }
+        public GroupItem()
+        {
+
+        }
     }
 }
