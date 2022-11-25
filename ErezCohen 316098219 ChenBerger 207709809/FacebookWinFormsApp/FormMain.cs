@@ -14,7 +14,7 @@ namespace BasicFacebookFeatures
         private LogicManager m_LogicManager;
         private ImageList m_FriendsImagesList;
         private bool m_IsLogoutButtonClicked = false;
-        private string m_SeriesCityFriendsName;
+        private const string c_SeriesCityFriendsName = "FriendsCitiesChart";
 
         public bool IsLogoutButtonClicked { get => m_IsLogoutButtonClicked; }
 
@@ -44,14 +44,14 @@ namespace BasicFacebookFeatures
             //Dictionary<City, int> friendsCitiesList = m_LogicManager.FetchFriendsCities();
             Dictionary<string, int> friendsCitiesList = DummyFactory.FriendsCities;
 
-            chart.Series.FindByName(m_SeriesCityFriendsName).Points.Clear();
+            chart.Series.FindByName(c_SeriesCityFriendsName).Points.Clear();
             try
             {
                 int index = 1;
                 foreach (KeyValuePair<string, int> city in friendsCitiesList)
                 {
                     //chart.Series.FindByName("FriendsCitiesChart").Points.AddXY(index.ToString(), index.ToString());
-                    chart.Series.FindByName(m_SeriesCityFriendsName).Points.AddXY(city.Key, city.Value.ToString());
+                    chart.Series.FindByName(c_SeriesCityFriendsName).Points.AddXY(city.Key, city.Value.ToString());
                     index++;
                 }
             }
@@ -333,7 +333,10 @@ namespace BasicFacebookFeatures
                 if (control is EventItem)
                 {
                     eventItem = control as EventItem;
-                    listBoxEvents.Items.Add(eventItem.Title);
+                    if (eventItem.CreatedTime.Date.Equals(e.Start.Date))
+                    {
+                        listBoxEvents.Items.Add(eventItem.Title);
+                    }
                 }
             }
 
@@ -341,6 +344,11 @@ namespace BasicFacebookFeatures
             {
                 listBoxEvents.Items.Add("No events in this date");
             }
+        }
+
+        private void linkLabelRefreshChart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            fetchFriendsCitiesChart();
         }
     }
 }

@@ -39,9 +39,10 @@ namespace BasicFacebookFeatures
             // pictureBoxImage
             // 
             this.pictureBoxImage.Location = new System.Drawing.Point(25, 15);
-            this.pictureBoxImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxImage.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxImage.Name = "pictureBoxImage";
             this.pictureBoxImage.Size = new System.Drawing.Size(225, 150);
+            this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage.TabIndex = 0;
             this.pictureBoxImage.TabStop = false;
             // 
@@ -85,7 +86,7 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.labelContent);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.pictureBoxImage);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ListItem";
             this.Size = new System.Drawing.Size(952, 180);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
