@@ -1,5 +1,4 @@
 ﻿using FacebookWrapper.ObjectModel;
-using System.Drawing;
 
 namespace BasicFacebookFeatures
 {
@@ -10,7 +9,7 @@ namespace BasicFacebookFeatures
         {
             if (i_Post.PictureURL != null)
             {
-                Icon = Image.FromFile(i_Post.PictureURL);
+                ImageURL = i_Post.PictureURL;
             }
             if (i_Post.Caption != null)
             {

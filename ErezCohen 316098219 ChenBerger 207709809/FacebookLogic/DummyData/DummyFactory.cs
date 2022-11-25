@@ -3,7 +3,6 @@ using DTO;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace FacebookLogic.DummyData
 {
@@ -41,7 +40,7 @@ namespace FacebookLogic.DummyData
             EventItem currentEvent = null;
             User currentUser = null;
             GroupItem currentGroup = null;
-            Image image = Image.FromFile("C:/Users/erez6/Desktop/לימודים/אקדמית יפו/שנה ג/Design Patterns/Facebook-Dekstop-App/ErezCohen 316098219 ChenBerger 207709809/FacebookWinFormsApp/Resources/facebookLogo.png"); ;
+            string image = "C:/Users/erez6/Desktop/לימודים/אקדמית יפו/שנה ג/Design Patterns/Facebook-Dekstop-App/ErezCohen 316098219 ChenBerger 207709809/FacebookWinFormsApp/Resources/facebookLogo.png"; ;
 
             for (int i = 0; i < 10; i++)
             {
@@ -49,28 +48,28 @@ namespace FacebookLogic.DummyData
                 currentAlbum.Title = string.Format("album{0}", i);
                 currentAlbum.Content = string.Format("dummy messge {0}", i);
                 currentAlbum.CreatedTime = DateTime.Now;
-                currentAlbum.Icon = image;
+                currentAlbum.ImageURL = image;
                 m_AlbumItems.Add(currentAlbum);
 
                 currentPost = new PostItem();
                 currentPost.Title = string.Format("post{0}", i);
                 currentPost.Content = string.Format("post{0}", i);
                 currentPost.CreatedTime = DateTime.Now;
-                currentPost.Icon = image;
+                currentPost.ImageURL = image;
                 m_PostItems.Add(currentPost);
 
                 currentEvent = new EventItem();
                 currentEvent.Title = string.Format("event{0}", i);
                 currentEvent.Content = string.Format("event{0}", i);
                 currentEvent.CreatedTime = DateTime.Now;
-                currentEvent.Icon = image;
+                currentEvent.ImageURL = image;
                 m_EventItems.Add(currentEvent);
 
                 currentGroup = new GroupItem();
                 currentGroup.Title = string.Format("Group{0}", i);
                 currentGroup.Content = string.Format("evGroupent{0}", i);
                 currentGroup.CreatedTime = DateTime.Now;
-                currentGroup.Icon = image;
+                currentGroup.ImageURL = image;
                 m_GroupItems.Add(currentGroup);
 
                 m_FriendsListDTO.AddFriend(string.Format("friend {0}", i), "C:/Users/erez6/Desktop/לימודים/אקדמית יפו/שנה ג/Design Patterns/Facebook-Dekstop-App/ErezCohen 316098219 ChenBerger 207709809/FacebookWinFormsApp/Resources/facebookLogo.png");

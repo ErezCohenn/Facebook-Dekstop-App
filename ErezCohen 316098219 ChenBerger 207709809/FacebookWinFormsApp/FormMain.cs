@@ -41,39 +41,41 @@ namespace BasicFacebookFeatures
 
         private void fetchFriendsCitiesChart()
         {
-            //Dictionary<City, int> friendsCitiesList = m_LogicManager.FetchFriendsCities();
-            Dictionary<string, int> friendsCitiesList = DummyFactory.FriendsCities;
+            Dictionary<string, int> friendsCitiesList = m_LogicManager.FetchFriendsCities();
+            //Dictionary<string, int> friendsCitiesList = DummyFactory.FriendsCities;
 
             chart.Series.FindByName(c_SeriesCityFriendsName).Points.Clear();
             try
             {
-                int index = 1;
                 foreach (KeyValuePair<string, int> city in friendsCitiesList)
                 {
-                    //chart.Series.FindByName("FriendsCitiesChart").Points.AddXY(index.ToString(), index.ToString());
                     chart.Series.FindByName(c_SeriesCityFriendsName).Points.AddXY(city.Key, city.Value.ToString());
-                    index++;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            if (chart.Series.FindByName(c_SeriesCityFriendsName).Points.Count == 0)
+            {
+                chart.Text = "No items to retrieve";
+            }
         }
 
         private void fetchAlbums()
         {
-            //FacebookObjectCollection<Album> albums = m_LogicManager.FetchAlbums();
-            //AlbumItem albumItem = null;
-            List<AlbumItem> albums = DummyFactory.AlbumItems;
+            FacebookObjectCollection<Album> albums = m_LogicManager.FetchAlbums();
+            AlbumItem albumItem = null;
+            //List<AlbumItem> albums = DummyFactory.AlbumItems;
 
             flowLayoutPanelAlbums.Controls.Clear();
             try
             {
-                foreach (AlbumItem album in albums)
+                foreach (Album album in albums)
                 {
-                    //albumItem = new AlbumItem(album);
-                    flowLayoutPanelAlbums.Controls.Add(album);
+                    albumItem = new AlbumItem(album);
+                    flowLayoutPanelAlbums.Controls.Add(albumItem);
                 }
             }
             catch (System.ArgumentException ex) { }
@@ -93,17 +95,17 @@ namespace BasicFacebookFeatures
 
         private void fetchPosts()
         {
-            //FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
-            //PostItem postItem = null;
-            List<PostItem> posts = DummyFactory.PostItem;
+            FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
+            PostItem postItem = null;
+            //List<PostItem> posts = DummyFactory.PostItem;
 
             flowLayoutPanelPosts.Controls.Clear();
             try
             {
-                foreach (PostItem post in posts)
+                foreach (Post post in posts)
                 {
-                    //postItem = new PostItem(post);
-                    flowLayoutPanelPosts.Controls.Add(post);
+                    postItem = new PostItem(post);
+                    flowLayoutPanelPosts.Controls.Add(postItem);
                 }
             }
             catch (Exception ex)
@@ -163,8 +165,8 @@ namespace BasicFacebookFeatures
 
             try
             {
-                //friendsListDTO = m_LogicManager.FetchFriendsList();
-                friendsListDTO = DummyFactory.FriendsListDTO;
+                friendsListDTO = m_LogicManager.FetchFriendsList();
+                //friendsListDTO = DummyFactory.FriendsListDTO;
                 foreach (KeyValuePair<string, Image> friend in friendsListDTO.FriendsList)
                 {
                     listViewFriends.Items.Add(friend.Key, friendIndex++);
@@ -181,17 +183,17 @@ namespace BasicFacebookFeatures
 
         private void fetchGroups()
         {
-            //FacebookObjectCollection<Group> groups = m_LogicManager.FetchGroups();
-            List<GroupItem> groups = DummyFactory.GroupItem;
-            //GroupItem group = null;
+            FacebookObjectCollection<Group> groups = m_LogicManager.FetchGroups();
+            //List<GroupItem> groups = DummyFactory.GroupItem;
+            GroupItem groupItem = null;
 
             flowLayoutPanelGroups.Controls.Clear();
             try
             {
-                foreach (GroupItem group in groups)
+                foreach (Group group in groups)
                 {
-                    //groupItem = new GroupItem(group);
-                    flowLayoutPanelGroups.Controls.Add(group);
+                    groupItem = new GroupItem(group);
+                    flowLayoutPanelGroups.Controls.Add(groupItem);
                 }
             }
             catch (Exception ex)
@@ -210,17 +212,17 @@ namespace BasicFacebookFeatures
 
         private void fetchEvents()
         {
-            //FacebookObjectCollection<Event> events = m_LogicManager.FetchEvents();
-            //EventItem eventItem = null;
-            List<EventItem> events = DummyFactory.EventItem;
+            FacebookObjectCollection<Event> events = m_LogicManager.FetchEvents();
+            EventItem eventItem = null;
+            //List<EventItem> events = DummyFactory.EventItem;
 
             flowLayoutPanelEvents.Controls.Clear();
             try
             {
-                foreach (EventItem eventToAdd in events)
+                foreach (Event eventToAdd in events)
                 {
-                    //eventItem = new EventItem(eventToAdd);
-                    flowLayoutPanelEvents.Controls.Add(eventToAdd);
+                    eventItem = new EventItem(eventToAdd);
+                    flowLayoutPanelEvents.Controls.Add(eventItem);
                 }
             }
             catch (Exception ex)

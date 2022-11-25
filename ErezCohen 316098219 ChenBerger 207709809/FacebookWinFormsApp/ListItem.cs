@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
@@ -7,7 +6,7 @@ namespace BasicFacebookFeatures
     public partial class ListItem : UserControl
     {
 
-        private Image m_Image;
+        private string m_ImageURL;
         private string m_Content;
         private string m_Title;
         private DateTime m_CreatedTime;
@@ -17,13 +16,13 @@ namespace BasicFacebookFeatures
             InitializeComponent();
         }
 
-        public Image Icon
+        public string ImageURL
         {
-            get => m_Image;
+            get => m_ImageURL;
             set
             {
-                m_Image = value;
-                pictureBoxImage.Image = m_Image;
+                m_ImageURL = value;
+                pictureBoxImage.ImageLocation = value;
             }
         }
 

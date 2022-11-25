@@ -29,9 +29,9 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelFacebook = new System.Windows.Forms.Label();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.labelBirthdate = new System.Windows.Forms.Label();
@@ -180,14 +180,14 @@ namespace BasicFacebookFeatures
             this.tabPageFriendsChart.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageFriendsChart.Size = new System.Drawing.Size(808, 604);
             this.tabPageFriendsChart.TabIndex = 4;
-            this.tabPageFriendsChart.Text = "Friends Chart";
+            this.tabPageFriendsChart.Text = "Distribution cities by firends";
             this.tabPageFriendsChart.UseVisualStyleBackColor = true;
             // 
             // linkLabelRefreshChart
             // 
             this.linkLabelRefreshChart.AutoSize = true;
             this.linkLabelRefreshChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.linkLabelRefreshChart.Location = new System.Drawing.Point(3, 46);
+            this.linkLabelRefreshChart.Location = new System.Drawing.Point(3, 24);
             this.linkLabelRefreshChart.Name = "linkLabelRefreshChart";
             this.linkLabelRefreshChart.Size = new System.Drawing.Size(170, 25);
             this.linkLabelRefreshChart.TabIndex = 7;
@@ -198,19 +198,19 @@ namespace BasicFacebookFeatures
             // 
             // chart
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea6);
+            chartArea12.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea12);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.Name = "Legend1";
-            this.chart.Legends.Add(legend6);
+            legend12.Name = "Legend1";
+            this.chart.Legends.Add(legend12);
             this.chart.Location = new System.Drawing.Point(3, 3);
             this.chart.Name = "chart";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series6.IsValueShownAsLabel = true;
-            series6.Legend = "Legend1";
-            series6.Name = "FriendsCitiesChart";
-            this.chart.Series.Add(series6);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series12.IsValueShownAsLabel = true;
+            series12.Legend = "Legend1";
+            series12.Name = "FriendsCitiesChart";
+            this.chart.Series.Add(series12);
             this.chart.Size = new System.Drawing.Size(802, 598);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
@@ -395,6 +395,7 @@ namespace BasicFacebookFeatures
             // 
             this.tabPageEventsCalender.Controls.Add(this.listBoxEvents);
             this.tabPageEventsCalender.Controls.Add(this.monthCalendar1);
+            this.tabPageEventsCalender.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.tabPageEventsCalender.Location = new System.Drawing.Point(4, 25);
             this.tabPageEventsCalender.Name = "tabPageEventsCalender";
             this.tabPageEventsCalender.Padding = new System.Windows.Forms.Padding(3);
@@ -406,16 +407,15 @@ namespace BasicFacebookFeatures
             // listBoxEvents
             // 
             this.listBoxEvents.FormattingEnabled = true;
-            this.listBoxEvents.ItemHeight = 16;
-            this.listBoxEvents.Location = new System.Drawing.Point(420, 34);
+            this.listBoxEvents.ItemHeight = 31;
+            this.listBoxEvents.Location = new System.Drawing.Point(312, 12);
             this.listBoxEvents.Name = "listBoxEvents";
-            this.listBoxEvents.Size = new System.Drawing.Size(363, 452);
+            this.listBoxEvents.Size = new System.Drawing.Size(477, 562);
             this.listBoxEvents.TabIndex = 1;
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(1, 2);
-            this.monthCalendar1.Location = new System.Drawing.Point(38, 34);
+            this.monthCalendar1.Location = new System.Drawing.Point(12, 12);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
             this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
