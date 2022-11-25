@@ -48,14 +48,12 @@ namespace FacebookLogic
         {
             return m_CurrentUser.PictureNormalURL;
         }
+
         public FacebookObjectCollection<Page> FetchLikedPages()
         {
             return m_CurrentUser.LikedPages;
         }
-        public Page[] FetchFavoriteTeams()
-        {
-            return m_CurrentUser.FavofriteTeams;
-        }
+
         public void Logout()
         {
             FacebookService.LogoutWithUI();
@@ -87,21 +85,6 @@ namespace FacebookLogic
             return friendsListDTO;
         }
 
-        //public FriendsListDTO FetchSameHomeTownFriends()
-        //{
-        //    FriendsListDTO sameHomeTownfriendsListDTO = new FriendsListDTO();
-        //    FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
-        //
-        //    foreach (User friend in friendsList)
-        //    {
-        //        if (friend.Hometown == m_CurrentUser.Hometown)
-        //        {
-        //            sameHomeTownfriendsListDTO.AddFriend(friend.Name, friend.PictureSmallURL);
-        //        }
-        //    }
-        //    return sameHomeTownfriendsListDTO;
-        //}
-
         public ProfileDataDTO FetchProfileData()
         {
             ProfileDataDTO profileDataDTO = new ProfileDataDTO();
@@ -116,10 +99,6 @@ namespace FacebookLogic
             return profileDataDTO;
         }
 
-        //private bool AlreadySignedIn()
-        //{
-        //    return m_AppSettings.WantedToRememberUser();
-        //}
         public bool TryAutomaticLogin()
         {
             bool alreadySignedIn = m_AppSettings.RememberUser;
@@ -198,6 +177,27 @@ namespace FacebookLogic
             m_FriendsCitiesManager.FetchFriendsCities(m_CurrentUser.Friends);
 
             return m_FriendsCitiesManager.GetFriendsCities();
+        }
+
+        public FacebookObjectCollection<Page> FetchPages()
+        {
+            return m_CurrentUser.LikedPages;
+        }
+
+        public FacebookObjectCollection<Event> FetchEventsByDate(DateTime date)
+        {
+            FacebookObjectCollection<Event> events = FetchEvents();
+            FacebookObjectCollection<Event> eventsAfterFilterByDate = new FacebookObjectCollection<Event>();
+
+            foreach (Event eventToCheck in events)
+            {
+                if (eventToCheck.StartTime.Value.Equals(date))
+                {
+                    eventsAfterFilterByDate.Add(eventToCheck);
+                }
+            }
+
+            return eventsAfterFilterByDate;
         }
     }
 }
