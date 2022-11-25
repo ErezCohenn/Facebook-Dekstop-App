@@ -29,9 +29,9 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelFacebook = new System.Windows.Forms.Label();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.labelBirthdate = new System.Windows.Forms.Label();
@@ -62,6 +62,9 @@ namespace BasicFacebookFeatures
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.listViewFriends = new System.Windows.Forms.ListView();
             this.buttonLogout = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelPages = new System.Windows.Forms.FlowLayoutPanel();
+            this.linkLabelPages = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageFriendsChart.SuspendLayout();
@@ -71,6 +74,8 @@ namespace BasicFacebookFeatures
             this.tabPageGroups.SuspendLayout();
             this.tabPageEvents.SuspendLayout();
             this.tabPageEventsCalender.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.flowLayoutPanelPages.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelFacebook
@@ -163,6 +168,7 @@ namespace BasicFacebookFeatures
             this.tabControl1.Controls.Add(this.tabPageGroups);
             this.tabControl1.Controls.Add(this.tabPageEvents);
             this.tabControl1.Controls.Add(this.tabPageEventsCalender);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(336, 172);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
@@ -180,7 +186,7 @@ namespace BasicFacebookFeatures
             this.tabPageFriendsChart.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageFriendsChart.Size = new System.Drawing.Size(808, 604);
             this.tabPageFriendsChart.TabIndex = 4;
-            this.tabPageFriendsChart.Text = "Distribution cities by firends";
+            this.tabPageFriendsChart.Text = "Distribution cities";
             this.tabPageFriendsChart.UseVisualStyleBackColor = true;
             // 
             // linkLabelRefreshChart
@@ -198,19 +204,19 @@ namespace BasicFacebookFeatures
             // 
             // chart
             // 
-            chartArea12.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea12);
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend12.Name = "Legend1";
-            this.chart.Legends.Add(legend12);
+            legend2.Name = "Legend1";
+            this.chart.Legends.Add(legend2);
             this.chart.Location = new System.Drawing.Point(3, 3);
             this.chart.Name = "chart";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series12.IsValueShownAsLabel = true;
-            series12.Legend = "Legend1";
-            series12.Name = "FriendsCitiesChart";
-            this.chart.Series.Add(series12);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "FriendsCitiesChart";
+            this.chart.Series.Add(series2);
             this.chart.Size = new System.Drawing.Size(802, 598);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
@@ -266,7 +272,7 @@ namespace BasicFacebookFeatures
             this.buttonPost.TabIndex = 1;
             this.buttonPost.Text = "Post";
             this.buttonPost.UseVisualStyleBackColor = true;
-            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click_1);
+            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
             // 
             // richtextBoxPostContent
             // 
@@ -418,7 +424,7 @@ namespace BasicFacebookFeatures
             this.monthCalendar1.Location = new System.Drawing.Point(12, 12);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
-            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
             // 
             // listViewFriends
             // 
@@ -445,6 +451,38 @@ namespace BasicFacebookFeatures
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.flowLayoutPanelPages);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(808, 604);
+            this.tabPage1.TabIndex = 6;
+            this.tabPage1.Text = "Pages";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelPages
+            // 
+            this.flowLayoutPanelPages.Controls.Add(this.linkLabelPages);
+            this.flowLayoutPanelPages.Location = new System.Drawing.Point(6, 6);
+            this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(801, 598);
+            this.flowLayoutPanelPages.TabIndex = 0;
+            // 
+            // linkLabelPages
+            // 
+            this.linkLabelPages.AutoSize = true;
+            this.linkLabelPages.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.linkLabelPages.Location = new System.Drawing.Point(3, 0);
+            this.linkLabelPages.Name = "linkLabelPages";
+            this.linkLabelPages.Size = new System.Drawing.Size(173, 31);
+            this.linkLabelPages.TabIndex = 7;
+            this.linkLabelPages.TabStop = true;
+            this.linkLabelPages.Text = "Refresh pages";
+            this.linkLabelPages.UseMnemonic = false;
+            this.linkLabelPages.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelPages_LinkClicked);
             // 
             // FormMain
             // 
@@ -479,6 +517,9 @@ namespace BasicFacebookFeatures
             this.tabPageEvents.ResumeLayout(false);
             this.tabPageEvents.PerformLayout();
             this.tabPageEventsCalender.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.flowLayoutPanelPages.ResumeLayout(false);
+            this.flowLayoutPanelPages.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -515,5 +556,8 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.ListBox listBoxEvents;
         private System.Windows.Forms.LinkLabel linkLabelRefreshChart;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPages;
+        private System.Windows.Forms.LinkLabel linkLabelPages;
     }
 }

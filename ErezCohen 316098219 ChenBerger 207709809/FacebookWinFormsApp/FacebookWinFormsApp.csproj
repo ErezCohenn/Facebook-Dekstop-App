@@ -121,6 +121,9 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="PageItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="GroupItem.cs">
       <SubType>UserControl</SubType>
     </Compile>

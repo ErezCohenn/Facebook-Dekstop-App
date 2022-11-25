@@ -37,6 +37,36 @@ namespace BasicFacebookFeatures
             fetchGroups();
             fetchEvents();
             fetchFriendsCitiesChart();
+            fetchPages();
+        }
+
+        private void fetchPages()
+        {
+            FacebookObjectCollection<Page> pages = m_LogicManager.FetchLikedPages();
+            PageItem pageItem = null;
+
+            flowLayoutPanelPages.Controls.Clear();
+            try
+            {
+                foreach (Page page in pages)
+                {
+                    pageItem = new PageItem(page);
+                    flowLayoutPanelPages.Controls.Add(pageItem);
+                }
+            }
+            catch (System.ArgumentException ex) { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (flowLayoutPanelPages.Controls.Count == 0)
+            {
+                flowLayoutPanelPages.Controls.Add(new Label()
+                {
+                    Text = "No items to retrieve"
+                });
+            }
         }
 
         private void fetchFriendsCitiesChart()
@@ -239,63 +269,10 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void buttonPost_Click_1(object sender, EventArgs e)
+        private void buttonPost_Click(object sender, EventArgs e)
         {
             m_LogicManager.AddPost(richtextBoxPostContent.Text);
         }
-
-        //private void fetchLikedPages()
-        //{
-        //    listBoxPages.Items.Clear();
-        //    listBoxPages.DisplayMember = "Name";
-        //    
-        //    try
-        //    {
-        //        FacebookObjectCollection<Page> pages = m_LogicManager.fetchLikedPages();
-        //        foreach (Page page in pages)
-        //        {
-        //            listBoxPages.Items.Add(page);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //
-        //    if (listBoxPages.Items.Count == 0)
-        //    {
-        //        MessageBox.Show("No liked pages to retrieve :(");
-        //    }
-        //}
-        //
-        //private void fetchFavoriteTeams()
-        //{
-        //
-        //    try
-        //    {
-        //        listBoxFavoriteTeams.Items.Clear();
-        //        listBoxFavoriteTeams.DisplayMember = "Name";
-        //        Page[] favoriteTeams = m_LogicManager.FetchFavoriteTeams();
-        //        foreach (Page team in favoriteTeams)
-        //        {
-        //            listBoxFavoriteTeams.Items.Add(team);
-        //        }
-        //
-        //        if (listBoxFavoriteTeams.Items.Count == 0)
-        //        {
-        //            MessageBox.Show("No teams to retrieve :(");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //
-        //    if (listBoxFavoriteTeams.Items.Count == 0)
-        //    {
-        //        MessageBox.Show("No favorite teams to retrieve :(");
-        //    }
-        //}
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
@@ -324,22 +301,22 @@ namespace BasicFacebookFeatures
             fetchEvents();
         }
 
-        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
-            EventItem eventItem = null;
+            FacebookObjectCollection<Event> eventsByDate = m_LogicManager.FetchEventsByDate(e.Start.Date);
 
             listBoxEvents.Items.Clear();
-            fetchEvents();
-            foreach (Control control in flowLayoutPanelEvents.Controls)
+            try
             {
-                if (control is EventItem)
+                foreach (Event eventToAdd in eventsByDate)
                 {
-                    eventItem = control as EventItem;
-                    if (eventItem.CreatedTime.Date.Equals(e.Start.Date))
-                    {
-                        listBoxEvents.Items.Add(eventItem.Title);
-                    }
+                    listBoxEvents.Items.Add(eventToAdd.Name);
+
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             if (listBoxEvents.Items.Count == 0)
@@ -351,6 +328,11 @@ namespace BasicFacebookFeatures
         private void linkLabelRefreshChart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             fetchFriendsCitiesChart();
+        }
+
+        private void linkLabelPages_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            fetchPages();
         }
     }
 }

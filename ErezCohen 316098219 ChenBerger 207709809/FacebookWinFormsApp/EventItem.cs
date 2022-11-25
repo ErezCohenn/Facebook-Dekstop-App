@@ -18,9 +18,9 @@ namespace BasicFacebookFeatures
             {
                 Content = i_Event.Description;
             }
-            if (i_Event.UpdateTime != null)
+            if (i_Event.StartTime != null)
             {
-                CreatedTime = i_Event.UpdateTime.Value;
+                CreatedTime = i_Event.StartTime.Value;
             }
         }
 
