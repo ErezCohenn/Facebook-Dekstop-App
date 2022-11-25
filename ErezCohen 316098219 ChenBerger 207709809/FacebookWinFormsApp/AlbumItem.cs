@@ -1,6 +1,4 @@
-﻿
-
-using FacebookWrapper.ObjectModel;
+﻿using FacebookWrapper.ObjectModel;
 using System.Drawing;
 
 namespace BasicFacebookFeatures
@@ -25,6 +23,11 @@ namespace BasicFacebookFeatures
             {
                 CreatedTime = i_Album.CreatedTime.Value;
             }
+        }
+
+        public AlbumItem()
+        {
+
         }
     }
 }

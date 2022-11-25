@@ -1,5 +1,6 @@
 ﻿using DTO;
 using FacebookLogic;
+using FacebookLogic.DummyData;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace BasicFacebookFeatures
         private LogicManager m_LogicManager;
         private ImageList m_FriendsImagesList;
         private bool m_IsLogoutButtonClicked = false;
+        private string m_SeriesCityFriendsName;
 
         public bool IsLogoutButtonClicked { get => m_IsLogoutButtonClicked; }
 
@@ -20,6 +22,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             m_LogicManager = i_LogicManager;
+            new DummyFactory();
             fetchUserData();
 
         }
@@ -38,14 +41,18 @@ namespace BasicFacebookFeatures
 
         private void fetchFriendsCitiesChart()
         {
-            Dictionary<City, int> friendsCitiesList = m_LogicManager.FetchFriendsCities();
+            //Dictionary<City, int> friendsCitiesList = m_LogicManager.FetchFriendsCities();
+            Dictionary<string, int> friendsCitiesList = DummyFactory.FriendsCities;
 
-            chart.Series.Clear();
+            chart.Series.FindByName(m_SeriesCityFriendsName).Points.Clear();
             try
             {
-                foreach (KeyValuePair<City, int> city in friendsCitiesList)
+                int index = 1;
+                foreach (KeyValuePair<string, int> city in friendsCitiesList)
                 {
-                    chart.Series["FriendsCitiesChart"].Points.AddXY(city.Key.ToString(), city.Value);
+                    //chart.Series.FindByName("FriendsCitiesChart").Points.AddXY(index.ToString(), index.ToString());
+                    chart.Series.FindByName(m_SeriesCityFriendsName).Points.AddXY(city.Key, city.Value.ToString());
+                    index++;
                 }
             }
             catch (Exception ex)
@@ -56,16 +63,17 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbums()
         {
-            FacebookObjectCollection<Album> albums = m_LogicManager.FetchAlbums();
-            AlbumItem albumItem = null;
+            //FacebookObjectCollection<Album> albums = m_LogicManager.FetchAlbums();
+            //AlbumItem albumItem = null;
+            List<AlbumItem> albums = DummyFactory.AlbumItems;
 
             flowLayoutPanelAlbums.Controls.Clear();
             try
             {
-                foreach (Album album in albums)
+                foreach (AlbumItem album in albums)
                 {
-                    albumItem = new AlbumItem(album);
-                    flowLayoutPanelAlbums.Controls.Add(albumItem);
+                    //albumItem = new AlbumItem(album);
+                    flowLayoutPanelAlbums.Controls.Add(album);
                 }
             }
             catch (Exception ex)
@@ -84,16 +92,17 @@ namespace BasicFacebookFeatures
 
         private void fetchPosts()
         {
-            FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
-            PostItem postItem = null;
+            //FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
+            //PostItem postItem = null;
+            List<PostItem> posts = DummyFactory.PostItem;
 
             flowLayoutPanelPosts.Controls.Clear();
             try
             {
-                foreach (Post post in posts)
+                foreach (PostItem post in posts)
                 {
-                    postItem = new PostItem(post);
-                    flowLayoutPanelPosts.Controls.Add(postItem);
+                    //postItem = new PostItem(post);
+                    flowLayoutPanelPosts.Controls.Add(post);
                 }
             }
             catch (Exception ex)
@@ -153,7 +162,8 @@ namespace BasicFacebookFeatures
 
             try
             {
-                friendsListDTO = m_LogicManager.FetchFriendsList();
+                //friendsListDTO = m_LogicManager.FetchFriendsList();
+                friendsListDTO = DummyFactory.FriendsListDTO;
                 foreach (KeyValuePair<string, Image> friend in friendsListDTO.FriendsList)
                 {
                     listViewFriends.Items.Add(friend.Key, friendIndex++);
@@ -170,16 +180,17 @@ namespace BasicFacebookFeatures
 
         private void fetchGroups()
         {
-            FacebookObjectCollection<Group> groups = m_LogicManager.FetchGroups();
-            GroupItem groupItem = null;
+            //FacebookObjectCollection<Group> groups = m_LogicManager.FetchGroups();
+            List<GroupItem> groups = DummyFactory.GroupItem;
+            //GroupItem group = null;
 
             flowLayoutPanelGroups.Controls.Clear();
             try
             {
-                foreach (Group group in groups)
+                foreach (GroupItem group in groups)
                 {
-                    groupItem = new GroupItem(group);
-                    flowLayoutPanelGroups.Controls.Add(groupItem);
+                    //groupItem = new GroupItem(group);
+                    flowLayoutPanelGroups.Controls.Add(group);
                 }
             }
             catch (Exception ex)
@@ -198,16 +209,17 @@ namespace BasicFacebookFeatures
 
         private void fetchEvents()
         {
-            FacebookObjectCollection<Event> events = m_LogicManager.FetchEvents();
-            EventItem eventItem = null;
+            //FacebookObjectCollection<Event> events = m_LogicManager.FetchEvents();
+            //EventItem eventItem = null;
+            List<EventItem> events = DummyFactory.EventItem;
 
             flowLayoutPanelEvents.Controls.Clear();
             try
             {
-                foreach (Event eventToAdd in events)
+                foreach (EventItem eventToAdd in events)
                 {
-                    eventItem = new EventItem(eventToAdd);
-                    flowLayoutPanelEvents.Controls.Add(eventItem);
+                    //eventItem = new EventItem(eventToAdd);
+                    flowLayoutPanelEvents.Controls.Add(eventToAdd);
                 }
             }
             catch (Exception ex)
@@ -313,13 +325,14 @@ namespace BasicFacebookFeatures
         {
             EventItem eventItem = null;
 
+            listBoxEvents.Items.Clear();
             fetchEvents();
             foreach (Control control in flowLayoutPanelEvents.Controls)
             {
                 if (control is EventItem)
                 {
                     eventItem = control as EventItem;
-                    listBoxEvents.Items.Add(eventItem);
+                    listBoxEvents.Items.Add(eventItem.Title);
                 }
             }
 

@@ -24,5 +24,10 @@ namespace BasicFacebookFeatures
                 CreatedTime = i_Event.UpdateTime.Value;
             }
         }
+
+        public EventItem()
+        {
+
+        }
     }
 }

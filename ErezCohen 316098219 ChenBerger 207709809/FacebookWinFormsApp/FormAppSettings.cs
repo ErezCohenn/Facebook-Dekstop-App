@@ -2,19 +2,19 @@
 using System;
 using System.Text;
 using System.Windows.Forms;
-
 namespace BasicFacebookFeatures
 {
     public partial class FormAppSettings : Form
     {
         private LogicManager m_LogicManager;
+        private StringBuilder m_PermissionsStringBuilder = new StringBuilder();
+
         public FormAppSettings(LogicManager i_LogicManager)
         {
             InitializeComponent();
             m_LogicManager = i_LogicManager;
         }
 
-        StringBuilder m_PermissionsStringBuilder = new StringBuilder();
 
         private void buttonRefreshPermissions_Click(object sender, EventArgs e)
         {
@@ -45,10 +45,12 @@ namespace BasicFacebookFeatures
 
         private void addSelectedPremissions()
         {
+            CheckState permissionCheckState;
+
             for (int i = 0; i < listBoxPermissions.Items.Count; i++)
             {
-                CheckState premissionCheckState = listBoxPermissions.GetItemCheckState(i);
-                if (premissionCheckState == CheckState.Checked)
+                permissionCheckState = listBoxPermissions.GetItemCheckState(i);
+                if (permissionCheckState == CheckState.Checked)
                 {
                     m_LogicManager.AddPermission(listBoxPermissions.Items[i].ToString());
                 }

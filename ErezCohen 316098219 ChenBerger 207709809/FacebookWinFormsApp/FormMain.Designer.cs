@@ -29,9 +29,9 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelFacebook = new System.Windows.Forms.Label();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.labelBirthdate = new System.Windows.Forms.Label();
@@ -152,8 +152,8 @@ namespace BasicFacebookFeatures
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPagePosts);
             this.tabControl1.Controls.Add(this.tabPageAlbums);
@@ -171,6 +171,7 @@ namespace BasicFacebookFeatures
             // 
             // tabPagePosts
             // 
+            this.tabPagePosts.AutoScroll = true;
             this.tabPagePosts.Controls.Add(this.linkLabelRefreshPosts);
             this.tabPagePosts.Controls.Add(this.flowLayoutPanelPosts);
             this.tabPagePosts.Controls.Add(this.buttonPost);
@@ -199,11 +200,14 @@ namespace BasicFacebookFeatures
             // 
             // flowLayoutPanelPosts
             // 
-            this.flowLayoutPanelPosts.Location = new System.Drawing.Point(4, 33);
+            this.flowLayoutPanelPosts.AutoScroll = true;
+            this.flowLayoutPanelPosts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelPosts.Location = new System.Drawing.Point(21, 24);
             this.flowLayoutPanelPosts.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelPosts.Name = "flowLayoutPanelPosts";
-            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(1071, 443);
+            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(760, 443);
             this.flowLayoutPanelPosts.TabIndex = 2;
+            this.flowLayoutPanelPosts.WrapContents = false;
             // 
             // buttonPost
             // 
@@ -220,7 +224,7 @@ namespace BasicFacebookFeatures
             // 
             // richtextBoxPostContent
             // 
-            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richtextBoxPostContent.Location = new System.Drawing.Point(21, 484);
             this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4);
@@ -231,6 +235,7 @@ namespace BasicFacebookFeatures
             // 
             // tabPageAlbums
             // 
+            this.tabPageAlbums.AutoScroll = true;
             this.tabPageAlbums.Controls.Add(this.linkLabelRefreshAlbums);
             this.tabPageAlbums.Controls.Add(this.flowLayoutPanelAlbums);
             this.tabPageAlbums.Location = new System.Drawing.Point(4, 25);
@@ -257,11 +262,15 @@ namespace BasicFacebookFeatures
             // 
             // flowLayoutPanelAlbums
             // 
+            this.flowLayoutPanelAlbums.AutoSize = true;
+            this.flowLayoutPanelAlbums.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelAlbums.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelAlbums.Location = new System.Drawing.Point(-4, 33);
             this.flowLayoutPanelAlbums.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelAlbums.Name = "flowLayoutPanelAlbums";
-            this.flowLayoutPanelAlbums.Size = new System.Drawing.Size(1079, 567);
+            this.flowLayoutPanelAlbums.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanelAlbums.TabIndex = 0;
+            this.flowLayoutPanelAlbums.WrapContents = false;
             // 
             // tabPageGroups
             // 
@@ -290,13 +299,18 @@ namespace BasicFacebookFeatures
             // 
             // flowLayoutPanelGroups
             // 
-            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(3, 31);
+            this.flowLayoutPanelGroups.AutoScroll = true;
+            this.flowLayoutPanelGroups.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelGroups.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(11, 28);
             this.flowLayoutPanelGroups.Name = "flowLayoutPanelGroups";
-            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(1073, 570);
+            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(794, 570);
             this.flowLayoutPanelGroups.TabIndex = 0;
+            this.flowLayoutPanelGroups.WrapContents = false;
             // 
             // tabPageEvents
             // 
+            this.tabPageEvents.AutoScroll = true;
             this.tabPageEvents.Controls.Add(this.linkLabelRefreshEvents);
             this.tabPageEvents.Controls.Add(this.flowLayoutPanelEvents);
             this.tabPageEvents.Location = new System.Drawing.Point(4, 25);
@@ -322,10 +336,14 @@ namespace BasicFacebookFeatures
             // 
             // flowLayoutPanelEvents
             // 
+            this.flowLayoutPanelEvents.AutoScroll = true;
+            this.flowLayoutPanelEvents.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelEvents.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelEvents.Location = new System.Drawing.Point(3, 31);
             this.flowLayoutPanelEvents.Name = "flowLayoutPanelEvents";
             this.flowLayoutPanelEvents.Size = new System.Drawing.Size(1073, 570);
             this.flowLayoutPanelEvents.TabIndex = 0;
+            this.flowLayoutPanelEvents.WrapContents = false;
             // 
             // tabPageFriendsChart
             // 
@@ -340,25 +358,27 @@ namespace BasicFacebookFeatures
             // 
             // chart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
             this.chart.Location = new System.Drawing.Point(3, 3);
             this.chart.Name = "chart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "FriendsCitiesChart";
-            this.chart.Series.Add(series2);
+            series.ChartArea = "ChartArea1";
+            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series.Legend = "Legend1";
+            series.Name = "FriendsCitiesChart";
+            this.chart.Series.Add(series);
             this.chart.Size = new System.Drawing.Size(802, 598);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
+            this.chart.Series.FindByName(series.Name).IsValueShownAsLabel = true;
+            this.m_SeriesCityFriendsName = series.Name;
             // 
             // listViewFriends
             // 
-            this.listViewFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listViewFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewFriends.HideSelection = false;
             this.listViewFriends.Location = new System.Drawing.Point(1154, 199);
@@ -448,8 +468,7 @@ namespace BasicFacebookFeatures
 
         }
 
-        #endregion
-
+        #endregion        
         private System.Windows.Forms.Label labelFacebook;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.Label labelBirthdate;

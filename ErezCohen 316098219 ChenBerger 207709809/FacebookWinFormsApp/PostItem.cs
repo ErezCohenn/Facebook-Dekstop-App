@@ -25,5 +25,10 @@ namespace BasicFacebookFeatures
                 CreatedTime = i_Post.CreatedTime.Value;
             }
         }
+
+        public PostItem()
+        {
+
+        }
     }
 }

@@ -90,6 +90,7 @@ namespace FacebookLogic
         {
             FriendsListDTO sameHomeTownfriendsListDTO = new FriendsListDTO();
             FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
+
             foreach (User friend in friendsList)
             {
                 if (friend.Hometown == m_CurrentUser.Hometown)
@@ -97,6 +98,7 @@ namespace FacebookLogic
                     sameHomeTownfriendsListDTO.AddFriend(friend.Name, friend.PictureSmallURL);
                 }
             }
+
             return sameHomeTownfriendsListDTO;
         }
         public ProfileDataDTO FetchProfileData()
@@ -149,9 +151,11 @@ namespace FacebookLogic
 
         public void AddPost(string i_PostContent)
         {
+            Status postedStatus = null;
+
             try
             {
-                Status postedStatus = m_CurrentUser.PostStatus(i_PostContent);
+                postedStatus = m_CurrentUser.PostStatus(i_PostContent);
                 MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
             }
             catch (Exception ex)
@@ -186,7 +190,7 @@ namespace FacebookLogic
             return m_CurrentUser.Albums;
         }
 
-        public Dictionary<City, int> FetchFriendsCities()
+        public Dictionary<string, int> FetchFriendsCities()
         {
             m_FriendsCitiesManager.FetchFriendsCities(m_CurrentUser.Friends);
 
