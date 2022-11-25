@@ -76,6 +76,7 @@ namespace BasicFacebookFeatures
                     flowLayoutPanelAlbums.Controls.Add(album);
                 }
             }
+            catch (System.ArgumentException ex) { }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

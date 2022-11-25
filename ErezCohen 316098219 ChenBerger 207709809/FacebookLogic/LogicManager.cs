@@ -86,21 +86,22 @@ namespace FacebookLogic
 
             return friendsListDTO;
         }
-        public FriendsListDTO FetchSameHomeTownFriends()
-        {
-            FriendsListDTO sameHomeTownfriendsListDTO = new FriendsListDTO();
-            FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
 
-            foreach (User friend in friendsList)
-            {
-                if (friend.Hometown == m_CurrentUser.Hometown)
-                {
-                    sameHomeTownfriendsListDTO.AddFriend(friend.Name, friend.PictureSmallURL);
-                }
-            }
+        //public FriendsListDTO FetchSameHomeTownFriends()
+        //{
+        //    FriendsListDTO sameHomeTownfriendsListDTO = new FriendsListDTO();
+        //    FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
+        //
+        //    foreach (User friend in friendsList)
+        //    {
+        //        if (friend.Hometown == m_CurrentUser.Hometown)
+        //        {
+        //            sameHomeTownfriendsListDTO.AddFriend(friend.Name, friend.PictureSmallURL);
+        //        }
+        //    }
+        //    return sameHomeTownfriendsListDTO;
+        //}
 
-            return sameHomeTownfriendsListDTO;
-        }
         public ProfileDataDTO FetchProfileData()
         {
             ProfileDataDTO profileDataDTO = new ProfileDataDTO();
@@ -166,13 +167,15 @@ namespace FacebookLogic
 
         public FacebookObjectCollection<Post> FetchPosts()
         {
-            FacebookObjectCollection<Post> posts = null;
+            FacebookObjectCollection<Post> posts = new FacebookObjectCollection<Post>();
+
             try
             {
                 posts = m_CurrentUser.Posts;
             }
             catch (Facebook.FacebookOAuthException ex) { }
-            return posts != null ? posts : null;
+
+            return posts;
         }
 
         public FacebookObjectCollection<Event> FetchEvents()
