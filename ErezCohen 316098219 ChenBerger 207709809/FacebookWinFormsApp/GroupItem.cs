@@ -1,6 +1,5 @@
 ﻿
 using FacebookWrapper.ObjectModel;
-using System.Drawing;
 
 namespace BasicFacebookFeatures
 {
@@ -8,9 +7,9 @@ namespace BasicFacebookFeatures
     {
         public GroupItem(Group i_Group)
         {
-            if (i_Group.PictureNormalURL != null)
+            if (i_Group.PictureSmallURL != null)
             {
-                Icon = Image.FromFile(i_Group.PictureNormalURL);
+                ImageURL = i_Group.PictureSmallURL;
             }
             if (i_Group.Name != null)
             {

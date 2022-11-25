@@ -1,5 +1,4 @@
 ﻿using FacebookWrapper.ObjectModel;
-using System.Drawing;
 
 namespace BasicFacebookFeatures
 {
@@ -7,9 +6,9 @@ namespace BasicFacebookFeatures
     {
         public EventItem(Event i_Event)
         {
-            if (i_Event.PictureNormalURL != null)
+            if (i_Event.PictureSmallURL != null)
             {
-                Icon = Image.FromFile(i_Event.PictureNormalURL);
+                ImageURL = i_Event.PictureSmallURL;
             }
             if (i_Event.Name != null)
             {

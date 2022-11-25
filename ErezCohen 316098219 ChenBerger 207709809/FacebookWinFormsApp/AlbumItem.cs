@@ -1,5 +1,4 @@
 ﻿using FacebookWrapper.ObjectModel;
-using System.Drawing;
 
 namespace BasicFacebookFeatures
 {
@@ -7,9 +6,10 @@ namespace BasicFacebookFeatures
     {
         public AlbumItem(Album i_Album)
         {
-            if (i_Album.PictureAlbumURL != null)
+            if (i_Album.PictureSmallURL != null)
             {
-                Icon = Image.FromFile(i_Album.PictureAlbumURL);
+                //Icon = Image.Fr(i_Album.PictureSmallURL);
+                ImageURL = i_Album.PictureSmallURL;
             }
             if (i_Album.Name != null)
             {
