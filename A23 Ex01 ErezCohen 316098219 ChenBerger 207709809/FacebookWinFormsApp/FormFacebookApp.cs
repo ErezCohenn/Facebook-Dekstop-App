@@ -276,7 +276,7 @@ namespace BasicFacebookFeatures
             {
                 m_LogicManager.AddPost(richtextBoxPostContent.Text);
             }
-            catch (Exception ex)
+                        catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
