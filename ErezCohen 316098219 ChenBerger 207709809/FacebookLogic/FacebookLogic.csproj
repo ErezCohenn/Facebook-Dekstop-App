@@ -39,7 +39,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
-    <Compile Include="DummyData\DummyFactory.cs" />
     <Compile Include="FriendsCitiesManager.cs" />
     <Compile Include="LogicManager.cs" />
     <Compile Include="LoginException.cs" />
