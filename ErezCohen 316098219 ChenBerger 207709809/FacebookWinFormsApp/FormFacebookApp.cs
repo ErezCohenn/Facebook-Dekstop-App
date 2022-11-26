@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FacebookApp : Form
+    public partial class FormFacebookApp : Form
     {
         private LogicManager m_LogicManager;
         private ImageList m_FriendsImagesList;
@@ -17,7 +17,7 @@ namespace BasicFacebookFeatures
 
         public bool IsLogoutButtonClicked { get => m_IsLogoutButtonClicked; }
 
-        public FacebookApp(LogicManager i_LogicManager)
+        public FormFacebookApp(LogicManager i_LogicManager)
         {
             InitializeComponent();
             m_LogicManager = i_LogicManager;

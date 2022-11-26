@@ -7,7 +7,7 @@ namespace BasicFacebookFeatures
     public partial class FormAppSettings : Form
     {
         private LogicManager m_LogicManager;
-        private StringBuilder m_PermissionsStringBuilder = new StringBuilder();
+        private StringBuilder m_Permissions = new StringBuilder();
 
         public FormAppSettings(LogicManager i_LogicManager)
         {
@@ -19,13 +19,13 @@ namespace BasicFacebookFeatures
         private void buttonRefreshPermissions_Click(object sender, EventArgs e)
         {
             textBoxPermissions.Clear();
-            m_PermissionsStringBuilder.Clear();
+            m_Permissions.Clear();
             foreach (var checkedItem in listBoxPermissions.CheckedItems)
             {
-                m_PermissionsStringBuilder.Append($"\"{checkedItem}\",");
+                m_Permissions.Append($"\"{checkedItem}\",");
             }
 
-            textBoxPermissions.Text = m_PermissionsStringBuilder.ToString();
+            textBoxPermissions.Text = m_Permissions.ToString();
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
