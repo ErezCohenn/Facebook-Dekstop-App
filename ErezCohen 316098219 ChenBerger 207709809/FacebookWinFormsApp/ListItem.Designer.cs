@@ -1,7 +1,6 @@
-﻿
-namespace BasicFacebookFeatures
+﻿namespace BasicFacebookFeatures
 {
-    abstract partial class ListItem
+    public abstract partial class ListItem
     {
         /// <summary> 
         /// Required designer variable.
@@ -18,6 +17,7 @@ namespace BasicFacebookFeatures
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -54,7 +54,7 @@ namespace BasicFacebookFeatures
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(608, 31);
             this.labelTitle.TabIndex = 1;
-            this.labelTitle.Text = "";
+            this.labelTitle.Text = string.Empty;
             // 
             // labelContent
             // 
@@ -64,7 +64,7 @@ namespace BasicFacebookFeatures
             this.labelContent.Name = "labelContent";
             this.labelContent.Size = new System.Drawing.Size(608, 80);
             this.labelContent.TabIndex = 2;
-            this.labelContent.Text = "";
+            this.labelContent.Text = string.Empty;
             // 
             // labelCreatedTime
             // 
@@ -75,7 +75,7 @@ namespace BasicFacebookFeatures
             this.labelCreatedTime.Name = "labelCreatedTime";
             this.labelCreatedTime.Size = new System.Drawing.Size(848, 31);
             this.labelCreatedTime.TabIndex = 3;
-            this.labelCreatedTime.Text = "";
+            this.labelCreatedTime.Text = string.Empty;
             // 
             // ListItem
             // 

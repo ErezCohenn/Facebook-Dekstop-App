@@ -1,31 +1,31 @@
-﻿using FacebookLogic;
-using System;
+﻿using System;
 using System.Text;
 using System.Windows.Forms;
+using FacebookLogic;
+
 namespace BasicFacebookFeatures
 {
     public partial class FormAppSettings : Form
     {
-        private LogicManager m_LogicManager;
-        private StringBuilder m_PermissionsStringBuilder = new StringBuilder();
+        private readonly LogicManager r_LogicManager;
+        private readonly StringBuilder r_Permissions = new StringBuilder();
 
         public FormAppSettings(LogicManager i_LogicManager)
         {
             InitializeComponent();
-            m_LogicManager = i_LogicManager;
+            r_LogicManager = i_LogicManager;
         }
-
 
         private void buttonRefreshPermissions_Click(object sender, EventArgs e)
         {
             textBoxPermissions.Clear();
-            m_PermissionsStringBuilder.Clear();
+            r_Permissions.Clear();
             foreach (var checkedItem in listBoxPermissions.CheckedItems)
             {
-                m_PermissionsStringBuilder.Append($"\"{checkedItem}\",");
+                r_Permissions.Append($"\"{checkedItem}\",");
             }
 
-            textBoxPermissions.Text = m_PermissionsStringBuilder.ToString();
+            textBoxPermissions.Text = r_Permissions.ToString();
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                m_LogicManager.SetAppId(comboAppID.SelectedItem.ToString());
+                r_LogicManager.SetAppId(comboAppID.SelectedItem.ToString());
                 addSelectedPremissions();
                 DialogResult = DialogResult.OK;
                 this.Close();
@@ -52,7 +52,7 @@ namespace BasicFacebookFeatures
                 permissionCheckState = listBoxPermissions.GetItemCheckState(i);
                 if (permissionCheckState == CheckState.Checked)
                 {
-                    m_LogicManager.AddPermission(listBoxPermissions.Items[i].ToString());
+                    r_LogicManager.AddPermission(listBoxPermissions.Items[i].ToString());
                 }
             }
         }

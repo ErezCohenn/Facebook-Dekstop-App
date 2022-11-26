@@ -1,19 +1,19 @@
-﻿using DTO;
-using FacebookLogic;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using DTO;
+using FacebookLogic;
+using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
     public partial class FacebookApp : Form
     {
-        private LogicManager m_LogicManager;
+        private static readonly string sr_SeriesCityFriendsName = "FriendsCitiesChart";
+        private readonly LogicManager m_LogicManager;
         private ImageList m_FriendsImagesList;
         private bool m_IsLogoutButtonClicked = false;
-        private const string c_SeriesCityFriendsName = "FriendsCitiesChart";
 
         public bool IsLogoutButtonClicked { get => m_IsLogoutButtonClicked; }
 
@@ -21,9 +21,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             m_LogicManager = i_LogicManager;
-            //new DummyFactory();
             fetchUserData();
-
         }
 
         private void fetchUserData()
@@ -53,7 +51,9 @@ namespace BasicFacebookFeatures
                     flowLayoutPanelPages.Controls.Add(pageItem);
                 }
             }
-            catch (System.ArgumentException ex) { }
+            catch (System.ArgumentException ex)
+            {
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -71,14 +71,13 @@ namespace BasicFacebookFeatures
         private void fetchFriendsCitiesChart()
         {
             Dictionary<string, int> friendsCitiesList = m_LogicManager.FetchFriendsCities();
-            //Dictionary<string, int> friendsCitiesList = DummyFactory.FriendsCities;
 
-            chart.Series.FindByName(c_SeriesCityFriendsName).Points.Clear();
+            chart.Series.FindByName(sr_SeriesCityFriendsName).Points.Clear();
             try
             {
                 foreach (KeyValuePair<string, int> city in friendsCitiesList)
                 {
-                    chart.Series.FindByName(c_SeriesCityFriendsName).Points.AddXY(city.Key, city.Value.ToString());
+                    chart.Series.FindByName(sr_SeriesCityFriendsName).Points.AddXY(city.Key, city.Value.ToString());
                 }
             }
             catch (Exception ex)
@@ -86,7 +85,7 @@ namespace BasicFacebookFeatures
                 MessageBox.Show(ex.Message);
             }
 
-            if (chart.Series.FindByName(c_SeriesCityFriendsName).Points.Count == 0)
+            if (chart.Series.FindByName(sr_SeriesCityFriendsName).Points.Count == 0)
             {
                 chart.Text = "No items to retrieve";
             }
@@ -96,7 +95,6 @@ namespace BasicFacebookFeatures
         {
             FacebookObjectCollection<Album> albums = m_LogicManager.FetchAlbums();
             AlbumItem albumItem = null;
-            //List<AlbumItem> albums = DummyFactory.AlbumItems;
 
             flowLayoutPanelAlbums.Controls.Clear();
             try
@@ -107,7 +105,9 @@ namespace BasicFacebookFeatures
                     flowLayoutPanelAlbums.Controls.Add(albumItem);
                 }
             }
-            catch (System.ArgumentException ex) { }
+            catch (ArgumentException ex)
+            {
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -126,7 +126,6 @@ namespace BasicFacebookFeatures
         {
             FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
             PostItem postItem = null;
-            //List<PostItem> posts = DummyFactory.PostItem;
 
             flowLayoutPanelPosts.Controls.Clear();
             try
@@ -191,11 +190,9 @@ namespace BasicFacebookFeatures
             listViewFriends.Columns.Add("Friends list:", 200);
             m_FriendsImagesList = new ImageList();
             m_FriendsImagesList.ImageSize = new Size(50, 50);
-
             try
             {
                 friendsListDTO = m_LogicManager.FetchFriendsList();
-                //friendsListDTO = DummyFactory.FriendsListDTO;
                 foreach (KeyValuePair<string, Image> friend in friendsListDTO.FriendsList)
                 {
                     listViewFriends.Items.Add(friend.Key, friendIndex++);
@@ -213,7 +210,6 @@ namespace BasicFacebookFeatures
         private void fetchGroups()
         {
             FacebookObjectCollection<Group> groups = m_LogicManager.FetchGroups();
-            //List<GroupItem> groups = DummyFactory.GroupItem;
             GroupItem groupItem = null;
 
             flowLayoutPanelGroups.Controls.Clear();

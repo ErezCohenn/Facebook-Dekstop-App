@@ -5,7 +5,6 @@ namespace BasicFacebookFeatures
 {
     public abstract partial class ListItem : UserControl
     {
-
         private string m_ImageURL;
         private string m_Content;
         private string m_Title;
