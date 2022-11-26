@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using DTO;
+﻿using DTO;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace FacebookLogic
 {
@@ -23,8 +23,7 @@ namespace FacebookLogic
 
         public void Login()
         {
-            m_LoginResult = r_AppSettings.Permissions.Count > 0 ? FacebookService.Login(r_AppSettings.AppID, r_AppSettings.Permissions.ToArray()) :
-                FacebookService.Login(r_AppSettings.AppID);
+            m_LoginResult = FacebookService.Login(r_AppSettings.AppID, r_AppSettings.Permissions.ToArray());
             if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
                 m_CurrentUser = m_LoginResult.LoggedInUser;
@@ -85,6 +84,7 @@ namespace FacebookLogic
             profileDataDTO.HomeTown = m_CurrentUser.Hometown;
             profileDataDTO.Email = m_CurrentUser.Email;
             profileDataDTO.About = m_CurrentUser.About;
+
             return profileDataDTO;
         }
 

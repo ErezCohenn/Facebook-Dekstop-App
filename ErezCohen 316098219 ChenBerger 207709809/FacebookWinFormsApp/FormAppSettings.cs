@@ -1,18 +1,19 @@
-﻿using System;
+﻿using FacebookLogic;
+using System;
 using System.Text;
 using System.Windows.Forms;
-using FacebookLogic;
 
 namespace BasicFacebookFeatures
 {
     public partial class FormAppSettings : Form
     {
         private readonly LogicManager r_LogicManager;
-        private readonly StringBuilder r_Permissions = new StringBuilder();
+        private readonly StringBuilder r_Permissions;
 
         public FormAppSettings(LogicManager i_LogicManager)
         {
             InitializeComponent();
+            r_Permissions = new StringBuilder();
             r_LogicManager = i_LogicManager;
         }
 

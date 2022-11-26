@@ -1,16 +1,16 @@
-﻿using System;
+﻿using FacebookLogic;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using FacebookLogic;
 
 namespace BasicFacebookFeatures
 {
     public partial class FormLogin : Form
     {
         private readonly LogicManager r_LogicManager;
+        private readonly FormAppSettings r_FormAppSettings;
         private bool m_IsRememberMeCheckBoxChecked = false;
         private bool m_IsLoginSucceed = false;
-        private FormAppSettings m_FormAppSettings;
 
         public bool IsLoginSucceed { get => m_IsLoginSucceed; }
 
@@ -18,7 +18,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             initializeUIDesign();
-            m_FormAppSettings = new FormAppSettings(i_LogicManager);
+            r_FormAppSettings = new FormAppSettings(i_LogicManager);
             r_LogicManager = i_LogicManager;
         }
 
@@ -44,12 +44,7 @@ namespace BasicFacebookFeatures
 
         private void buttonSettings_Click(object sender, System.EventArgs e)
         {
-            if (m_FormAppSettings == null)
-            {
-                m_FormAppSettings = new FormAppSettings(r_LogicManager);
-            }
-
-            m_FormAppSettings.ShowDialog();
+            r_FormAppSettings.ShowDialog();
         }
 
         private void buttonLogin_Click(object sender, System.EventArgs e)
@@ -69,7 +64,7 @@ namespace BasicFacebookFeatures
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Notice:You must enter Permission and App Id.", "Login Failed");
+                MessageBox.Show("Notice: You must enter Permission and App Id.", "Login Failed");
             }
         }
 

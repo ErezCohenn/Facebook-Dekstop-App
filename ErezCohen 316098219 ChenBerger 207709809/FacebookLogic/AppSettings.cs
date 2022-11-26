@@ -8,8 +8,8 @@ namespace FacebookLogic
     public class AppSettings
     {
         private static readonly string sr_FullFilePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, @"FacebookAppSettings.xml");
+        private readonly List<string> r_Permissions;
         private string m_AppID;
-        private List<string> m_Permissions;
 
         public bool RememberUser { get; set; }
 
@@ -17,41 +17,36 @@ namespace FacebookLogic
 
         private AppSettings()
         {
-            m_Permissions = new List<string>();
+            r_Permissions = new List<string>();
         }
 
         public static AppSettings LoadFromFile()
         {
-            AppSettings obj = null;
+            AppSettings appSettings = null;
 
             try
             {
                 using (Stream stream = new FileStream(sr_FullFilePath, FileMode.Open))
                 {
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(AppSettings));
-                    obj = xmlSerializer.Deserialize(stream) as AppSettings;
+                    appSettings = xmlSerializer.Deserialize(stream) as AppSettings;
                 }
             }
             catch (Exception)
             {
-                obj = new AppSettings();
+                appSettings = new AppSettings();
             }
 
-            return obj;
+            return appSettings;
         }
 
         public string AppID { get => m_AppID; set => m_AppID = value; }
 
-        public List<string> Permissions { get => m_Permissions; set => m_Permissions = value; }
+        public List<string> Permissions { get => r_Permissions; }
 
         public void AddPermission(string i_Permission)
         {
-            if (m_Permissions == null)
-            {
-                m_Permissions = new List<string>();
-            }
-
-            m_Permissions.Add(i_Permission);
+            r_Permissions.Add(i_Permission);
         }
 
         public void SaveToFile(string i_CurrentAccessToken)
