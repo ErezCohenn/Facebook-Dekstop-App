@@ -1,6 +1,6 @@
 ﻿namespace BasicFacebookFeatures
 {
-    public partial class FacebookApp
+    public partial class FormFacebookApp
     {
         /// <summary>
         /// Required designer variable.
