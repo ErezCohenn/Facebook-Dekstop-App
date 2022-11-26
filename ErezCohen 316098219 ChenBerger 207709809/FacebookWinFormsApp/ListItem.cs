@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
-    public partial class ListItem : UserControl
+    public abstract partial class ListItem : UserControl
     {
 
         private string m_ImageURL;

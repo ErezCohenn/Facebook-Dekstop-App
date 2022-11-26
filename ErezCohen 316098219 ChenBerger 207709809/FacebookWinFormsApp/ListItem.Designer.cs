@@ -1,7 +1,7 @@
 ﻿
 namespace BasicFacebookFeatures
 {
-    partial class ListItem
+    abstract partial class ListItem
     {
         /// <summary> 
         /// Required designer variable.

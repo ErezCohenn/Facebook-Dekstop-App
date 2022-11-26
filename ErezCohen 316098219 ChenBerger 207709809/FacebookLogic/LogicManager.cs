@@ -39,19 +39,9 @@ namespace FacebookLogic
             }
         }
 
-        internal FacebookObjectCollection<User> FetchFriends()
-        {
-            return m_CurrentUser.Friends;
-        }
-
         public string FetchUserProfileImageUrl()
         {
             return m_CurrentUser.PictureNormalURL;
-        }
-
-        public FacebookObjectCollection<Page> FetchLikedPages()
-        {
-            return m_CurrentUser.LikedPages;
         }
 
         public void Logout()
@@ -110,7 +100,7 @@ namespace FacebookLogic
                     m_LoginResult = FacebookService.Connect(m_AppSettings.LastAccessToken);
                     m_CurrentUser = m_LoginResult.LoggedInUser;
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     alreadySignedIn = false;
                 }
@@ -152,7 +142,7 @@ namespace FacebookLogic
             {
                 posts = m_CurrentUser.Posts;
             }
-            catch (Facebook.FacebookOAuthException ex) { }
+            catch (Facebook.FacebookOAuthException) { }
 
             return posts;
         }

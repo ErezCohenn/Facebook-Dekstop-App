@@ -41,7 +41,7 @@ namespace FacebookLogic
 
                 }
             }
-            catch (IOException ioExeption)
+            catch (IOException)
             {
                 using (Stream stream = new FileStream(sr_FullFilePath, FileMode.Truncate))
                 {
@@ -67,7 +67,7 @@ namespace FacebookLogic
                     obj = xmlSerializer.Deserialize(stream) as AppSettings;
                 }
             }
-            catch (Exception ioException)
+            catch (Exception)
             {
                 obj = new AppSettings();
             }
