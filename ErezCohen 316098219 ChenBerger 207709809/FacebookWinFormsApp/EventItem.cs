@@ -10,14 +10,17 @@ namespace BasicFacebookFeatures
             {
                 ImageURL = i_Event.PictureSmallURL;
             }
+
             if (i_Event.Name != null)
             {
                 Title = i_Event.Name;
             }
+
             if (i_Event.Description != null)
             {
                 Content = i_Event.Description;
             }
+
             if (i_Event.StartTime != null)
             {
                 CreatedTime = i_Event.StartTime.Value;
@@ -26,7 +29,6 @@ namespace BasicFacebookFeatures
 
         public EventItem()
         {
-
         }
     }
 }

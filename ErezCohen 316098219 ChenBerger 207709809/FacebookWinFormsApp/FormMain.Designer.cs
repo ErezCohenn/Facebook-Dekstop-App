@@ -1,7 +1,6 @@
-﻿
-namespace BasicFacebookFeatures
+﻿namespace BasicFacebookFeatures
 {
-    partial class FacebookApp
+    public partial class FacebookApp
     {
         /// <summary>
         /// Required designer variable.
@@ -18,6 +17,7 @@ namespace BasicFacebookFeatures
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -158,7 +158,7 @@ namespace BasicFacebookFeatures
             // 
             // listViewFriends
             // 
-            this.listViewFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listViewFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewFriends.HideSelection = false;
             this.listViewFriends.Location = new System.Drawing.Point(1376, 188);
@@ -413,14 +413,14 @@ namespace BasicFacebookFeatures
             // 
             // richtextBoxPostContent
             // 
-            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richtextBoxPostContent.Location = new System.Drawing.Point(21, 611);
             this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4);
             this.richtextBoxPostContent.Name = "richtextBoxPostContent";
             this.richtextBoxPostContent.Size = new System.Drawing.Size(836, 105);
             this.richtextBoxPostContent.TabIndex = 0;
-            this.richtextBoxPostContent.Text = "";
+            this.richtextBoxPostContent.Text = string.Empty;
             // 
             // tabPageFriendsChart
             // 
@@ -468,8 +468,8 @@ namespace BasicFacebookFeatures
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPageFriendsChart);
             this.tabControl1.Controls.Add(this.tabPagePosts);

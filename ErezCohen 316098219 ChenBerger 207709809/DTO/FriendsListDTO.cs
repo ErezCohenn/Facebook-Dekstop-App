@@ -5,20 +5,20 @@ namespace DTO
 {
     public class FriendsListDTO
     {
-        private List<KeyValuePair<string, Image>> m_FriendsList;
+        private readonly List<KeyValuePair<string, Image>> r_FriendsList;
 
         public FriendsListDTO()
         {
-            m_FriendsList = new List<KeyValuePair<string, Image>>();
+            r_FriendsList = new List<KeyValuePair<string, Image>>();
         }
 
-        public List<KeyValuePair<string, Image>> FriendsList { get => m_FriendsList; }
+        public List<KeyValuePair<string, Image>> FriendsList { get => r_FriendsList; }
 
         public void AddFriend(string i_FriendName, string i_FriendImageURL)
         {
             Image friendImage = Image.FromFile(i_FriendImageURL);
 
-            m_FriendsList.Add(new KeyValuePair<string, Image>(i_FriendName, friendImage));
+            r_FriendsList.Add(new KeyValuePair<string, Image>(i_FriendName, friendImage));
         }
     }
 }

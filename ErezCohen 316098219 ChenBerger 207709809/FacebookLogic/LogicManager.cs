@@ -1,36 +1,36 @@
-﻿using DTO;
-using FacebookWrapper;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DTO;
+using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookLogic
 {
     public class LogicManager
     {
+        private readonly FriendsCitiesManager r_FriendsCitiesManager;
+        private readonly AppSettings r_AppSettings;
         private User m_CurrentUser;
-        private AppSettings m_AppSettings;
         private LoginResult m_LoginResult;
-        private FriendsCitiesManager m_FriendsCitiesManager;
 
         public LogicManager()
         {
-            FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-            m_AppSettings = AppSettings.LoadFromFile();
-            m_FriendsCitiesManager = new FriendsCitiesManager();
+            FacebookService.s_CollectionLimit = 100;
+            r_AppSettings = AppSettings.LoadFromFile();
+            r_FriendsCitiesManager = new FriendsCitiesManager();
         }
 
         public void Login()
         {
-            m_LoginResult = m_AppSettings.Permissions.Count > 0 ? FacebookService.Login(m_AppSettings.AppID, m_AppSettings.Permissions.ToArray()) :
-                FacebookService.Login(m_AppSettings.AppID);
+            m_LoginResult = r_AppSettings.Permissions.Count > 0 ? FacebookService.Login(r_AppSettings.AppID, r_AppSettings.Permissions.ToArray()) :
+                FacebookService.Login(r_AppSettings.AppID);
             if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
                 m_CurrentUser = m_LoginResult.LoggedInUser;
-                if (m_AppSettings.RememberUser)
+                if (r_AppSettings.RememberUser)
                 {
-                    m_AppSettings.SaveToFile(m_LoginResult.AccessToken);
+                    r_AppSettings.SaveToFile(m_LoginResult.AccessToken);
                 }
             }
             else
@@ -54,12 +54,12 @@ namespace FacebookLogic
 
         public void AddPermission(string i_Permission)
         {
-            m_AppSettings.AddPermission(i_Permission);
+            r_AppSettings.AddPermission(i_Permission);
         }
 
         public void SetAppId(string i_AppId)
         {
-            m_AppSettings.AppID = i_AppId;
+            r_AppSettings.AppID = i_AppId;
         }
 
         public FriendsListDTO FetchFriendsList()
@@ -85,19 +85,18 @@ namespace FacebookLogic
             profileDataDTO.HomeTown = m_CurrentUser.Hometown;
             profileDataDTO.Email = m_CurrentUser.Email;
             profileDataDTO.About = m_CurrentUser.About;
-
             return profileDataDTO;
         }
 
         public bool TryAutomaticLogin()
         {
-            bool alreadySignedIn = m_AppSettings.RememberUser;
+            bool alreadySignedIn = r_AppSettings.RememberUser;
 
             if (alreadySignedIn)
             {
                 try
                 {
-                    m_LoginResult = FacebookService.Connect(m_AppSettings.LastAccessToken);
+                    m_LoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
                     m_CurrentUser = m_LoginResult.LoggedInUser;
                 }
                 catch (Exception)
@@ -111,12 +110,13 @@ namespace FacebookLogic
 
         public void RememberLastUser(bool i_CheckBoxState)
         {
-            m_AppSettings.RememberUser = i_CheckBoxState;
+            r_AppSettings.RememberUser = i_CheckBoxState;
         }
+
         private void forgetUser()
         {
-            m_AppSettings.RememberUser = false;
-            m_AppSettings.SaveToFile(m_AppSettings.LastAccessToken);
+            r_AppSettings.RememberUser = false;
+            r_AppSettings.SaveToFile(r_AppSettings.LastAccessToken);
         }
 
         public void AddPost(string i_PostContent)
@@ -142,7 +142,9 @@ namespace FacebookLogic
             {
                 posts = m_CurrentUser.Posts;
             }
-            catch (Facebook.FacebookOAuthException) { }
+            catch (Facebook.FacebookOAuthException)
+            {
+            }
 
             return posts;
         }
@@ -164,9 +166,9 @@ namespace FacebookLogic
 
         public Dictionary<string, int> FetchFriendsCities()
         {
-            m_FriendsCitiesManager.FetchFriendsCities(m_CurrentUser.Friends);
+            r_FriendsCitiesManager.FetchFriendsCities(m_CurrentUser.Friends);
 
-            return m_FriendsCitiesManager.GetFriendsCities();
+            return r_FriendsCitiesManager.GetFriendsCities();
         }
 
         public FacebookObjectCollection<Page> FetchPages()

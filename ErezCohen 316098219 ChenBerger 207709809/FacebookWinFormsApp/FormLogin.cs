@@ -1,15 +1,15 @@
-﻿using FacebookLogic;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using FacebookLogic;
 
 namespace BasicFacebookFeatures
 {
     public partial class FormLogin : Form
     {
+        private readonly LogicManager r_LogicManager;
         private bool m_IsRememberMeCheckBoxChecked = false;
         private bool m_IsLoginSucceed = false;
-        private LogicManager m_LogicManager;
         private FormAppSettings m_FormAppSettings;
 
         public bool IsLoginSucceed { get => m_IsLoginSucceed; }
@@ -19,7 +19,7 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             initializeUIDesign();
             m_FormAppSettings = new FormAppSettings(i_LogicManager);
-            m_LogicManager = i_LogicManager;
+            r_LogicManager = i_LogicManager;
         }
 
         private void initializeUIDesign()
@@ -46,7 +46,7 @@ namespace BasicFacebookFeatures
         {
             if (m_FormAppSettings == null)
             {
-                m_FormAppSettings = new FormAppSettings(m_LogicManager);
+                m_FormAppSettings = new FormAppSettings(r_LogicManager);
             }
 
             m_FormAppSettings.ShowDialog();
@@ -56,22 +56,23 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                m_LogicManager.RememberLastUser(m_IsRememberMeCheckBoxChecked);
-                m_LogicManager.Login();
+                r_LogicManager.RememberLastUser(m_IsRememberMeCheckBoxChecked);
+                r_LogicManager.Login();
                 m_IsLoginSucceed = true;
                 this.Close();
             }
-            catch (Facebook.FacebookOAuthException ex) { }
-            catch (LoginException ex)
+            catch (Facebook.FacebookOAuthException)
             {
-                //MessageBox.Show(ex.Message, "Login Failed");
             }
-            catch (System.ArgumentOutOfRangeException ex)
+            catch (LoginException)
+            {
+            }
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Notice:You must enter Permission and App Id.", "Login Failed");
             }
-
         }
+
         private void checkBoxRememberMe_CheckedChanged(object sender, EventArgs e)
         {
             m_IsRememberMeCheckBoxChecked = checkBoxRememberMe.Checked;

@@ -1,15 +1,15 @@
-﻿using FacebookWrapper.ObjectModel;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookLogic
 {
     public class FriendsCitiesManager
     {
-        private Dictionary<string, int> m_FriendsCities;
+        private readonly Dictionary<string, int> r_FriendsCities;
 
         public FriendsCitiesManager()
         {
-            m_FriendsCities = new Dictionary<string, int>();
+            r_FriendsCities = new Dictionary<string, int>();
         }
 
         public void FetchFriendsCities(FacebookObjectCollection<User> i_FriendsList)
@@ -18,13 +18,13 @@ namespace FacebookLogic
             {
                 if (friend.Hometown != null && friend.Hometown.Location != null && friend.Hometown.Location.City != null)
                 {
-                    if (m_FriendsCities.ContainsKey(friend.Hometown.Location.City.ToString()))
+                    if (r_FriendsCities.ContainsKey(friend.Hometown.Location.City.ToString()))
                     {
-                        m_FriendsCities[friend.Hometown.Location.City.ToString()]++;
+                        r_FriendsCities[friend.Hometown.Location.City.ToString()]++;
                     }
                     else
                     {
-                        m_FriendsCities.Add(friend.Hometown.Location.City.ToString(), 1);
+                        r_FriendsCities.Add(friend.Hometown.Location.City.ToString(), 1);
                     }
                 }
             }
@@ -32,7 +32,7 @@ namespace FacebookLogic
 
         public Dictionary<string, int> GetFriendsCities()
         {
-            return m_FriendsCities;
+            return r_FriendsCities;
         }
     }
 }
