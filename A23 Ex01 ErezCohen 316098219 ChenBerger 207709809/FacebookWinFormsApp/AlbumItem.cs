@@ -6,6 +6,7 @@ namespace BasicFacebookFeatures
     public class AlbumItem : ListItem
     {
         private readonly Album r_Album;
+        
         public AlbumItem(Album i_Album)
         {
             r_Album = i_Album;
@@ -28,6 +29,7 @@ namespace BasicFacebookFeatures
             {
                 CreatedTime = i_Album.CreatedTime.Value;
             }
+
             initializePhotosLinkLabel();
         }
 
@@ -49,7 +51,7 @@ namespace BasicFacebookFeatures
             photosLinkLabel.TabStop = true;
             photosLinkLabel.Text = string.Format("Pictures: ({0})", r_Album.Photos.Count);
             photosLinkLabel.LinkClicked += new LinkLabelLinkClickedEventHandler(linkLabelPhotos_LinkClicked);
-            base.Controls.Add(photosLinkLabel);
+            Controls.Add(photosLinkLabel);
         }
 
         private void linkLabelPhotos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
