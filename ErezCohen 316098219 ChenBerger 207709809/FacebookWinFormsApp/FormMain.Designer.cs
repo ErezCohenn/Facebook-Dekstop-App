@@ -158,7 +158,7 @@ namespace BasicFacebookFeatures
             // 
             // listViewFriends
             // 
-            this.listViewFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.listViewFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewFriends.HideSelection = false;
             this.listViewFriends.Location = new System.Drawing.Point(1376, 188);
@@ -195,10 +195,11 @@ namespace BasicFacebookFeatures
             // 
             // flowLayoutPanelPages
             // 
+            this.flowLayoutPanelPages.AutoScroll = true;
             this.flowLayoutPanelPages.Controls.Add(this.linkLabelPages);
             this.flowLayoutPanelPages.Location = new System.Drawing.Point(6, 6);
             this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1012, 722);
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1011, 703);
             this.flowLayoutPanelPages.TabIndex = 0;
             // 
             // linkLabelPages
@@ -233,7 +234,7 @@ namespace BasicFacebookFeatures
             // checkBoxFilterDates
             // 
             this.checkBoxFilterDates.AutoSize = true;
-            this.checkBoxFilterDates.Location = new System.Drawing.Point(276, 50);
+            this.checkBoxFilterDates.Location = new System.Drawing.Point(335, 61);
             this.checkBoxFilterDates.Name = "checkBoxFilterDates";
             this.checkBoxFilterDates.Size = new System.Drawing.Size(115, 21);
             this.checkBoxFilterDates.TabIndex = 8;
@@ -243,10 +244,11 @@ namespace BasicFacebookFeatures
             // 
             // dateTimePickerEventFilter
             // 
+            this.dateTimePickerEventFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTimePickerEventFilter.Enabled = false;
-            this.dateTimePickerEventFilter.Location = new System.Drawing.Point(397, 49);
+            this.dateTimePickerEventFilter.Location = new System.Drawing.Point(459, 57);
             this.dateTimePickerEventFilter.Name = "dateTimePickerEventFilter";
-            this.dateTimePickerEventFilter.Size = new System.Drawing.Size(228, 22);
+            this.dateTimePickerEventFilter.Size = new System.Drawing.Size(285, 22);
             this.dateTimePickerEventFilter.TabIndex = 7;
             this.dateTimePickerEventFilter.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
@@ -254,7 +256,7 @@ namespace BasicFacebookFeatures
             // 
             this.linkLabelRefreshEvents.AutoSize = true;
             this.linkLabelRefreshEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.linkLabelRefreshEvents.Location = new System.Drawing.Point(8, 4);
+            this.linkLabelRefreshEvents.Location = new System.Drawing.Point(10, 5);
             this.linkLabelRefreshEvents.Name = "linkLabelRefreshEvents";
             this.linkLabelRefreshEvents.Size = new System.Drawing.Size(142, 25);
             this.linkLabelRefreshEvents.TabIndex = 6;
@@ -267,7 +269,7 @@ namespace BasicFacebookFeatures
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(8, 46);
+            this.label1.Location = new System.Drawing.Point(10, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(262, 25);
             this.label1.TabIndex = 0;
@@ -278,9 +280,9 @@ namespace BasicFacebookFeatures
             this.flowLayoutPanelEvents.AutoScroll = true;
             this.flowLayoutPanelEvents.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanelEvents.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelEvents.Location = new System.Drawing.Point(3, 80);
+            this.flowLayoutPanelEvents.Location = new System.Drawing.Point(3, 90);
             this.flowLayoutPanelEvents.Name = "flowLayoutPanelEvents";
-            this.flowLayoutPanelEvents.Size = new System.Drawing.Size(1015, 645);
+            this.flowLayoutPanelEvents.Size = new System.Drawing.Size(1015, 622);
             this.flowLayoutPanelEvents.TabIndex = 0;
             this.flowLayoutPanelEvents.WrapContents = false;
             // 
@@ -320,6 +322,7 @@ namespace BasicFacebookFeatures
             // 
             // tabPageAlbums
             // 
+            this.tabPageAlbums.AutoScroll = true;
             this.tabPageAlbums.Controls.Add(this.linkLabelRefreshAlbums);
             this.tabPageAlbums.Controls.Add(this.flowLayoutPanelAlbums);
             this.tabPageAlbums.Location = new System.Drawing.Point(4, 25);
@@ -410,7 +413,7 @@ namespace BasicFacebookFeatures
             // 
             // richtextBoxPostContent
             // 
-            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richtextBoxPostContent.Location = new System.Drawing.Point(21, 611);
             this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4);
@@ -428,7 +431,7 @@ namespace BasicFacebookFeatures
             this.tabPageFriendsChart.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageFriendsChart.Size = new System.Drawing.Size(1024, 715);
             this.tabPageFriendsChart.TabIndex = 4;
-            this.tabPageFriendsChart.Text = "Distribution cities";
+            this.tabPageFriendsChart.Text = "Cities Distribution";
             this.tabPageFriendsChart.UseVisualStyleBackColor = true;
             // 
             // linkLabelRefreshChart
@@ -465,8 +468,8 @@ namespace BasicFacebookFeatures
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPageFriendsChart);
             this.tabControl1.Controls.Add(this.tabPagePosts);
