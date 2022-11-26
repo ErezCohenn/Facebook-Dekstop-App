@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FormMain : Form
+    public partial class FacebookApp : Form
     {
         private LogicManager m_LogicManager;
         private ImageList m_FriendsImagesList;
@@ -18,7 +18,7 @@ namespace BasicFacebookFeatures
 
         public bool IsLogoutButtonClicked { get => m_IsLogoutButtonClicked; }
 
-        public FormMain(LogicManager i_LogicManager)
+        public FacebookApp(LogicManager i_LogicManager)
         {
             InitializeComponent();
             m_LogicManager = i_LogicManager;
@@ -42,7 +42,7 @@ namespace BasicFacebookFeatures
 
         private void fetchPages()
         {
-            FacebookObjectCollection<Page> pages = m_LogicManager.FetchLikedPages();
+            FacebookObjectCollection<Page> pages = m_LogicManager.FetchPages();
             PageItem pageItem = null;
 
             flowLayoutPanelPages.Controls.Clear();
@@ -242,9 +242,12 @@ namespace BasicFacebookFeatures
 
         private void fetchEvents()
         {
-            FacebookObjectCollection<Event> events = m_LogicManager.FetchEvents();
+            showEvents(m_LogicManager.FetchEvents());
+        }
+
+        private void showEvents(FacebookObjectCollection<Event> events)
+        {
             EventItem eventItem = null;
-            //List<EventItem> events = DummyFactory.EventItem;
 
             flowLayoutPanelEvents.Controls.Clear();
             try
@@ -301,30 +304,6 @@ namespace BasicFacebookFeatures
             fetchEvents();
         }
 
-        private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
-        {
-            FacebookObjectCollection<Event> eventsByDate = m_LogicManager.FetchEventsByDate(e.Start.Date);
-
-            listBoxEvents.Items.Clear();
-            try
-            {
-                foreach (Event eventToAdd in eventsByDate)
-                {
-                    listBoxEvents.Items.Add(eventToAdd.Name);
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            if (listBoxEvents.Items.Count == 0)
-            {
-                listBoxEvents.Items.Add("No events in this date");
-            }
-        }
-
         private void linkLabelRefreshChart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             fetchFriendsCitiesChart();
@@ -333,6 +312,16 @@ namespace BasicFacebookFeatures
         private void linkLabelPages_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             fetchPages();
+        }
+
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            showEvents(m_LogicManager.FetchEventsByDate(dateTimePickerEventFilter.Value.Date));
+        }
+
+        private void checkBoxFilterDates_CheckedChanged(object sender, EventArgs e)
+        {
+            dateTimePickerEventFilter.Enabled = checkBoxFilterDates.Checked;
         }
     }
 }

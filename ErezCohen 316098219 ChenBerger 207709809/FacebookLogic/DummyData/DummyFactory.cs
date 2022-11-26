@@ -38,7 +38,6 @@ namespace FacebookLogic.DummyData
             AlbumItem currentAlbum = null;
             PostItem currentPost = null;
             EventItem currentEvent = null;
-            User currentUser = null;
             GroupItem currentGroup = null;
             string image = "C:/Users/erez6/Desktop/לימודים/אקדמית יפו/שנה ג/Design Patterns/Facebook-Dekstop-App/ErezCohen 316098219 ChenBerger 207709809/FacebookWinFormsApp/Resources/facebookLogo.png"; ;
 

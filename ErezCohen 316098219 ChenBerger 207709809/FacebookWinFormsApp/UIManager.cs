@@ -4,13 +4,13 @@ namespace BasicFacebookFeatures
 {
     public class UIManager
     {
-        private FormMain m_FormMain;
+        private FacebookApp m_FormMain;
         private FormLogin m_FormLogin;
         private LogicManager m_LogicManager;
 
         private void startFormMain()
         {
-            m_FormMain = new FormMain(m_LogicManager);
+            m_FormMain = new FacebookApp(m_LogicManager);
             m_FormMain.ShowDialog();
 
             if (m_FormMain.IsLogoutButtonClicked)
