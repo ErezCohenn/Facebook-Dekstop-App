@@ -1,6 +1,5 @@
 ﻿using DTO;
 using FacebookLogic;
-using FacebookLogic.DummyData;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
@@ -22,7 +21,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             m_LogicManager = i_LogicManager;
-            new DummyFactory();
+            //new DummyFactory();
             fetchUserData();
 
         }

@@ -54,7 +54,7 @@ namespace BasicFacebookFeatures
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(608, 31);
             this.labelTitle.TabIndex = 1;
-            this.labelTitle.Text = "Title";
+            this.labelTitle.Text = "";
             // 
             // labelContent
             // 
@@ -64,7 +64,7 @@ namespace BasicFacebookFeatures
             this.labelContent.Name = "labelContent";
             this.labelContent.Size = new System.Drawing.Size(608, 80);
             this.labelContent.TabIndex = 2;
-            this.labelContent.Text = "Content";
+            this.labelContent.Text = "";
             // 
             // labelCreatedTime
             // 
@@ -75,7 +75,7 @@ namespace BasicFacebookFeatures
             this.labelCreatedTime.Name = "labelCreatedTime";
             this.labelCreatedTime.Size = new System.Drawing.Size(848, 31);
             this.labelCreatedTime.TabIndex = 3;
-            this.labelCreatedTime.Text = "Created time";
+            this.labelCreatedTime.Text = "";
             // 
             // ListItem
             // 
