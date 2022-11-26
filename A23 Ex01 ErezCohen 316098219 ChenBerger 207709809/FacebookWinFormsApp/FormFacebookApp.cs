@@ -272,7 +272,14 @@ namespace BasicFacebookFeatures
 
         private void buttonPost_Click(object sender, EventArgs e)
         {
-            m_LogicManager.AddPost(richtextBoxPostContent.Text);
+            try
+            {
+                m_LogicManager.AddPost(richtextBoxPostContent.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)

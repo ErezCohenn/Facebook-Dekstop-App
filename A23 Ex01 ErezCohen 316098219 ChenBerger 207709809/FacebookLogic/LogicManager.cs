@@ -3,7 +3,6 @@ using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace FacebookLogic
 {
@@ -121,17 +120,7 @@ namespace FacebookLogic
 
         public void AddPost(string i_PostContent)
         {
-            Status postedStatus = null;
-
-            try
-            {
-                postedStatus = m_CurrentUser.PostStatus(i_PostContent);
-                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            m_CurrentUser.PostStatus(i_PostContent);
         }
 
         public FacebookObjectCollection<Post> FetchPosts()
