@@ -1,8 +1,8 @@
-﻿using DTO;
+﻿using System;
+using System.Collections.Generic;
+using DTO;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
-using System;
-using System.Collections.Generic;
 
 namespace FacebookLogic
 {

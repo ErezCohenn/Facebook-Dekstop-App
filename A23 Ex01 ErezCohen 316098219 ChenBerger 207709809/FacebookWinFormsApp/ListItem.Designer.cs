@@ -52,7 +52,7 @@
             this.labelTitle.Location = new System.Drawing.Point(320, 23);
             this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(608, 31);
+            this.labelTitle.Size = new System.Drawing.Size(614, 31);
             this.labelTitle.TabIndex = 1;
             // 
             // labelContent
@@ -62,9 +62,11 @@
             this.labelContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelContent.Location = new System.Drawing.Point(320, 85);
             this.labelContent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelContent.MaximumSize = new System.Drawing.Size(600, 0);
             this.labelContent.Name = "labelContent";
             this.labelContent.Size = new System.Drawing.Size(0, 29);
             this.labelContent.TabIndex = 2;
+            this.labelContent.UseMnemonic = false;
             // 
             // labelCreatedTime
             // 
@@ -73,7 +75,7 @@
             this.labelCreatedTime.Location = new System.Drawing.Point(323, 54);
             this.labelCreatedTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCreatedTime.Name = "labelCreatedTime";
-            this.labelCreatedTime.Size = new System.Drawing.Size(632, 31);
+            this.labelCreatedTime.Size = new System.Drawing.Size(625, 31);
             this.labelCreatedTime.TabIndex = 3;
             // 
             // ListItem
@@ -81,7 +83,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Turquoise;
             this.Controls.Add(this.labelCreatedTime);
             this.Controls.Add(this.labelContent);
@@ -89,7 +90,7 @@
             this.Controls.Add(this.pictureBoxImage);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ListItem";
-            this.Size = new System.Drawing.Size(1016, 224);
+            this.Size = new System.Drawing.Size(952, 224);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

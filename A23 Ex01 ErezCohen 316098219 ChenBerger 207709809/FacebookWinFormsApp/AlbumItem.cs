@@ -1,5 +1,5 @@
-﻿using FacebookWrapper.ObjectModel;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
@@ -42,8 +42,8 @@ namespace BasicFacebookFeatures
             LinkLabel photosLinkLabel = new LinkLabel();
 
             photosLinkLabel.AutoSize = true;
-            photosLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            photosLinkLabel.Location = new System.Drawing.Point(856, 15);
+            photosLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)177);
+            photosLinkLabel.Location = new System.Drawing.Point(25, 160);
             photosLinkLabel.Name = "photosLinkLabel";
             photosLinkLabel.Size = new System.Drawing.Size(72, 17);
             photosLinkLabel.TabIndex = 4;
