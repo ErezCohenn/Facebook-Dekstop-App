@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FacebookLogic;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using FacebookLogic;
 
 namespace BasicFacebookFeatures
 {
@@ -16,10 +16,17 @@ namespace BasicFacebookFeatures
 
         public FormLogin(LogicManager i_LogicManager)
         {
-            InitializeComponent();
-            initializeUIDesign();
             r_FormAppSettings = new FormAppSettings(i_LogicManager);
             r_LogicManager = i_LogicManager;
+            InitializeComponent();
+            initializeUIDesign();
+            initializeSettings();
+        }
+
+        private void initializeSettings()
+        {
+            r_FormAppSettings.SetDefaultAppId();
+            r_FormAppSettings.AddSelectedPremissions();
         }
 
         private void initializeUIDesign()
