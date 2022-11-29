@@ -44,14 +44,15 @@
             // 
             // comboAppID
             // 
-            this.comboAppID.Items.AddRange(new object[] {
-            "1450160541956417",
-            "852667072827918"});
             this.comboAppID.Location = new System.Drawing.Point(84, 7);
             this.comboAppID.Margin = new System.Windows.Forms.Padding(4);
             this.comboAppID.Name = "comboAppID";
             this.comboAppID.Size = new System.Drawing.Size(203, 28);
             this.comboAppID.TabIndex = 6;
+            this.comboAppID.Items.AddRange(new object[]
+            {
+                sr_DefaultAppId
+            });
             // 
             // label2
             // 
@@ -189,6 +190,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAppSettings";
+            this.Load += new System.EventHandler(this.FormAppSettings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

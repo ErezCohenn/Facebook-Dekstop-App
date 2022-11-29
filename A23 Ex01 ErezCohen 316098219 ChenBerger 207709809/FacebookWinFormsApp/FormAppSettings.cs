@@ -1,12 +1,13 @@
-﻿using System;
+﻿using FacebookLogic;
+using System;
 using System.Text;
 using System.Windows.Forms;
-using FacebookLogic;
 
 namespace BasicFacebookFeatures
 {
     public partial class FormAppSettings : Form
     {
+        private static readonly string sr_DefaultAppId = "852667072827918";
         private readonly LogicManager r_LogicManager;
         private readonly StringBuilder r_Permissions;
 
@@ -29,6 +30,11 @@ namespace BasicFacebookFeatures
             textBoxPermissions.Text = r_Permissions.ToString();
         }
 
+        public void SetDefaultAppId()
+        {
+            r_LogicManager.SetAppId(sr_DefaultAppId);
+        }
+
         private void buttonApply_Click(object sender, EventArgs e)
         {
             if (comboAppID.SelectedIndex == -1)
@@ -38,13 +44,13 @@ namespace BasicFacebookFeatures
             else
             {
                 r_LogicManager.SetAppId(comboAppID.SelectedItem.ToString());
-                addSelectedPremissions();
+                AddSelectedPremissions();
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
 
-        private void addSelectedPremissions()
+        public void AddSelectedPremissions()
         {
             CheckState permissionCheckState;
 
@@ -67,6 +73,14 @@ namespace BasicFacebookFeatures
         {
             comboAppID.Items.Insert(0, textBoxAppID.Text);
             comboAppID.SelectedIndex = 0;
+        }
+
+        private void FormAppSettings_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < listBoxPermissions.Items.Count; i++)
+            {
+                listBoxPermissions.SetItemChecked(i, true);
+            }
         }
     }
 }
