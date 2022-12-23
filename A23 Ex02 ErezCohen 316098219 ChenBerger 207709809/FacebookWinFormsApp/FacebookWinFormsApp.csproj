@@ -97,10 +97,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlbumItem.cs">
+    <Compile Include="UserControlItems\AlbumItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EventItem.cs">
+    <Compile Include="UserControlItems\EventItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FormAlbumGallery.cs">
@@ -127,22 +127,23 @@
     <Compile Include="FormFacebookApp.Designer.cs">
       <DependentUpon>FormFacebookApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="PageItem.cs">
+    <Compile Include="UserControlItems\ListItemFactory.cs" />
+    <Compile Include="UserControlItems\PageItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GroupItem.cs">
+    <Compile Include="UserControlItems\GroupItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ListItem.cs">
+    <Compile Include="UserControlItems\ListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ListItem.Designer.cs">
+    <Compile Include="UserControlItems\ListItem.Designer.cs">
       <DependentUpon>ListItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="PhotoItem.cs">
+    <Compile Include="UserControlItems\PhotoItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PostItem.cs">
+    <Compile Include="UserControlItems\PostItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Program.cs" />
@@ -158,7 +159,7 @@
     <EmbeddedResource Include="FormFacebookApp.resx">
       <DependentUpon>FormFacebookApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListItem.resx">
+    <EmbeddedResource Include="UserControlItems\ListItem.resx">
       <DependentUpon>ListItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -171,6 +172,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="FacebookWrapper.ObjectModel.User.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
