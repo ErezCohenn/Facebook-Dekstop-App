@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using BasicFacebookFeatures.UserControlItems;
 using DTO;
 using FacebookLogic;
 using FacebookWrapper.ObjectModel;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
@@ -29,7 +30,6 @@ namespace BasicFacebookFeatures
         private void fetchUserData()
         {
             fetchFriendsList();
-            fetchImageProfile();
             fetchProfileData();
             fetchPosts();
             fetchAlbums();
@@ -42,14 +42,14 @@ namespace BasicFacebookFeatures
         private void fetchPages()
         {
             FacebookObjectCollection<Page> pages = m_LogicManager.FetchPages();
-            PageItem pageItem = null;
+            ListItem pageItem = null;
 
             flowLayoutPanelPages.Controls.Clear();
             try
             {
                 foreach (Page page in pages)
                 {
-                    pageItem = new PageItem(page);
+                    pageItem = ListItemFactory.CreateListItem(page);
                     flowLayoutPanelPages.Controls.Add(pageItem);
                 }
             }
@@ -96,14 +96,14 @@ namespace BasicFacebookFeatures
         private void fetchAlbums()
         {
             FacebookObjectCollection<Album> albums = m_LogicManager.FetchAlbums();
-            AlbumItem albumItem = null;
+            ListItem albumItem = null;
 
             flowLayoutPanelAlbums.Controls.Clear();
             try
             {
                 foreach (Album album in albums)
                 {
-                    albumItem = new AlbumItem(album);
+                    albumItem = ListItemFactory.CreateListItem(album);
                     flowLayoutPanelAlbums.Controls.Add(albumItem);
                 }
             }
@@ -127,14 +127,14 @@ namespace BasicFacebookFeatures
         private void fetchPosts()
         {
             FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
-            PostItem postItem = null;
+            ListItem postItem = null;
 
             flowLayoutPanelPosts.Controls.Clear();
             try
             {
                 foreach (Post post in posts)
                 {
-                    postItem = new PostItem(post);
+                    postItem = ListItemFactory.CreateListItem(post);
                     flowLayoutPanelPosts.Controls.Add(postItem);
                 }
             }
@@ -154,32 +154,7 @@ namespace BasicFacebookFeatures
 
         private void fetchProfileData()
         {
-            ProfileDataDTO profileDataDTO = m_LogicManager.FetchProfileData();
-            City userCity = profileDataDTO.HomeTown;
-            Location userLocation = null;
-
-            try
-            {
-                this.labelFirstName.Text = string.Format("First Name: {0}", profileDataDTO.FirstName);
-                this.labelLastName.Text = string.Format("Last Name: {0}", profileDataDTO.LastName);
-                this.labelEmail.Text = string.Format("Email: {0}", profileDataDTO.Email);
-                this.labelBirthdate.Text = string.Format("Birthday: {0}", profileDataDTO.Birthday);
-                this.labelFacebook.Text = string.Format("{0}book", profileDataDTO.FirstName);
-                if (userCity != null)
-                {
-                    userLocation = userCity.Location;
-                    this.labelHomeTown.Text = string.Format("{0}, {1}, {2}", userLocation.Country, userLocation.City, userLocation.Street);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void fetchImageProfile()
-        {
-            pictureBoxProfile.LoadAsync(m_LogicManager.FetchUserProfileImageUrl());
+            userBindingSource.DataSource = m_LogicManager.CurrentUser;
         }
 
         private void fetchFriendsList()
@@ -213,14 +188,14 @@ namespace BasicFacebookFeatures
         private void fetchGroups()
         {
             FacebookObjectCollection<Group> groups = m_LogicManager.FetchGroups();
-            GroupItem groupItem = null;
+            ListItem groupItem = null;
 
             flowLayoutPanelGroups.Controls.Clear();
             try
             {
                 foreach (Group group in groups)
                 {
-                    groupItem = new GroupItem(group);
+                    groupItem = ListItemFactory.CreateListItem(group);
                     flowLayoutPanelGroups.Controls.Add(groupItem);
                 }
             }
@@ -245,14 +220,14 @@ namespace BasicFacebookFeatures
 
         private void showEvents(FacebookObjectCollection<Event> events)
         {
-            EventItem eventItem = null;
+            ListItem eventItem = null;
 
             flowLayoutPanelEvents.Controls.Clear();
             try
             {
                 foreach (Event eventToAdd in events)
                 {
-                    eventItem = new EventItem(eventToAdd);
+                    eventItem = ListItemFactory.CreateListItem(eventToAdd);
                     flowLayoutPanelEvents.Controls.Add(eventItem);
                 }
             }
@@ -276,7 +251,7 @@ namespace BasicFacebookFeatures
             {
                 m_LogicManager.AddPost(richtextBoxPostContent.Text);
             }
-                        catch (Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
