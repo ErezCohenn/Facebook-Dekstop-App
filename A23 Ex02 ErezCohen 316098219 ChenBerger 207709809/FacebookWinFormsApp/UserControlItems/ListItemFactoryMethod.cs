@@ -2,7 +2,7 @@
 
 namespace BasicFacebookFeatures.UserControlItems
 {
-    public static class ListItemFactory
+    public static class ListItemFactoryMethod
     {
         public static ListItem CreateListItem(FacebookObject facebookObject)
         {

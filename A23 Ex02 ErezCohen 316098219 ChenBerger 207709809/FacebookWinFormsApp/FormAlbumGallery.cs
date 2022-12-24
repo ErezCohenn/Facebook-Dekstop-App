@@ -1,6 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using BasicFacebookFeatures.UserControlItems;
 using FacebookWrapper.ObjectModel;
+using System;
+using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
@@ -17,14 +18,14 @@ namespace BasicFacebookFeatures
 
         private void initializeGallery()
         {
-            PhotoItem userPhotoItem = null;
+            ListItem userPhotoItem = null;
 
             flowLayoutPanelAlbumGallery.Controls.Clear();
             try
             {
                 foreach (Photo photo in r_Album.Photos)
                 {
-                    userPhotoItem = new PhotoItem(photo);
+                    userPhotoItem = ListItemFactoryMethod.CreateListItem(photo);
                     flowLayoutPanelAlbumGallery.Controls.Add(userPhotoItem);
                 }
             }

@@ -127,7 +127,7 @@
     <Compile Include="FormFacebookApp.Designer.cs">
       <DependentUpon>FormFacebookApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlItems\ListItemFactory.cs" />
+    <Compile Include="UserControlItems\ListItemFactoryMethod.cs" />
     <Compile Include="UserControlItems\PageItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
