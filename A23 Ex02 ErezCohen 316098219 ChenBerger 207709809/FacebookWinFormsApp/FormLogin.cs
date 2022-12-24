@@ -1,13 +1,13 @@
-﻿using System;
+﻿using FacebookLogic;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using FacebookLogic;
 
 namespace BasicFacebookFeatures
 {
     public partial class FormLogin : Form
     {
-        private readonly LogicManager r_LogicManager;
+        private readonly LoginFacade r_LoginFacade;
         private readonly FormAppSettings r_FormAppSettings;
         private bool m_IsRememberMeCheckBoxChecked = false;
         private bool m_IsLoginSucceed = false;
@@ -17,7 +17,7 @@ namespace BasicFacebookFeatures
         public FormLogin()
         {
             r_FormAppSettings = new FormAppSettings();
-            r_LogicManager = LogicManager.Instance;
+            r_LoginFacade = new LoginFacade();
             InitializeComponent();
             initializeUIDesign();
             initializeSettings();
@@ -58,8 +58,8 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                r_LogicManager.RememberLastUser(m_IsRememberMeCheckBoxChecked);
-                r_LogicManager.Login();
+                r_LoginFacade.RememberLastUser(m_IsRememberMeCheckBoxChecked);
+                r_LoginFacade.Login();
                 m_IsLoginSucceed = true;
                 this.Close();
             }

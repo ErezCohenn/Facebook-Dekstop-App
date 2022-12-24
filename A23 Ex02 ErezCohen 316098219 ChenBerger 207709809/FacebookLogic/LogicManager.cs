@@ -8,21 +8,12 @@ namespace FacebookLogic
 {
     public sealed class LogicManager
     {
-        public static LogicManager s_Instance = null;
+        private static LogicManager s_Instance = null;
         private static object s_LockObj = new object();
         private readonly FriendsCitiesManager r_FriendsCitiesManager;
         private readonly AppSettings r_AppSettings;
         private User m_CurrentUser;
         private LoginResult m_LoginResult;
-        
-        public User CurrentUser { get => m_CurrentUser; }
-
-        private LogicManager()
-        {
-            FacebookService.s_CollectionLimit = 100;
-            r_AppSettings = AppSettings.LoadFromFile();
-            r_FriendsCitiesManager = new FriendsCitiesManager();
-        }
 
         public static LogicManager Instance
         {
@@ -41,6 +32,15 @@ namespace FacebookLogic
 
                 return s_Instance;
             }
+        }
+
+        public User CurrentUser { get => m_CurrentUser; }
+
+        private LogicManager()
+        {
+            FacebookService.s_CollectionLimit = 100;
+            r_AppSettings = AppSettings.LoadFromFile();
+            r_FriendsCitiesManager = new FriendsCitiesManager();
         }
 
         public void Login()

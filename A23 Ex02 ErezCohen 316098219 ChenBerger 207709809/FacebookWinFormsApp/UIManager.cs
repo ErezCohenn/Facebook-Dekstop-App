@@ -6,7 +6,12 @@ namespace BasicFacebookFeatures
     {
         private FormFacebookApp m_FormMain;
         private FormLogin m_FormLogin;
-        private LogicManager m_LogicManager;
+        private readonly LoginFacade r_LoginFacade;
+
+        public UIManager()
+        {
+            r_LoginFacade = new LoginFacade();
+        }
 
         private void startFormMain()
         {
@@ -21,9 +26,7 @@ namespace BasicFacebookFeatures
 
         public void StartApp()
         {
-            m_LogicManager = LogicManager.Instance;
-
-            if (!m_LogicManager.TryAutomaticLogin())
+            if (!r_LoginFacade.TryAutomaticLogin())
             {
                 m_FormLogin = new FormLogin();
                 m_FormLogin.ShowDialog();
