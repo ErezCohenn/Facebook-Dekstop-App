@@ -25,7 +25,7 @@ namespace BasicFacebookFeatures
 
             if (!m_LogicManager.TryAutomaticLogin())
             {
-                m_FormLogin = new FormLogin(m_LogicManager);
+                m_FormLogin = new FormLogin();
                 m_FormLogin.ShowDialog();
                 if (m_FormLogin.IsLoginSucceed)
                 {
