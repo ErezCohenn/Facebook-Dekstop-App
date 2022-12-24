@@ -35,16 +35,16 @@
             System.Windows.Forms.Label emailLabel;
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label localeLabel;
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.Label firstNameLabel;
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelFacebook = new System.Windows.Forms.Label();
             this.listViewFriends = new System.Windows.Forms.ListView();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanelPages = new System.Windows.Forms.FlowLayoutPanel();
             this.linkLabelPages = new System.Windows.Forms.LinkLabel();
+            this.flowLayoutPanelPages = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageEvents = new System.Windows.Forms.TabPage();
             this.checkBoxFilterDates = new System.Windows.Forms.CheckBox();
             this.dateTimePickerEventFilter = new System.Windows.Forms.DateTimePicker();
@@ -142,6 +142,16 @@
             localeLabel.TabIndex = 80;
             localeLabel.Text = "Locale:";
             // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            firstNameLabel.Location = new System.Drawing.Point(12, 548);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new System.Drawing.Size(112, 25);
+            firstNameLabel.TabIndex = 74;
+            firstNameLabel.Text = "First Name:";
+            // 
             // labelFacebook
             // 
             this.labelFacebook.BackColor = System.Drawing.Color.RoyalBlue;
@@ -174,7 +184,7 @@
             this.buttonLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.buttonLogout.ForeColor = System.Drawing.Color.Red;
             this.buttonLogout.Location = new System.Drawing.Point(31, 1931);
-            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(411, 128);
             this.buttonLogout.TabIndex = 67;
@@ -186,21 +196,13 @@
             // 
             this.tabPage1.Controls.Add(this.linkLabelPages);
             this.tabPage1.Controls.Add(this.flowLayoutPanelPages);
-            this.tabPage1.Location = new System.Drawing.Point(5, 43);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(3189, 2351);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(2002, 1762);
             this.tabPage1.TabIndex = 6;
             this.tabPage1.Text = "Pages";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanelPages
-            // 
-            this.flowLayoutPanelPages.AutoScroll = true;
-            this.flowLayoutPanelPages.Location = new System.Drawing.Point(6, 31);
-            this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1011, 678);
-            this.flowLayoutPanelPages.TabIndex = 0;
             // 
             // linkLabelPages
             // 
@@ -215,18 +217,26 @@
             this.linkLabelPages.UseMnemonic = false;
             this.linkLabelPages.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelPages_LinkClicked);
             // 
+            // flowLayoutPanelPages
+            // 
+            this.flowLayoutPanelPages.AutoScroll = true;
+            this.flowLayoutPanelPages.Location = new System.Drawing.Point(6, 31);
+            this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1011, 678);
+            this.flowLayoutPanelPages.TabIndex = 0;
+            // 
             // tabPageEvents
             // 
             this.tabPageEvents.AutoScroll = true;
-            this.tabPageEvents.Controls.Add(this.checkBoxFilterDates);
-            this.tabPageEvents.Controls.Add(this.dateTimePickerEventFilter);
-            this.tabPageEvents.Controls.Add(this.linkLabelRefreshEvents);
             this.tabPageEvents.Controls.Add(this.label1);
+            this.tabPageEvents.Controls.Add(this.dateTimePickerEventFilter);
+            this.tabPageEvents.Controls.Add(this.checkBoxFilterDates);
+            this.tabPageEvents.Controls.Add(this.linkLabelRefreshEvents);
             this.tabPageEvents.Controls.Add(this.flowLayoutPanelEvents);
-            this.tabPageEvents.Location = new System.Drawing.Point(5, 43);
+            this.tabPageEvents.Location = new System.Drawing.Point(4, 25);
             this.tabPageEvents.Name = "tabPageEvents";
-            this.tabPageEvents.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageEvents.Size = new System.Drawing.Size(3189, 2351);
+            this.tabPageEvents.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageEvents.Size = new System.Drawing.Size(2002, 1762);
             this.tabPageEvents.TabIndex = 3;
             this.tabPageEvents.Text = "Events";
             this.tabPageEvents.UseVisualStyleBackColor = true;
@@ -234,7 +244,7 @@
             // checkBoxFilterDates
             // 
             this.checkBoxFilterDates.AutoSize = true;
-            this.checkBoxFilterDates.Location = new System.Drawing.Point(818, 149);
+            this.checkBoxFilterDates.Location = new System.Drawing.Point(303, 58);
             this.checkBoxFilterDates.Name = "checkBoxFilterDates";
             this.checkBoxFilterDates.Size = new System.Drawing.Size(115, 21);
             this.checkBoxFilterDates.TabIndex = 8;
@@ -246,9 +256,9 @@
             // 
             this.dateTimePickerEventFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTimePickerEventFilter.Enabled = false;
-            this.dateTimePickerEventFilter.Location = new System.Drawing.Point(1120, 138);
+            this.dateTimePickerEventFilter.Location = new System.Drawing.Point(424, 58);
             this.dateTimePickerEventFilter.Name = "dateTimePickerEventFilter";
-            this.dateTimePickerEventFilter.Size = new System.Drawing.Size(869, 28);
+            this.dateTimePickerEventFilter.Size = new System.Drawing.Size(386, 22);
             this.dateTimePickerEventFilter.TabIndex = 7;
             this.dateTimePickerEventFilter.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
@@ -258,7 +268,7 @@
             this.linkLabelRefreshEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.linkLabelRefreshEvents.Location = new System.Drawing.Point(20, 10);
             this.linkLabelRefreshEvents.Name = "linkLabelRefreshEvents";
-            this.linkLabelRefreshEvents.Size = new System.Drawing.Size(178, 31);
+            this.linkLabelRefreshEvents.Size = new System.Drawing.Size(142, 25);
             this.linkLabelRefreshEvents.TabIndex = 6;
             this.linkLabelRefreshEvents.TabStop = true;
             this.linkLabelRefreshEvents.Text = "Refresh events";
@@ -269,9 +279,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(20, 114);
+            this.label1.Location = new System.Drawing.Point(20, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(328, 31);
+            this.label1.Size = new System.Drawing.Size(262, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Filter events by specific date:";
             // 
@@ -290,10 +300,10 @@
             // 
             this.tabPageGroups.Controls.Add(this.linkLabelRefreshGroups);
             this.tabPageGroups.Controls.Add(this.flowLayoutPanelGroups);
-            this.tabPageGroups.Location = new System.Drawing.Point(5, 43);
+            this.tabPageGroups.Location = new System.Drawing.Point(4, 25);
             this.tabPageGroups.Name = "tabPageGroups";
-            this.tabPageGroups.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageGroups.Size = new System.Drawing.Size(3189, 2351);
+            this.tabPageGroups.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGroups.Size = new System.Drawing.Size(2002, 1762);
             this.tabPageGroups.TabIndex = 2;
             this.tabPageGroups.Text = "Groups";
             this.tabPageGroups.UseVisualStyleBackColor = true;
@@ -325,11 +335,11 @@
             this.tabPageAlbums.AutoScroll = true;
             this.tabPageAlbums.Controls.Add(this.linkLabelRefreshAlbums);
             this.tabPageAlbums.Controls.Add(this.flowLayoutPanelAlbums);
-            this.tabPageAlbums.Location = new System.Drawing.Point(5, 43);
-            this.tabPageAlbums.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageAlbums.Location = new System.Drawing.Point(4, 25);
+            this.tabPageAlbums.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageAlbums.Name = "tabPageAlbums";
-            this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageAlbums.Size = new System.Drawing.Size(3189, 2351);
+            this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPageAlbums.Size = new System.Drawing.Size(2002, 1762);
             this.tabPageAlbums.TabIndex = 1;
             this.tabPageAlbums.Text = "Albums";
             this.tabPageAlbums.UseVisualStyleBackColor = true;
@@ -340,7 +350,7 @@
             this.linkLabelRefreshAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.linkLabelRefreshAlbums.Location = new System.Drawing.Point(18, 10);
             this.linkLabelRefreshAlbums.Name = "linkLabelRefreshAlbums";
-            this.linkLabelRefreshAlbums.Size = new System.Drawing.Size(184, 31);
+            this.linkLabelRefreshAlbums.Size = new System.Drawing.Size(147, 25);
             this.linkLabelRefreshAlbums.TabIndex = 4;
             this.linkLabelRefreshAlbums.TabStop = true;
             this.linkLabelRefreshAlbums.Text = "Refresh albums";
@@ -353,7 +363,7 @@
             this.flowLayoutPanelAlbums.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanelAlbums.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelAlbums.Location = new System.Drawing.Point(-11, 81);
-            this.flowLayoutPanelAlbums.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanelAlbums.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelAlbums.Name = "flowLayoutPanelAlbums";
             this.flowLayoutPanelAlbums.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanelAlbums.TabIndex = 0;
@@ -366,11 +376,11 @@
             this.tabPagePosts.Controls.Add(this.buttonPost);
             this.tabPagePosts.Controls.Add(this.flowLayoutPanelPosts);
             this.tabPagePosts.Controls.Add(this.richtextBoxPostContent);
-            this.tabPagePosts.Location = new System.Drawing.Point(5, 43);
-            this.tabPagePosts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPagePosts.Location = new System.Drawing.Point(4, 25);
+            this.tabPagePosts.Margin = new System.Windows.Forms.Padding(4);
             this.tabPagePosts.Name = "tabPagePosts";
-            this.tabPagePosts.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPagePosts.Size = new System.Drawing.Size(3189, 2351);
+            this.tabPagePosts.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPagePosts.Size = new System.Drawing.Size(2002, 1762);
             this.tabPagePosts.TabIndex = 0;
             this.tabPagePosts.Text = "Posts";
             this.tabPagePosts.UseVisualStyleBackColor = true;
@@ -381,7 +391,7 @@
             this.linkLabelRefreshPosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.linkLabelRefreshPosts.Location = new System.Drawing.Point(18, 10);
             this.linkLabelRefreshPosts.Name = "linkLabelRefreshPosts";
-            this.linkLabelRefreshPosts.Size = new System.Drawing.Size(164, 31);
+            this.linkLabelRefreshPosts.Size = new System.Drawing.Size(131, 25);
             this.linkLabelRefreshPosts.TabIndex = 3;
             this.linkLabelRefreshPosts.TabStop = true;
             this.linkLabelRefreshPosts.Text = "Refresh posts";
@@ -393,7 +403,7 @@
             this.buttonPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.buttonPost.Location = new System.Drawing.Point(2114, 1480);
-            this.buttonPost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPost.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPost.Name = "buttonPost";
             this.buttonPost.Size = new System.Drawing.Size(255, 216);
             this.buttonPost.TabIndex = 1;
@@ -406,7 +416,7 @@
             this.flowLayoutPanelPosts.AutoScroll = true;
             this.flowLayoutPanelPosts.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanelPosts.Location = new System.Drawing.Point(26, 41);
-            this.flowLayoutPanelPosts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanelPosts.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelPosts.Name = "flowLayoutPanelPosts";
             this.flowLayoutPanelPosts.Size = new System.Drawing.Size(1214, 711);
             this.flowLayoutPanelPosts.TabIndex = 2;
@@ -416,7 +426,7 @@
             this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richtextBoxPostContent.Location = new System.Drawing.Point(51, 1493);
-            this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4);
             this.richtextBoxPostContent.Name = "richtextBoxPostContent";
             this.richtextBoxPostContent.Size = new System.Drawing.Size(3983, 205);
             this.richtextBoxPostContent.TabIndex = 0;
@@ -428,7 +438,7 @@
             this.tabPageFriendsChart.Controls.Add(this.chart);
             this.tabPageFriendsChart.Location = new System.Drawing.Point(4, 25);
             this.tabPageFriendsChart.Name = "tabPageFriendsChart";
-            this.tabPageFriendsChart.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageFriendsChart.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageFriendsChart.Size = new System.Drawing.Size(2002, 1762);
             this.tabPageFriendsChart.TabIndex = 4;
             this.tabPageFriendsChart.Text = "Cities Distribution";
@@ -449,19 +459,19 @@
             // 
             // chart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
             this.chart.Location = new System.Drawing.Point(3, 3);
             this.chart.Name = "chart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.Name = "FriendsCitiesChart";
-            this.chart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "FriendsCitiesChart";
+            this.chart.Series.Add(series1);
             this.chart.Size = new System.Drawing.Size(1996, 1756);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
@@ -478,7 +488,7 @@
             this.tabControl1.Controls.Add(this.tabPageEvents);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(525, 295);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(2010, 1791);
@@ -553,16 +563,6 @@
             this.localeLabel1.Size = new System.Drawing.Size(160, 21);
             this.localeLabel1.TabIndex = 81;
             // 
-            // firstNameLabel
-            // 
-            firstNameLabel.AutoSize = true;
-            firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            firstNameLabel.Location = new System.Drawing.Point(12, 548);
-            firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(112, 25);
-            firstNameLabel.TabIndex = 74;
-            firstNameLabel.Text = "First Name:";
-            // 
             // FormFacebookApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -586,7 +586,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelFacebook);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormFacebookApp";
             this.Text = "Facebook App";
             this.tabPage1.ResumeLayout(false);
