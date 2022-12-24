@@ -1,21 +1,22 @@
-﻿using System;
+﻿using FacebookLogic;
+using System;
 using System.Text;
 using System.Windows.Forms;
-using FacebookLogic;
 
 namespace BasicFacebookFeatures
 {
     public partial class FormAppSettings : Form
     {
         private static readonly string sr_DefaultAppId = "852667072827918";
-        private readonly LogicManager r_LogicManager;
+        private readonly AppSettingsFacade r_AppSettingsFacade;
         private readonly StringBuilder r_Permissions;
 
         public FormAppSettings()
         {
             InitializeComponent();
             r_Permissions = new StringBuilder();
-            r_LogicManager = LogicManager.Instance;
+            r_AppSettingsFacade = new AppSettingsFacade();
+
         }
 
         private void buttonRefreshPermissions_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace BasicFacebookFeatures
 
         public void SetDefaultAppId()
         {
-            r_LogicManager.SetAppId(sr_DefaultAppId);
+            r_AppSettingsFacade.SetAppId(sr_DefaultAppId);
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                r_LogicManager.SetAppId(comboAppID.SelectedItem.ToString());
+                r_AppSettingsFacade.SetAppId(comboAppID.SelectedItem.ToString());
                 AddSelectedPremissions();
                 DialogResult = DialogResult.OK;
                 this.Close();
@@ -59,7 +60,7 @@ namespace BasicFacebookFeatures
                 permissionCheckState = listBoxPermissions.GetItemCheckState(i);
                 if (permissionCheckState == CheckState.Checked)
                 {
-                    r_LogicManager.AddPermission(listBoxPermissions.Items[i].ToString());
+                    r_AppSettingsFacade.AddPermission(listBoxPermissions.Items[i].ToString());
                 }
             }
         }

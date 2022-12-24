@@ -39,9 +39,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="AppSettingsFacade.cs" />
+    <Compile Include="FacebookFeaturesFacade.cs" />
     <Compile Include="FriendsCitiesManager.cs" />
     <Compile Include="LogicManager.cs" />
     <Compile Include="LoginException.cs" />
+    <Compile Include="LoginFacade.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DTO">

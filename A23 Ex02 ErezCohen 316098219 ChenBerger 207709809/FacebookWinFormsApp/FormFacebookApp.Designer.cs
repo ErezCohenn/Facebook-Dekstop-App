@@ -430,7 +430,7 @@
             this.richtextBoxPostContent.Name = "richtextBoxPostContent";
             this.richtextBoxPostContent.Size = new System.Drawing.Size(3983, 205);
             this.richtextBoxPostContent.TabIndex = 0;
-            this.richtextBoxPostContent.Text = "";
+            this.richtextBoxPostContent.Text = string.Empty;
             // 
             // tabPageFriendsChart
             // 

@@ -14,8 +14,8 @@ namespace BasicFacebookFeatures
     {
         private const string k_SeriesCityFriendsName = "FriendsCitiesChart";
         private const string k_NoDataToShowMessage = "No items to retrieve";
-        private readonly LogicManager r_LogicManager;
         private ImageList m_FriendsImagesList;
+        private readonly FacebookFeaturesFacade r_FacebookFeaturesFacade;
         private bool m_IsLogoutButtonClicked;
 
         public bool IsLogoutButtonClicked { get => m_IsLogoutButtonClicked; }
@@ -23,8 +23,8 @@ namespace BasicFacebookFeatures
         public FormFacebookApp()
         {
             InitializeComponent();
-            r_LogicManager = LogicManager.Instance;
             m_IsLogoutButtonClicked = false;
+            r_FacebookFeaturesFacade = new FacebookFeaturesFacade();
         }
         protected override void OnShown(EventArgs e)
         {
@@ -46,7 +46,7 @@ namespace BasicFacebookFeatures
 
         private void fetchPages()
         {
-            FacebookObjectCollection<Page> pages = r_LogicManager.FetchPages();
+            FacebookObjectCollection<Page> pages = r_FacebookFeaturesFacade.FetchPages();
             ListItem pageItem = null;
 
 
@@ -78,7 +78,7 @@ namespace BasicFacebookFeatures
 
         private void fetchFriendsCitiesChart()
         {
-            Dictionary<string, int> friendsCitiesList = r_LogicManager.FetchFriendsCities();
+            Dictionary<string, int> friendsCitiesList = r_FacebookFeaturesFacade.FetchFriendsCities();
 
             chart.Invoke(new Action(() => chart.Series.FindByName(k_SeriesCityFriendsName).Points.Clear()));
             try
@@ -101,7 +101,7 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbums()
         {
-            FacebookObjectCollection<Album> albums = r_LogicManager.FetchAlbums();
+            FacebookObjectCollection<Album> albums = r_FacebookFeaturesFacade.FetchAlbums();
             ListItem albumItem = null;
 
             flowLayoutPanelAlbums.Invoke(new Action(() => flowLayoutPanelAlbums.Controls.Clear()));
@@ -134,7 +134,7 @@ namespace BasicFacebookFeatures
         private void fetchPosts()
         {
 
-            FacebookObjectCollection<Post> posts = r_LogicManager.FetchPosts();
+            FacebookObjectCollection<Post> posts = r_FacebookFeaturesFacade.FetchPosts();
             ListItem postItem = null;
 
             flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Clear()));
@@ -162,7 +162,7 @@ namespace BasicFacebookFeatures
 
         private void fetchProfileData()
         {
-            userBindingSource.DataSource = r_LogicManager.CurrentUser;
+            userBindingSource.DataSource = r_FacebookFeaturesFacade.GetCurrentUser();
         }
 
         private void fetchFriendsList()
@@ -177,7 +177,7 @@ namespace BasicFacebookFeatures
 
             try
             {
-                friendsListDTO = r_LogicManager.FetchFriendsList();
+                friendsListDTO = r_FacebookFeaturesFacade.FetchFriendsList();
                 foreach (KeyValuePair<string, Image> friend in friendsListDTO.FriendsList)
                 {
                     listViewFriends.Invoke(new Action(() => listViewFriends.Items.Add(friend.Key, friendIndex++)));
@@ -195,7 +195,7 @@ namespace BasicFacebookFeatures
         private void fetchGroups()
         {
 
-            FacebookObjectCollection<Group> groups = r_LogicManager.FetchGroups();
+            FacebookObjectCollection<Group> groups = r_FacebookFeaturesFacade.FetchGroups();
             ListItem groupItem = null;
 
             flowLayoutPanelGroups.Invoke(new Action(() => flowLayoutPanelGroups.Controls.Clear()));
@@ -223,7 +223,7 @@ namespace BasicFacebookFeatures
 
         private void fetchEvents()
         {
-            showEvents(r_LogicManager.FetchEvents());
+            showEvents(r_FacebookFeaturesFacade.FetchEvents());
         }
 
         private void showEvents(FacebookObjectCollection<Event> events)
@@ -258,7 +258,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                new Thread(() => r_LogicManager.AddPost(richtextBoxPostContent.Text));
+                new Thread(() => r_FacebookFeaturesFacade.AddPost(richtextBoxPostContent.Text));
             }
             catch (Exception ex)
             {
@@ -268,7 +268,7 @@ namespace BasicFacebookFeatures
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            r_LogicManager.Logout();
+            r_FacebookFeaturesFacade.Logout();
             m_IsLogoutButtonClicked = true;
             this.Close();
         }
@@ -310,7 +310,7 @@ namespace BasicFacebookFeatures
 
         private void fetchEventsByDate()
         {
-            showEvents(r_LogicManager.FetchEventsByDate(dateTimePickerEventFilter.Value.Date));
+            showEvents(r_FacebookFeaturesFacade.FetchEventsByDate(dateTimePickerEventFilter.Value.Date));
         }
 
         private void checkBoxFilterDates_CheckedChanged(object sender, EventArgs e)
