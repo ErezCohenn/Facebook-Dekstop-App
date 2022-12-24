@@ -7,59 +7,66 @@ namespace FacebookLogic
 {
     public class FacebookFeaturesFacade
     {
+
+        private readonly LogicManager r_LogicManager;
+
+        public FacebookFeaturesFacade()
+        {
+            r_LogicManager = LogicManager.Instance;
+        }
         public FacebookObjectCollection<Page> FetchPages()
         {
-            return LogicManager.Instance.FetchPages();
+            return r_LogicManager.FetchPages();
         }
 
         public Dictionary<string, int> FetchFriendsCities()
         {
-            return LogicManager.Instance.FetchFriendsCities();
+            return r_LogicManager.FetchFriendsCities();
         }
 
         public FacebookObjectCollection<Post> FetchPosts()
         {
-            return LogicManager.Instance.FetchPosts();
+            return r_LogicManager.FetchPosts();
         }
 
         public FriendsListDTO FetchFriendsList()
         {
-            return LogicManager.Instance.FetchFriendsList();
+            return r_LogicManager.FetchFriendsList();
         }
 
         public FacebookObjectCollection<Group> FetchGroups()
         {
-            return LogicManager.Instance.FetchGroups();
+            return r_LogicManager.FetchGroups();
         }
 
         public FacebookObjectCollection<Album> FetchAlbums()
         {
-            return LogicManager.Instance.FetchAlbums();
+            return r_LogicManager.FetchAlbums();
         }
 
         public FacebookObjectCollection<Event> FetchEventsByDate(DateTime i_DateTime)
         {
-            return LogicManager.Instance.FetchEventsByDate(i_DateTime);
+            return r_LogicManager.FetchEventsByDate(i_DateTime);
         }
 
         public void AddPost(string i_PostContent)
         {
-            LogicManager.Instance.AddPost(i_PostContent);
+            r_LogicManager.AddPost(i_PostContent);
         }
 
         public void Logout()
         {
-            LogicManager.Instance.Logout();
+            r_LogicManager.Logout();
         }
 
         public FacebookObjectCollection<Event> FetchEvents()
         {
-            return LogicManager.Instance.FetchEvents();
+            return r_LogicManager.FetchEvents();
         }
 
         public User GetCurrentUser()
         {
-            return LogicManager.Instance.CurrentUser;
+            return r_LogicManager.CurrentUser;
         }
     }
 }
