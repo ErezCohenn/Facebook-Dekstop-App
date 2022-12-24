@@ -49,7 +49,7 @@ namespace BasicFacebookFeatures
             {
                 foreach (Page page in pages)
                 {
-                    pageItem = ListItemFactory.CreateListItem(page);
+                    pageItem = ListItemFactoryMethod.CreateListItem(page);
                     flowLayoutPanelPages.Controls.Add(pageItem);
                 }
             }
@@ -103,7 +103,7 @@ namespace BasicFacebookFeatures
             {
                 foreach (Album album in albums)
                 {
-                    albumItem = ListItemFactory.CreateListItem(album);
+                    albumItem = ListItemFactoryMethod.CreateListItem(album);
                     flowLayoutPanelAlbums.Controls.Add(albumItem);
                 }
             }
@@ -134,7 +134,7 @@ namespace BasicFacebookFeatures
             {
                 foreach (Post post in posts)
                 {
-                    postItem = ListItemFactory.CreateListItem(post);
+                    postItem = ListItemFactoryMethod.CreateListItem(post);
                     flowLayoutPanelPosts.Controls.Add(postItem);
                 }
             }
@@ -195,7 +195,7 @@ namespace BasicFacebookFeatures
             {
                 foreach (Group group in groups)
                 {
-                    groupItem = ListItemFactory.CreateListItem(group);
+                    groupItem = ListItemFactoryMethod.CreateListItem(group);
                     flowLayoutPanelGroups.Controls.Add(groupItem);
                 }
             }
@@ -227,7 +227,7 @@ namespace BasicFacebookFeatures
             {
                 foreach (Event eventToAdd in events)
                 {
-                    eventItem = ListItemFactory.CreateListItem(eventToAdd);
+                    eventItem = ListItemFactoryMethod.CreateListItem(eventToAdd);
                     flowLayoutPanelEvents.Controls.Add(eventItem);
                 }
             }
