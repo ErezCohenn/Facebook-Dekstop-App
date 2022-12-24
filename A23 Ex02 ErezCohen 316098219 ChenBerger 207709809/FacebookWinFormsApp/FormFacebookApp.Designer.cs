@@ -67,7 +67,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.tabPage1.SuspendLayout();
-            this.flowLayoutPanelPages.SuspendLayout();
             this.tabPageEvents.SuspendLayout();
             this.tabPageGroups.SuspendLayout();
             this.tabPageAlbums.SuspendLayout();
@@ -158,7 +157,7 @@
             // 
             // listViewFriends
             // 
-            this.listViewFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.listViewFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewFriends.HideSelection = false;
             this.listViewFriends.Location = new System.Drawing.Point(1376, 188);
@@ -184,6 +183,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.linkLabelPages);
             this.tabPage1.Controls.Add(this.flowLayoutPanelPages);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
@@ -196,17 +196,16 @@
             // flowLayoutPanelPages
             // 
             this.flowLayoutPanelPages.AutoScroll = true;
-            this.flowLayoutPanelPages.Controls.Add(this.linkLabelPages);
-            this.flowLayoutPanelPages.Location = new System.Drawing.Point(6, 6);
+            this.flowLayoutPanelPages.Location = new System.Drawing.Point(6, 31);
             this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1011, 703);
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1011, 678);
             this.flowLayoutPanelPages.TabIndex = 0;
             // 
             // linkLabelPages
             // 
             this.linkLabelPages.AutoSize = true;
             this.linkLabelPages.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.linkLabelPages.Location = new System.Drawing.Point(3, 0);
+            this.linkLabelPages.Location = new System.Drawing.Point(6, 3);
             this.linkLabelPages.Name = "linkLabelPages";
             this.linkLabelPages.Size = new System.Drawing.Size(138, 25);
             this.linkLabelPages.TabIndex = 7;
@@ -413,14 +412,14 @@
             // 
             // richtextBoxPostContent
             // 
-            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richtextBoxPostContent.Location = new System.Drawing.Point(21, 611);
             this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4);
             this.richtextBoxPostContent.Name = "richtextBoxPostContent";
             this.richtextBoxPostContent.Size = new System.Drawing.Size(836, 105);
             this.richtextBoxPostContent.TabIndex = 0;
-            this.richtextBoxPostContent.Text = string.Empty;
+            this.richtextBoxPostContent.Text = "";
             // 
             // tabPageFriendsChart
             // 
@@ -468,8 +467,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPageFriendsChart);
             this.tabControl1.Controls.Add(this.tabPagePosts);
@@ -506,8 +505,7 @@
             this.Text = "Facebook App";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            this.flowLayoutPanelPages.ResumeLayout(false);
-            this.flowLayoutPanelPages.PerformLayout();
+            this.tabPage1.PerformLayout();
             this.tabPageEvents.ResumeLayout(false);
             this.tabPageEvents.PerformLayout();
             this.tabPageGroups.ResumeLayout(false);

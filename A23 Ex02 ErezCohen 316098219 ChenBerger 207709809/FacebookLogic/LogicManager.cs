@@ -6,18 +6,39 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookLogic
 {
-    public class LogicManager
+    public sealed class LogicManager
     {
+        public static LogicManager s_Instance = null;
+        private static object s_LockObj = new object();
         private readonly FriendsCitiesManager r_FriendsCitiesManager;
         private readonly AppSettings r_AppSettings;
         private User m_CurrentUser;
         private LoginResult m_LoginResult;
 
-        public LogicManager()
+        private LogicManager()
         {
             FacebookService.s_CollectionLimit = 100;
             r_AppSettings = AppSettings.LoadFromFile();
             r_FriendsCitiesManager = new FriendsCitiesManager();
+        }
+
+        public static LogicManager Instance
+        {
+            get
+            {
+                if (s_Instance == null)
+                {
+                    lock (s_LockObj)
+                    {
+                        if (s_Instance == null)
+                        {
+                            s_Instance = new LogicManager();
+                        }
+                    }
+                }
+
+                return s_Instance;
+            }
         }
 
         public void Login()

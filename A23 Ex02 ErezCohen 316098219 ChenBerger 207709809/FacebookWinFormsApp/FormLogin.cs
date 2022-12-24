@@ -14,10 +14,10 @@ namespace BasicFacebookFeatures
 
         public bool IsLoginSucceed { get => m_IsLoginSucceed; }
 
-        public FormLogin(LogicManager i_LogicManager)
+        public FormLogin()
         {
-            r_FormAppSettings = new FormAppSettings(i_LogicManager);
-            r_LogicManager = i_LogicManager;
+            r_FormAppSettings = new FormAppSettings();
+            r_LogicManager = LogicManager.Instance;
             InitializeComponent();
             initializeUIDesign();
             initializeSettings();
