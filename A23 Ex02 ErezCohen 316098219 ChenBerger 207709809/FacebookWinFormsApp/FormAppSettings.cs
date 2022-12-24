@@ -11,11 +11,11 @@ namespace BasicFacebookFeatures
         private readonly LogicManager r_LogicManager;
         private readonly StringBuilder r_Permissions;
 
-        public FormAppSettings(LogicManager i_LogicManager)
+        public FormAppSettings()
         {
             InitializeComponent();
             r_Permissions = new StringBuilder();
-            r_LogicManager = i_LogicManager;
+            r_LogicManager = LogicManager.Instance;
         }
 
         private void buttonRefreshPermissions_Click(object sender, EventArgs e)

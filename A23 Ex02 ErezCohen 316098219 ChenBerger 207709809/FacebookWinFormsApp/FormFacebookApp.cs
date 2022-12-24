@@ -1,4 +1,10 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
 ﻿using BasicFacebookFeatures.UserControlItems;
+
 using DTO;
 using FacebookLogic;
 using FacebookWrapper.ObjectModel;
@@ -13,44 +19,50 @@ namespace BasicFacebookFeatures
     {
         private const string k_SeriesCityFriendsName = "FriendsCitiesChart";
         private const string k_NoDataToShowMessage = "No items to retrieve";
-        private LogicManager m_LogicManager;
+        private readonly LogicManager r_LogicManager;
         private ImageList m_FriendsImagesList;
         private bool m_IsLogoutButtonClicked;
 
         public bool IsLogoutButtonClicked { get => m_IsLogoutButtonClicked; }
 
-        public FormFacebookApp(LogicManager i_LogicManager)
+        public FormFacebookApp()
         {
             InitializeComponent();
-            m_LogicManager = i_LogicManager;
+            r_LogicManager = LogicManager.Instance;
             m_IsLogoutButtonClicked = false;
+        }
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
             fetchUserData();
         }
-
         private void fetchUserData()
         {
-            fetchFriendsList();
-            fetchProfileData();
-            fetchPosts();
-            fetchAlbums();
-            fetchGroups();
-            fetchEvents();
-            fetchFriendsCitiesChart();
-            fetchPages();
+            new Thread(fetchFriendsList).Start();
+            new Thread(fetchImageProfile).Start();
+            new Thread(fetchProfileData).Start();
+            new Thread(fetchPosts).Start();
+            new Thread(fetchAlbums).Start();
+            new Thread(fetchGroups).Start();
+            new Thread(fetchEvents).Start();
+            new Thread(fetchFriendsCitiesChart).Start();
+            new Thread(fetchPages).Start();
+
         }
 
         private void fetchPages()
         {
-            FacebookObjectCollection<Page> pages = m_LogicManager.FetchPages();
-            ListItem pageItem = null;
+            FacebookObjectCollection<Page> pages = r_LogicManager.FetchPages();
+            PageItem pageItem = null;
 
-            flowLayoutPanelPages.Controls.Clear();
+
+            flowLayoutPanelPages.Invoke(new Action(() => flowLayoutPanelPages.Controls.Clear()));
             try
             {
                 foreach (Page page in pages)
                 {
                     pageItem = ListItemFactoryMethod.CreateListItem(page);
-                    flowLayoutPanelPages.Controls.Add(pageItem);
+                    flowLayoutPanelPages.Invoke(new Action(() => flowLayoutPanelPages.Controls.Add(pageItem)));
                 }
             }
             catch (System.ArgumentException)
@@ -63,23 +75,23 @@ namespace BasicFacebookFeatures
 
             if (flowLayoutPanelPages.Controls.Count == 0)
             {
-                flowLayoutPanelPages.Controls.Add(new Label()
+                flowLayoutPanelPages.Invoke(new Action(() => flowLayoutPanelPages.Controls.Add(new Label()
                 {
                     Text = k_NoDataToShowMessage
-                });
+                })));
             }
         }
 
         private void fetchFriendsCitiesChart()
         {
-            Dictionary<string, int> friendsCitiesList = m_LogicManager.FetchFriendsCities();
+            Dictionary<string, int> friendsCitiesList = r_LogicManager.FetchFriendsCities();
 
-            chart.Series.FindByName(k_SeriesCityFriendsName).Points.Clear();
+            chart.Invoke(new Action(() => chart.Series.FindByName(k_SeriesCityFriendsName).Points.Clear()));
             try
             {
                 foreach (KeyValuePair<string, int> city in friendsCitiesList)
                 {
-                    chart.Series.FindByName(k_SeriesCityFriendsName).Points.AddXY(city.Key, city.Value.ToString());
+                    chart.Invoke(new Action(() => chart.Series.FindByName(k_SeriesCityFriendsName).Points.AddXY(city.Key, city.Value.ToString())));
                 }
             }
             catch (Exception ex)
@@ -89,22 +101,23 @@ namespace BasicFacebookFeatures
 
             if (chart.Series.FindByName(k_SeriesCityFriendsName).Points.Count == 0)
             {
-                chart.Text = k_NoDataToShowMessage;
+                chart.Invoke(new Action(() => Text = k_NoDataToShowMessage));
             }
         }
 
         private void fetchAlbums()
         {
-            FacebookObjectCollection<Album> albums = m_LogicManager.FetchAlbums();
-            ListItem albumItem = null;
-
-            flowLayoutPanelAlbums.Controls.Clear();
+            FacebookObjectCollection<Album> albums = r_LogicManager.FetchAlbums();
+            AlbumItem albumItem = null;
+            
+            flowLayoutPanelAlbums.Invoke(new Action(() => flowLayoutPanelAlbums.Controls.Clear()));
             try
             {
                 foreach (Album album in albums)
                 {
                     albumItem = ListItemFactoryMethod.CreateListItem(album);
-                    flowLayoutPanelAlbums.Controls.Add(albumItem);
+                    flowLayoutPanelAlbums.Invoke(new Action(() => flowLayoutPanelAlbums.Controls.Add(albumItem)));
+
                 }
             }
             catch (System.ArgumentException)
@@ -117,25 +130,26 @@ namespace BasicFacebookFeatures
 
             if (flowLayoutPanelAlbums.Controls.Count == 0)
             {
-                flowLayoutPanelAlbums.Controls.Add(new Label()
+                flowLayoutPanelAlbums.Invoke(new Action(() => flowLayoutPanelAlbums.Controls.Add(new Label()
                 {
                     Text = k_NoDataToShowMessage
-                });
+                })));
             }
         }
 
         private void fetchPosts()
         {
-            FacebookObjectCollection<Post> posts = m_LogicManager.FetchPosts();
-            ListItem postItem = null;
 
-            flowLayoutPanelPosts.Controls.Clear();
+            FacebookObjectCollection<Post> posts = r_LogicManager.FetchPosts();
+            PostItem postItem = null;
+            
+            flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Clear()));
             try
             {
                 foreach (Post post in posts)
                 {
                     postItem = ListItemFactoryMethod.CreateListItem(post);
-                    flowLayoutPanelPosts.Controls.Add(postItem);
+                    flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Add(postItem)));
                 }
             }
             catch (Exception ex)
@@ -145,10 +159,10 @@ namespace BasicFacebookFeatures
 
             if (flowLayoutPanelPosts.Controls.Count == 0)
             {
-                flowLayoutPanelPosts.Controls.Add(new Label()
+                flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Add(new Label()
                 {
                     Text = k_NoDataToShowMessage
-                });
+                })));
             }
         }
 
@@ -161,23 +175,22 @@ namespace BasicFacebookFeatures
         {
             FriendsListDTO friendsListDTO;
             int friendIndex = 0;
-
-            listViewFriends.Items.Clear();
-            listViewFriends.View = View.Details;
-            listViewFriends.Columns.Add("Friends list:", 200);
+            listViewFriends.Invoke(new Action(() => listViewFriends.Items.Clear()));
+            listViewFriends.Invoke(new Action(() => listViewFriends.View = View.Details));
+            listViewFriends.Invoke(new Action(() => listViewFriends.Columns.Add("Friends list:", 200)));
             m_FriendsImagesList = new ImageList();
             m_FriendsImagesList.ImageSize = new Size(50, 50);
 
             try
             {
-                friendsListDTO = m_LogicManager.FetchFriendsList();
+                friendsListDTO = r_LogicManager.FetchFriendsList();
                 foreach (KeyValuePair<string, Image> friend in friendsListDTO.FriendsList)
                 {
-                    listViewFriends.Items.Add(friend.Key, friendIndex++);
+                    listViewFriends.Invoke(new Action(() => listViewFriends.Items.Add(friend.Key, friendIndex++)));
                     m_FriendsImagesList.Images.Add(friend.Value);
                 }
 
-                listViewFriends.SmallImageList = m_FriendsImagesList;
+                listViewFriends.Invoke(new Action(() => listViewFriends.SmallImageList = m_FriendsImagesList));
             }
             catch (Exception ex)
             {
@@ -187,16 +200,17 @@ namespace BasicFacebookFeatures
 
         private void fetchGroups()
         {
-            FacebookObjectCollection<Group> groups = m_LogicManager.FetchGroups();
-            ListItem groupItem = null;
 
-            flowLayoutPanelGroups.Controls.Clear();
+            FacebookObjectCollection<Group> groups = r_LogicManager.FetchGroups();
+            GroupItem groupItem = null;
+            
+            flowLayoutPanelGroups.Invoke(new Action(() => flowLayoutPanelGroups.Controls.Clear()));
             try
             {
                 foreach (Group group in groups)
                 {
                     groupItem = ListItemFactoryMethod.CreateListItem(group);
-                    flowLayoutPanelGroups.Controls.Add(groupItem);
+                    flowLayoutPanelGroups.Invoke(new Action(() => flowLayoutPanelGroups.Controls.Add(groupItem)));
                 }
             }
             catch (Exception ex)
@@ -206,29 +220,30 @@ namespace BasicFacebookFeatures
 
             if (flowLayoutPanelGroups.Controls.Count == 0)
             {
-                flowLayoutPanelGroups.Controls.Add(new Label()
+                flowLayoutPanelGroups.Invoke(new Action(() => flowLayoutPanelGroups.Controls.Add(new Label()
                 {
                     Text = k_NoDataToShowMessage
-                });
+                })));
             }
         }
 
         private void fetchEvents()
         {
-            showEvents(m_LogicManager.FetchEvents());
+            showEvents(r_LogicManager.FetchEvents());
         }
 
         private void showEvents(FacebookObjectCollection<Event> events)
         {
             ListItem eventItem = null;
 
-            flowLayoutPanelEvents.Controls.Clear();
+            flowLayoutPanelEvents.Invoke(new Action(() => flowLayoutPanelEvents.Controls.Clear()));
             try
             {
                 foreach (Event eventToAdd in events)
                 {
+
                     eventItem = ListItemFactoryMethod.CreateListItem(eventToAdd);
-                    flowLayoutPanelEvents.Controls.Add(eventItem);
+                    flowLayoutPanelEvents.Invoke(new Action(() => flowLayoutPanelEvents.Controls.Add(eventItem)));
                 }
             }
             catch (Exception ex)
@@ -238,10 +253,10 @@ namespace BasicFacebookFeatures
 
             if (flowLayoutPanelEvents.Controls.Count == 0)
             {
-                flowLayoutPanelEvents.Controls.Add(new Label()
+                flowLayoutPanelEvents.Invoke(new Action(() => flowLayoutPanelEvents.Controls.Add(new Label()
                 {
                     Text = k_NoDataToShowMessage
-                });
+                })));
             }
         }
 
@@ -249,7 +264,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                m_LogicManager.AddPost(richtextBoxPostContent.Text);
+                new Thread(() => r_LogicManager.AddPost(richtextBoxPostContent.Text)));
             }
             catch (Exception ex)
             {
@@ -259,44 +274,49 @@ namespace BasicFacebookFeatures
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            m_LogicManager.Logout();
+            r_LogicManager.Logout();
             m_IsLogoutButtonClicked = true;
             this.Close();
         }
 
         private void linkLabelRefreshPosts_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            fetchPosts();
+            new Thread(fetchPosts).Start();
         }
 
         private void linkLabelRefreshAlbums_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            fetchAlbums();
+            new Thread(fetchAlbums).Start();
         }
 
         private void linkLabelRefreshGroups_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            fetchGroups();
+            new Thread(fetchGroups).Start();
         }
 
         private void linkLabelRefreshEvents_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            fetchEvents();
+            new Thread(fetchEvents).Start();
         }
 
         private void linkLabelRefreshChart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            fetchFriendsCitiesChart();
+            new Thread(fetchFriendsCitiesChart).Start();
         }
 
         private void linkLabelPages_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            fetchPages();
+            new Thread(fetchPages).Start();
         }
 
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            showEvents(m_LogicManager.FetchEventsByDate(dateTimePickerEventFilter.Value.Date));
+            new Thread(fetchEventsByDate).Start();
+        }
+
+        private void fetchEventsByDate()
+        {
+            showEvents(r_LogicManager.FetchEventsByDate(dateTimePickerEventFilter.Value.Date));
         }
 
         private void checkBoxFilterDates_CheckedChanged(object sender, EventArgs e)

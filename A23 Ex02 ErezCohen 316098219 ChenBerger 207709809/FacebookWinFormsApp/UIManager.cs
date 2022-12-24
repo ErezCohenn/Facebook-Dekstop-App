@@ -10,7 +10,7 @@ namespace BasicFacebookFeatures
 
         private void startFormMain()
         {
-            m_FormMain = new FormFacebookApp(m_LogicManager);
+            m_FormMain = new FormFacebookApp();
             m_FormMain.ShowDialog();
 
             if (m_FormMain.IsLogoutButtonClicked)
@@ -21,7 +21,7 @@ namespace BasicFacebookFeatures
 
         public void StartApp()
         {
-            m_LogicManager = new LogicManager();
+            m_LogicManager = LogicManager.Instance;
 
             if (!m_LogicManager.TryAutomaticLogin())
             {

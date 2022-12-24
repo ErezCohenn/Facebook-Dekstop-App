@@ -81,7 +81,6 @@
             localeLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
-            this.flowLayoutPanelPages.SuspendLayout();
             this.tabPageEvents.SuspendLayout();
             this.tabPageGroups.SuspendLayout();
             this.tabPageAlbums.SuspendLayout();
@@ -185,6 +184,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.linkLabelPages);
             this.tabPage1.Controls.Add(this.flowLayoutPanelPages);
             this.tabPage1.Location = new System.Drawing.Point(5, 43);
             this.tabPage1.Name = "tabPage1";
@@ -197,17 +197,16 @@
             // flowLayoutPanelPages
             // 
             this.flowLayoutPanelPages.AutoScroll = true;
-            this.flowLayoutPanelPages.Controls.Add(this.linkLabelPages);
-            this.flowLayoutPanelPages.Location = new System.Drawing.Point(9, 9);
+            this.flowLayoutPanelPages.Location = new System.Drawing.Point(6, 31);
             this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1579, 1099);
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1011, 678);
             this.flowLayoutPanelPages.TabIndex = 0;
             // 
             // linkLabelPages
             // 
             this.linkLabelPages.AutoSize = true;
             this.linkLabelPages.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.linkLabelPages.Location = new System.Drawing.Point(3, 0);
+            this.linkLabelPages.Location = new System.Drawing.Point(6, 3);
             this.linkLabelPages.Name = "linkLabelPages";
             this.linkLabelPages.Size = new System.Drawing.Size(138, 25);
             this.linkLabelPages.TabIndex = 7;
@@ -591,8 +590,7 @@
             this.Name = "FormFacebookApp";
             this.Text = "Facebook App";
             this.tabPage1.ResumeLayout(false);
-            this.flowLayoutPanelPages.ResumeLayout(false);
-            this.flowLayoutPanelPages.PerformLayout();
+            this.tabPage1.PerformLayout();
             this.tabPageEvents.ResumeLayout(false);
             this.tabPageEvents.PerformLayout();
             this.tabPageGroups.ResumeLayout(false);
