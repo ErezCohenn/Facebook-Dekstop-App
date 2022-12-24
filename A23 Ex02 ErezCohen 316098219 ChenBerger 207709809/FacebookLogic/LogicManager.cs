@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using DTO;
+﻿using DTO;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System;
+using System.Collections.Generic;
 
 namespace FacebookLogic
 {
@@ -14,6 +14,8 @@ namespace FacebookLogic
         private readonly AppSettings r_AppSettings;
         private User m_CurrentUser;
         private LoginResult m_LoginResult;
+        
+        public User CurrentUser { get => m_CurrentUser; }
 
         private LogicManager()
         {

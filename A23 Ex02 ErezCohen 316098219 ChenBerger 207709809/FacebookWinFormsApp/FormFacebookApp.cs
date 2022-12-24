@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+﻿using BasicFacebookFeatures.UserControlItems;
+
 using DTO;
 using FacebookLogic;
 using FacebookWrapper.ObjectModel;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
@@ -41,6 +47,7 @@ namespace BasicFacebookFeatures
             new Thread(fetchEvents).Start();
             new Thread(fetchFriendsCitiesChart).Start();
             new Thread(fetchPages).Start();
+
         }
 
         private void fetchPages()
@@ -48,12 +55,13 @@ namespace BasicFacebookFeatures
             FacebookObjectCollection<Page> pages = r_LogicManager.FetchPages();
             PageItem pageItem = null;
 
+
             flowLayoutPanelPages.Invoke(new Action(() => flowLayoutPanelPages.Controls.Clear()));
             try
             {
                 foreach (Page page in pages)
                 {
-                    pageItem = new PageItem(page);
+                    pageItem = ListItemFactoryMethod.CreateListItem(page);
                     flowLayoutPanelPages.Invoke(new Action(() => flowLayoutPanelPages.Controls.Add(pageItem)));
                 }
             }
@@ -101,14 +109,15 @@ namespace BasicFacebookFeatures
         {
             FacebookObjectCollection<Album> albums = r_LogicManager.FetchAlbums();
             AlbumItem albumItem = null;
-
+            
             flowLayoutPanelAlbums.Invoke(new Action(() => flowLayoutPanelAlbums.Controls.Clear()));
             try
             {
                 foreach (Album album in albums)
                 {
-                    albumItem = new AlbumItem(album);
+                    albumItem = ListItemFactoryMethod.CreateListItem(album);
                     flowLayoutPanelAlbums.Invoke(new Action(() => flowLayoutPanelAlbums.Controls.Add(albumItem)));
+
                 }
             }
             catch (System.ArgumentException)
@@ -130,15 +139,16 @@ namespace BasicFacebookFeatures
 
         private void fetchPosts()
         {
+
             FacebookObjectCollection<Post> posts = r_LogicManager.FetchPosts();
             PostItem postItem = null;
-
+            
             flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Clear()));
             try
             {
                 foreach (Post post in posts)
                 {
-                    postItem = new PostItem(post);
+                    postItem = ListItemFactoryMethod.CreateListItem(post);
                     flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Add(postItem)));
                 }
             }
@@ -158,32 +168,7 @@ namespace BasicFacebookFeatures
 
         private void fetchProfileData()
         {
-            ProfileDataDTO profileDataDTO = r_LogicManager.FetchProfileData();
-            City userCity = profileDataDTO.HomeTown;
-            Location userLocation = null;
-
-            try
-            {
-                this.labelFirstName.Invoke(new Action(() => this.labelFirstName.Text = string.Format("First Name: {0}", profileDataDTO.FirstName)));
-                this.labelLastName.Invoke(new Action(() => this.labelLastName.Text = string.Format("Last Name: {0}", profileDataDTO.LastName)));
-                this.labelEmail.Invoke(new Action(() => this.labelEmail.Text = string.Format("Email: {0}", profileDataDTO.Email)));
-                this.labelBirthdate.Invoke(new Action(() => this.labelBirthdate.Text = string.Format("Birthday: {0}", profileDataDTO.Birthday)));
-                this.labelFacebook.Invoke(new Action(() => this.labelFacebook.Text = string.Format("{0}book", profileDataDTO.FirstName)));
-                if (userCity != null)
-                {
-                    userLocation = userCity.Location;
-                    this.labelHomeTown.Invoke(new Action(() => this.labelHomeTown.Text = string.Format("{0}, {1}, {2}", userLocation.Country, userLocation.City, userLocation.Street)));
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void fetchImageProfile()
-        {
-            pictureBoxProfile.Invoke(new Action(() => pictureBoxProfile.LoadAsync(r_LogicManager.FetchUserProfileImageUrl())));
+            userBindingSource.DataSource = m_LogicManager.CurrentUser;
         }
 
         private void fetchFriendsList()
@@ -215,15 +200,16 @@ namespace BasicFacebookFeatures
 
         private void fetchGroups()
         {
+
             FacebookObjectCollection<Group> groups = r_LogicManager.FetchGroups();
             GroupItem groupItem = null;
-
+            
             flowLayoutPanelGroups.Invoke(new Action(() => flowLayoutPanelGroups.Controls.Clear()));
             try
             {
                 foreach (Group group in groups)
                 {
-                    groupItem = new GroupItem(group);
+                    groupItem = ListItemFactoryMethod.CreateListItem(group);
                     flowLayoutPanelGroups.Invoke(new Action(() => flowLayoutPanelGroups.Controls.Add(groupItem)));
                 }
             }
@@ -248,14 +234,15 @@ namespace BasicFacebookFeatures
 
         private void showEvents(FacebookObjectCollection<Event> events)
         {
-            EventItem eventItem = null;
+            ListItem eventItem = null;
 
             flowLayoutPanelEvents.Invoke(new Action(() => flowLayoutPanelEvents.Controls.Clear()));
             try
             {
                 foreach (Event eventToAdd in events)
                 {
-                    eventItem = new EventItem(eventToAdd);
+
+                    eventItem = ListItemFactoryMethod.CreateListItem(eventToAdd);
                     flowLayoutPanelEvents.Invoke(new Action(() => flowLayoutPanelEvents.Controls.Add(eventItem)));
                 }
             }
