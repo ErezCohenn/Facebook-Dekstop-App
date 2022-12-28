@@ -40,16 +40,15 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelFacebook = new System.Windows.Forms.Label();
-            this.listViewFriends = new System.Windows.Forms.ListView();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkLabelPages = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanelPages = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageEvents = new System.Windows.Forms.TabPage();
-            this.checkBoxFilterDates = new System.Windows.Forms.CheckBox();
-            this.dateTimePickerEventFilter = new System.Windows.Forms.DateTimePicker();
-            this.linkLabelRefreshEvents = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePickerEventFilter = new System.Windows.Forms.DateTimePicker();
+            this.checkBoxFilterDates = new System.Windows.Forms.CheckBox();
+            this.linkLabelRefreshEvents = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanelEvents = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageGroups = new System.Windows.Forms.TabPage();
             this.linkLabelRefreshGroups = new System.Windows.Forms.LinkLabel();
@@ -74,6 +73,7 @@
             this.imageNormalPictureBox = new System.Windows.Forms.PictureBox();
             this.lastNameLabel1 = new System.Windows.Forms.Label();
             this.localeLabel1 = new System.Windows.Forms.Label();
+            this.listViewFriends = new System.Windows.Forms.ListView();
             aboutLabel = new System.Windows.Forms.Label();
             birthdayLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
@@ -166,18 +166,6 @@
             this.labelFacebook.Text = "Facebook";
             this.labelFacebook.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listViewFriends
-            // 
-            this.listViewFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewFriends.HideSelection = false;
-            this.listViewFriends.Location = new System.Drawing.Point(2548, 294);
-            this.listViewFriends.Margin = new System.Windows.Forms.Padding(4, 4, 13, 4);
-            this.listViewFriends.Name = "listViewFriends";
-            this.listViewFriends.Size = new System.Drawing.Size(258, 1770);
-            this.listViewFriends.TabIndex = 66;
-            this.listViewFriends.UseCompatibleStateImageBehavior = false;
-            // 
             // buttonLogout
             // 
             this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -199,7 +187,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(2002, 1762);
+            this.tabPage1.Size = new System.Drawing.Size(1248, 955);
             this.tabPage1.TabIndex = 6;
             this.tabPage1.Text = "Pages";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -236,10 +224,30 @@
             this.tabPageEvents.Location = new System.Drawing.Point(4, 25);
             this.tabPageEvents.Name = "tabPageEvents";
             this.tabPageEvents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEvents.Size = new System.Drawing.Size(2002, 1762);
+            this.tabPageEvents.Size = new System.Drawing.Size(1248, 955);
             this.tabPageEvents.TabIndex = 3;
             this.tabPageEvents.Text = "Events";
             this.tabPageEvents.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label1.Location = new System.Drawing.Point(20, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(262, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Filter events by specific date:";
+            // 
+            // dateTimePickerEventFilter
+            // 
+            this.dateTimePickerEventFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateTimePickerEventFilter.Enabled = false;
+            this.dateTimePickerEventFilter.Location = new System.Drawing.Point(119, -406);
+            this.dateTimePickerEventFilter.Name = "dateTimePickerEventFilter";
+            this.dateTimePickerEventFilter.Size = new System.Drawing.Size(386, 22);
+            this.dateTimePickerEventFilter.TabIndex = 7;
+            this.dateTimePickerEventFilter.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
             // checkBoxFilterDates
             // 
@@ -251,16 +259,6 @@
             this.checkBoxFilterDates.Text = "Filter By Date";
             this.checkBoxFilterDates.UseVisualStyleBackColor = true;
             this.checkBoxFilterDates.CheckedChanged += new System.EventHandler(this.checkBoxFilterDates_CheckedChanged);
-            // 
-            // dateTimePickerEventFilter
-            // 
-            this.dateTimePickerEventFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePickerEventFilter.Enabled = false;
-            this.dateTimePickerEventFilter.Location = new System.Drawing.Point(424, 58);
-            this.dateTimePickerEventFilter.Name = "dateTimePickerEventFilter";
-            this.dateTimePickerEventFilter.Size = new System.Drawing.Size(386, 22);
-            this.dateTimePickerEventFilter.TabIndex = 7;
-            this.dateTimePickerEventFilter.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
             // linkLabelRefreshEvents
             // 
@@ -274,16 +272,6 @@
             this.linkLabelRefreshEvents.Text = "Refresh events";
             this.linkLabelRefreshEvents.UseMnemonic = false;
             this.linkLabelRefreshEvents.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRefreshEvents_LinkClicked);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(20, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(262, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Filter events by specific date:";
             // 
             // flowLayoutPanelEvents
             // 
@@ -303,7 +291,7 @@
             this.tabPageGroups.Location = new System.Drawing.Point(4, 25);
             this.tabPageGroups.Name = "tabPageGroups";
             this.tabPageGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGroups.Size = new System.Drawing.Size(2002, 1762);
+            this.tabPageGroups.Size = new System.Drawing.Size(1248, 955);
             this.tabPageGroups.TabIndex = 2;
             this.tabPageGroups.Text = "Groups";
             this.tabPageGroups.UseVisualStyleBackColor = true;
@@ -339,7 +327,7 @@
             this.tabPageAlbums.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageAlbums.Name = "tabPageAlbums";
             this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPageAlbums.Size = new System.Drawing.Size(2002, 1762);
+            this.tabPageAlbums.Size = new System.Drawing.Size(1248, 955);
             this.tabPageAlbums.TabIndex = 1;
             this.tabPageAlbums.Text = "Albums";
             this.tabPageAlbums.UseVisualStyleBackColor = true;
@@ -348,7 +336,7 @@
             // 
             this.linkLabelRefreshAlbums.AutoSize = true;
             this.linkLabelRefreshAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.linkLabelRefreshAlbums.Location = new System.Drawing.Point(18, 10);
+            this.linkLabelRefreshAlbums.Location = new System.Drawing.Point(31, 29);
             this.linkLabelRefreshAlbums.Name = "linkLabelRefreshAlbums";
             this.linkLabelRefreshAlbums.Size = new System.Drawing.Size(147, 25);
             this.linkLabelRefreshAlbums.TabIndex = 4;
@@ -380,7 +368,7 @@
             this.tabPagePosts.Margin = new System.Windows.Forms.Padding(4);
             this.tabPagePosts.Name = "tabPagePosts";
             this.tabPagePosts.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPagePosts.Size = new System.Drawing.Size(2002, 1762);
+            this.tabPagePosts.Size = new System.Drawing.Size(1248, 955);
             this.tabPagePosts.TabIndex = 0;
             this.tabPagePosts.Text = "Posts";
             this.tabPagePosts.UseVisualStyleBackColor = true;
@@ -402,7 +390,7 @@
             // 
             this.buttonPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.buttonPost.Location = new System.Drawing.Point(2114, 1480);
+            this.buttonPost.Location = new System.Drawing.Point(1360, 673);
             this.buttonPost.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPost.Name = "buttonPost";
             this.buttonPost.Size = new System.Drawing.Size(255, 216);
@@ -425,12 +413,12 @@
             // 
             this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richtextBoxPostContent.Location = new System.Drawing.Point(51, 1493);
+            this.richtextBoxPostContent.Location = new System.Drawing.Point(51, 686);
             this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4);
             this.richtextBoxPostContent.Name = "richtextBoxPostContent";
-            this.richtextBoxPostContent.Size = new System.Drawing.Size(3983, 205);
+            this.richtextBoxPostContent.Size = new System.Drawing.Size(3229, 205);
             this.richtextBoxPostContent.TabIndex = 0;
-            this.richtextBoxPostContent.Text = string.Empty;
+            this.richtextBoxPostContent.Text = "";
             // 
             // tabPageFriendsChart
             // 
@@ -439,7 +427,7 @@
             this.tabPageFriendsChart.Location = new System.Drawing.Point(4, 25);
             this.tabPageFriendsChart.Name = "tabPageFriendsChart";
             this.tabPageFriendsChart.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFriendsChart.Size = new System.Drawing.Size(2002, 1762);
+            this.tabPageFriendsChart.Size = new System.Drawing.Size(1248, 955);
             this.tabPageFriendsChart.TabIndex = 4;
             this.tabPageFriendsChart.Text = "Cities Distribution";
             this.tabPageFriendsChart.UseVisualStyleBackColor = true;
@@ -472,7 +460,7 @@
             series1.Legend = "Legend1";
             series1.Name = "FriendsCitiesChart";
             this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(1996, 1756);
+            this.chart.Size = new System.Drawing.Size(1242, 949);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
             // 
@@ -487,11 +475,11 @@
             this.tabControl1.Controls.Add(this.tabPageGroups);
             this.tabControl1.Controls.Add(this.tabPageEvents);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(525, 295);
+            this.tabControl1.Location = new System.Drawing.Point(575, 215);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(2010, 1791);
+            this.tabControl1.Size = new System.Drawing.Size(1256, 984);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 65;
             // 
@@ -563,11 +551,21 @@
             this.localeLabel1.Size = new System.Drawing.Size(160, 21);
             this.localeLabel1.TabIndex = 81;
             // 
+            // listViewFriends
+            // 
+            this.listViewFriends.HideSelection = false;
+            this.listViewFriends.Location = new System.Drawing.Point(1830, 240);
+            this.listViewFriends.Name = "listViewFriends";
+            this.listViewFriends.Size = new System.Drawing.Size(121, 955);
+            this.listViewFriends.TabIndex = 82;
+            this.listViewFriends.UseCompatibleStateImageBehavior = false;
+            // 
             // FormFacebookApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1956, 1202);
+            this.Controls.Add(this.listViewFriends);
             this.Controls.Add(aboutLabel);
             this.Controls.Add(this.aboutLabel1);
             this.Controls.Add(birthdayLabel);
@@ -582,7 +580,6 @@
             this.Controls.Add(localeLabel);
             this.Controls.Add(this.localeLabel1);
             this.Controls.Add(this.buttonLogout);
-            this.Controls.Add(this.listViewFriends);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelFacebook);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -612,7 +609,6 @@
 
         #endregion        
         private System.Windows.Forms.Label labelFacebook;
-        private System.Windows.Forms.ListView listViewFriends;
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPages;
@@ -646,5 +642,6 @@
         private System.Windows.Forms.PictureBox imageNormalPictureBox;
         private System.Windows.Forms.Label lastNameLabel1;
         private System.Windows.Forms.Label localeLabel1;
+        private System.Windows.Forms.ListView listViewFriends;
     }
 }
