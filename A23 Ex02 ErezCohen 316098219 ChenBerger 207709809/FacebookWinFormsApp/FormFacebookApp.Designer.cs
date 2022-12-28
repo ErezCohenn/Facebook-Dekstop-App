@@ -375,14 +375,14 @@
             // 
             // richtextBoxPostContent
             // 
-            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richtextBoxPostContent.Location = new System.Drawing.Point(8, 533);
             this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4);
             this.richtextBoxPostContent.Name = "richtextBoxPostContent";
             this.richtextBoxPostContent.Size = new System.Drawing.Size(1032, 130);
             this.richtextBoxPostContent.TabIndex = 0;
-            this.richtextBoxPostContent.Text = "";
+            this.richtextBoxPostContent.Text = string.Empty;
             // 
             // linkLabelRefreshPosts
             // 
@@ -466,8 +466,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPageFriendsChart);
             this.tabControl1.Controls.Add(this.tabPagePosts);

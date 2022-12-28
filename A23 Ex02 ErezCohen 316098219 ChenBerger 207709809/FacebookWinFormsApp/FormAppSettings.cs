@@ -16,7 +16,6 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             r_Permissions = new StringBuilder();
             r_AppSettingsFacade = new AppSettingsFacade();
-
         }
 
         private void buttonRefreshPermissions_Click(object sender, EventArgs e)

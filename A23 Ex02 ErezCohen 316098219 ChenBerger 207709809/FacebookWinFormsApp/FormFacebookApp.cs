@@ -13,8 +13,8 @@ namespace BasicFacebookFeatures
     {
         private const string k_SeriesCityFriendsName = "FriendsCitiesChart";
         private const string k_NoDataToShowMessage = "No items to retrieve";
-        private ImageList m_FriendsImagesList;
         private readonly FacebookFeaturesFacade r_FacebookFeaturesFacade;
+        private ImageList m_FriendsImagesList;
         private bool m_IsLogoutButtonClicked;
 
         public bool IsLogoutButtonClicked { get => m_IsLogoutButtonClicked; }
@@ -25,11 +25,13 @@ namespace BasicFacebookFeatures
             m_IsLogoutButtonClicked = false;
             r_FacebookFeaturesFacade = new FacebookFeaturesFacade();
         }
+
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
             fetchUserData();
         }
+
         private void fetchUserData()
         {
             new Thread(fetchFriendsList).Start();
@@ -40,14 +42,12 @@ namespace BasicFacebookFeatures
             new Thread(fetchFriendsCitiesChart).Start();
             new Thread(fetchPages).Start();
             fetchProfileData();
-
         }
 
         private void fetchPages()
         {
             FacebookObjectCollection<Page> pages = r_FacebookFeaturesFacade.FetchPages();
             ListItem pageItem = null;
-
 
             flowLayoutPanelPages.Invoke(new Action(() => flowLayoutPanelPages.Controls.Clear()));
             try
@@ -110,7 +110,6 @@ namespace BasicFacebookFeatures
                 {
                     albumItem = ListItemFactoryMethod.CreateListItem(album);
                     flowLayoutPanelAlbums.Invoke(new Action(() => flowLayoutPanelAlbums.Controls.Add(albumItem)));
-
                 }
             }
             catch (System.ArgumentException)
@@ -132,7 +131,6 @@ namespace BasicFacebookFeatures
 
         private void fetchPosts()
         {
-
             FacebookObjectCollection<Post> posts = r_FacebookFeaturesFacade.FetchPosts();
             ListItem postItem = null;
 
@@ -168,12 +166,12 @@ namespace BasicFacebookFeatures
         {
             FriendsListDTO friendsListDTO;
             int friendIndex = 0;
+
             listViewFriends.Invoke(new Action(() => listViewFriends.Items.Clear()));
             listViewFriends.Invoke(new Action(() => listViewFriends.View = View.Details));
             listViewFriends.Invoke(new Action(() => listViewFriends.Columns.Add("Friends list:", 200)));
             m_FriendsImagesList = new ImageList();
             m_FriendsImagesList.ImageSize = new Size(50, 50);
-
             try
             {
                 friendsListDTO = r_FacebookFeaturesFacade.FetchFriendsList();
@@ -193,7 +191,6 @@ namespace BasicFacebookFeatures
 
         private void fetchGroups()
         {
-
             FacebookObjectCollection<Group> groups = r_FacebookFeaturesFacade.FetchGroups();
             ListItem groupItem = null;
 
@@ -234,7 +231,6 @@ namespace BasicFacebookFeatures
             {
                 foreach (Event eventToAdd in events)
                 {
-
                     eventItem = ListItemFactoryMethod.CreateListItem(eventToAdd);
                     flowLayoutPanelEvents.Invoke(new Action(() => flowLayoutPanelEvents.Controls.Add(eventItem)));
                 }
