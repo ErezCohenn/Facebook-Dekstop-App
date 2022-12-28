@@ -1,6 +1,6 @@
 ﻿using FacebookWrapper.ObjectModel;
 
-namespace BasicFacebookFeatures.UserControlItems
+namespace BasicFacebookFeatures
 {
     public static class ListItemFactoryMethod
     {

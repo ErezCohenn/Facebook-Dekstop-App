@@ -1,5 +1,4 @@
-﻿using BasicFacebookFeatures.UserControlItems;
-using FacebookWrapper.ObjectModel;
+﻿using FacebookWrapper.ObjectModel;
 using System;
 using System.Windows.Forms;
 

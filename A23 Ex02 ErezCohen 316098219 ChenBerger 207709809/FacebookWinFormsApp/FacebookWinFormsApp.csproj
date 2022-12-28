@@ -123,6 +123,7 @@
     <Compile Include="FormFacebookApp.Designer.cs">
       <DependentUpon>FormFacebookApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListItemFactoryMethod.cs" />
     <Compile Include="PageItem.cs" />
     <Compile Include="GroupItem.cs" />
     <Compile Include="ListItem.cs" />
