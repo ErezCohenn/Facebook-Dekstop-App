@@ -4,9 +4,9 @@ namespace BasicFacebookFeatures
 {
     public class UIManager
     {
+        private readonly LoginFacade r_LoginFacade;
         private FormFacebookApp m_FormMain;
         private FormLogin m_FormLogin;
-        private readonly LoginFacade r_LoginFacade;
 
         public UIManager()
         {

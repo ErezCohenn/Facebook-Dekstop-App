@@ -4,34 +4,33 @@ namespace BasicFacebookFeatures
 {
     public static class ListItemFactoryMethod
     {
-        public static ListItem CreateListItem(FacebookObject facebookObject)
+        public static ListItem CreateListItem(FacebookObject i_FacebookObject)
         {
             ListItem listItem = null;
 
-            if (facebookObject is Post)
+            if (i_FacebookObject is Post)
             {
-                listItem = new PostItem(facebookObject as Post);
+                listItem = new PostItem(i_FacebookObject as Post);
             }
-            else if (facebookObject is Album)
+            else if (i_FacebookObject is Album)
             {
-                listItem = new AlbumItem(facebookObject as Album);
+                listItem = new AlbumItem(i_FacebookObject as Album);
             }
-            else if (facebookObject is Event)
+            else if (i_FacebookObject is Event)
             {
-                listItem = new EventItem(facebookObject as Event);
-
+                listItem = new EventItem(i_FacebookObject as Event);
             }
-            else if (facebookObject is Photo)
+            else if (i_FacebookObject is Photo)
             {
-                listItem = new PhotoItem(facebookObject as Photo);
+                listItem = new PhotoItem(i_FacebookObject as Photo);
             }
-            else if (facebookObject is GroupItem)
+            else if (i_FacebookObject is GroupItem)
             {
-                listItem = new GroupItem(facebookObject as Group);
+                listItem = new GroupItem(i_FacebookObject as Group);
             }
-            else if (facebookObject is Page)
+            else if (i_FacebookObject is Page)
             {
-                listItem = new PageItem(facebookObject as Page);
+                listItem = new PageItem(i_FacebookObject as Page);
             }
 
             return listItem;
