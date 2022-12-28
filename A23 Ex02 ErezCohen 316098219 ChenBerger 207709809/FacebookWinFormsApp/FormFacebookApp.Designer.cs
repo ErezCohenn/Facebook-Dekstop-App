@@ -36,9 +36,9 @@
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label localeLabel;
             System.Windows.Forms.Label firstNameLabel;
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelFacebook = new System.Windows.Forms.Label();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -57,10 +57,10 @@
             this.linkLabelRefreshAlbums = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanelAlbums = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPagePosts = new System.Windows.Forms.TabPage();
+            this.richtextBoxPostContent = new System.Windows.Forms.RichTextBox();
             this.linkLabelRefreshPosts = new System.Windows.Forms.LinkLabel();
             this.buttonPost = new System.Windows.Forms.Button();
             this.flowLayoutPanelPosts = new System.Windows.Forms.FlowLayoutPanel();
-            this.richtextBoxPostContent = new System.Windows.Forms.RichTextBox();
             this.tabPageFriendsChart = new System.Windows.Forms.TabPage();
             this.linkLabelRefreshChart = new System.Windows.Forms.LinkLabel();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -161,7 +161,7 @@
             this.labelFacebook.Location = new System.Drawing.Point(0, 0);
             this.labelFacebook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFacebook.Name = "labelFacebook";
-            this.labelFacebook.Size = new System.Drawing.Size(1956, 211);
+            this.labelFacebook.Size = new System.Drawing.Size(1782, 211);
             this.labelFacebook.TabIndex = 1;
             this.labelFacebook.Text = "Facebook";
             this.labelFacebook.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,7 +171,7 @@
             this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.buttonLogout.ForeColor = System.Drawing.Color.Red;
-            this.buttonLogout.Location = new System.Drawing.Point(31, 1931);
+            this.buttonLogout.Location = new System.Drawing.Point(31, 1664);
             this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(411, 128);
@@ -187,7 +187,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1248, 955);
+            this.tabPage1.Size = new System.Drawing.Size(1048, 688);
             this.tabPage1.TabIndex = 6;
             this.tabPage1.Text = "Pages";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -210,7 +210,7 @@
             this.flowLayoutPanelPages.AutoScroll = true;
             this.flowLayoutPanelPages.Location = new System.Drawing.Point(6, 31);
             this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1011, 678);
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1036, 651);
             this.flowLayoutPanelPages.TabIndex = 0;
             // 
             // tabPageEvents
@@ -224,7 +224,7 @@
             this.tabPageEvents.Location = new System.Drawing.Point(4, 25);
             this.tabPageEvents.Name = "tabPageEvents";
             this.tabPageEvents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEvents.Size = new System.Drawing.Size(1248, 955);
+            this.tabPageEvents.Size = new System.Drawing.Size(1048, 688);
             this.tabPageEvents.TabIndex = 3;
             this.tabPageEvents.Text = "Events";
             this.tabPageEvents.UseVisualStyleBackColor = true;
@@ -243,7 +243,7 @@
             // 
             this.dateTimePickerEventFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTimePickerEventFilter.Enabled = false;
-            this.dateTimePickerEventFilter.Location = new System.Drawing.Point(119, -406);
+            this.dateTimePickerEventFilter.Location = new System.Drawing.Point(27, -532);
             this.dateTimePickerEventFilter.Name = "dateTimePickerEventFilter";
             this.dateTimePickerEventFilter.Size = new System.Drawing.Size(386, 22);
             this.dateTimePickerEventFilter.TabIndex = 7;
@@ -278,9 +278,9 @@
             this.flowLayoutPanelEvents.AutoScroll = true;
             this.flowLayoutPanelEvents.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanelEvents.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelEvents.Location = new System.Drawing.Point(4, 113);
+            this.flowLayoutPanelEvents.Location = new System.Drawing.Point(15, 99);
             this.flowLayoutPanelEvents.Name = "flowLayoutPanelEvents";
-            this.flowLayoutPanelEvents.Size = new System.Drawing.Size(1269, 778);
+            this.flowLayoutPanelEvents.Size = new System.Drawing.Size(1030, 583);
             this.flowLayoutPanelEvents.TabIndex = 0;
             this.flowLayoutPanelEvents.WrapContents = false;
             // 
@@ -291,7 +291,7 @@
             this.tabPageGroups.Location = new System.Drawing.Point(4, 25);
             this.tabPageGroups.Name = "tabPageGroups";
             this.tabPageGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGroups.Size = new System.Drawing.Size(1248, 955);
+            this.tabPageGroups.Size = new System.Drawing.Size(1048, 688);
             this.tabPageGroups.TabIndex = 2;
             this.tabPageGroups.Text = "Groups";
             this.tabPageGroups.UseVisualStyleBackColor = true;
@@ -313,9 +313,9 @@
             // 
             this.flowLayoutPanelGroups.AutoScroll = true;
             this.flowLayoutPanelGroups.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(16, 44);
+            this.flowLayoutPanelGroups.Location = new System.Drawing.Point(14, 44);
             this.flowLayoutPanelGroups.Name = "flowLayoutPanelGroups";
-            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(1574, 1089);
+            this.flowLayoutPanelGroups.Size = new System.Drawing.Size(1028, 638);
             this.flowLayoutPanelGroups.TabIndex = 0;
             // 
             // tabPageAlbums
@@ -327,7 +327,7 @@
             this.tabPageAlbums.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageAlbums.Name = "tabPageAlbums";
             this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPageAlbums.Size = new System.Drawing.Size(1248, 955);
+            this.tabPageAlbums.Size = new System.Drawing.Size(1048, 688);
             this.tabPageAlbums.TabIndex = 1;
             this.tabPageAlbums.Text = "Albums";
             this.tabPageAlbums.UseVisualStyleBackColor = true;
@@ -360,18 +360,29 @@
             // tabPagePosts
             // 
             this.tabPagePosts.AutoScroll = true;
+            this.tabPagePosts.Controls.Add(this.richtextBoxPostContent);
             this.tabPagePosts.Controls.Add(this.linkLabelRefreshPosts);
             this.tabPagePosts.Controls.Add(this.buttonPost);
             this.tabPagePosts.Controls.Add(this.flowLayoutPanelPosts);
-            this.tabPagePosts.Controls.Add(this.richtextBoxPostContent);
             this.tabPagePosts.Location = new System.Drawing.Point(4, 25);
             this.tabPagePosts.Margin = new System.Windows.Forms.Padding(4);
             this.tabPagePosts.Name = "tabPagePosts";
             this.tabPagePosts.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPagePosts.Size = new System.Drawing.Size(1248, 955);
+            this.tabPagePosts.Size = new System.Drawing.Size(1048, 688);
             this.tabPagePosts.TabIndex = 0;
             this.tabPagePosts.Text = "Posts";
             this.tabPagePosts.UseVisualStyleBackColor = true;
+            // 
+            // richtextBoxPostContent
+            // 
+            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richtextBoxPostContent.Location = new System.Drawing.Point(8, 533);
+            this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4);
+            this.richtextBoxPostContent.Name = "richtextBoxPostContent";
+            this.richtextBoxPostContent.Size = new System.Drawing.Size(1032, 130);
+            this.richtextBoxPostContent.TabIndex = 0;
+            this.richtextBoxPostContent.Text = "";
             // 
             // linkLabelRefreshPosts
             // 
@@ -390,7 +401,7 @@
             // 
             this.buttonPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.buttonPost.Location = new System.Drawing.Point(1360, 673);
+            this.buttonPost.Location = new System.Drawing.Point(1182, 385);
             this.buttonPost.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPost.Name = "buttonPost";
             this.buttonPost.Size = new System.Drawing.Size(255, 216);
@@ -403,22 +414,11 @@
             // 
             this.flowLayoutPanelPosts.AutoScroll = true;
             this.flowLayoutPanelPosts.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanelPosts.Location = new System.Drawing.Point(26, 41);
+            this.flowLayoutPanelPosts.Location = new System.Drawing.Point(8, 39);
             this.flowLayoutPanelPosts.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelPosts.Name = "flowLayoutPanelPosts";
-            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(1214, 711);
+            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(1032, 486);
             this.flowLayoutPanelPosts.TabIndex = 2;
-            // 
-            // richtextBoxPostContent
-            // 
-            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richtextBoxPostContent.Location = new System.Drawing.Point(51, 686);
-            this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4);
-            this.richtextBoxPostContent.Name = "richtextBoxPostContent";
-            this.richtextBoxPostContent.Size = new System.Drawing.Size(3229, 205);
-            this.richtextBoxPostContent.TabIndex = 0;
-            this.richtextBoxPostContent.Text = "";
             // 
             // tabPageFriendsChart
             // 
@@ -427,7 +427,7 @@
             this.tabPageFriendsChart.Location = new System.Drawing.Point(4, 25);
             this.tabPageFriendsChart.Name = "tabPageFriendsChart";
             this.tabPageFriendsChart.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFriendsChart.Size = new System.Drawing.Size(1248, 955);
+            this.tabPageFriendsChart.Size = new System.Drawing.Size(1048, 688);
             this.tabPageFriendsChart.TabIndex = 4;
             this.tabPageFriendsChart.Text = "Cities Distribution";
             this.tabPageFriendsChart.UseVisualStyleBackColor = true;
@@ -447,20 +447,20 @@
             // 
             // chart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chart.Legends.Add(legend2);
             this.chart.Location = new System.Drawing.Point(3, 3);
             this.chart.Name = "chart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.Name = "FriendsCitiesChart";
-            this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(1242, 949);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "FriendsCitiesChart";
+            this.chart.Series.Add(series2);
+            this.chart.Size = new System.Drawing.Size(1042, 682);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
             // 
@@ -479,7 +479,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1256, 984);
+            this.tabControl1.Size = new System.Drawing.Size(1056, 717);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 65;
             // 
@@ -554,9 +554,9 @@
             // listViewFriends
             // 
             this.listViewFriends.HideSelection = false;
-            this.listViewFriends.Location = new System.Drawing.Point(1830, 240);
+            this.listViewFriends.Location = new System.Drawing.Point(1638, 243);
             this.listViewFriends.Name = "listViewFriends";
-            this.listViewFriends.Size = new System.Drawing.Size(121, 955);
+            this.listViewFriends.Size = new System.Drawing.Size(132, 682);
             this.listViewFriends.TabIndex = 82;
             this.listViewFriends.UseCompatibleStateImageBehavior = false;
             // 
@@ -564,7 +564,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1956, 1202);
+            this.ClientSize = new System.Drawing.Size(1782, 935);
             this.Controls.Add(this.listViewFriends);
             this.Controls.Add(aboutLabel);
             this.Controls.Add(this.aboutLabel1);
