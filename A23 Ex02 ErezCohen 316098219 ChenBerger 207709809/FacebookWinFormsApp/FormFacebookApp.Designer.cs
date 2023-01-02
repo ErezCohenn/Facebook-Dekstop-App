@@ -36,9 +36,9 @@
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label localeLabel;
             System.Windows.Forms.Label firstNameLabel;
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelFacebook = new System.Windows.Forms.Label();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -382,7 +382,7 @@
             this.richtextBoxPostContent.Name = "richtextBoxPostContent";
             this.richtextBoxPostContent.Size = new System.Drawing.Size(1032, 130);
             this.richtextBoxPostContent.TabIndex = 0;
-            this.richtextBoxPostContent.Text = string.Empty;
+            this.richtextBoxPostContent.Text = "";
             // 
             // linkLabelRefreshPosts
             // 
@@ -447,19 +447,19 @@
             // 
             // chart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
             this.chart.Location = new System.Drawing.Point(3, 3);
             this.chart.Name = "chart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.Name = "FriendsCitiesChart";
-            this.chart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "FriendsCitiesChart";
+            this.chart.Series.Add(series1);
             this.chart.Size = new System.Drawing.Size(1042, 682);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
@@ -491,9 +491,9 @@
             // 
             this.aboutLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "About", true));
             this.aboutLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.aboutLabel1.Location = new System.Drawing.Point(13, 921);
+            this.aboutLabel1.Location = new System.Drawing.Point(162, 878);
             this.aboutLabel1.Name = "aboutLabel1";
-            this.aboutLabel1.Size = new System.Drawing.Size(458, 118);
+            this.aboutLabel1.Size = new System.Drawing.Size(411, 40);
             this.aboutLabel1.TabIndex = 69;
             // 
             // birthdayLabel1

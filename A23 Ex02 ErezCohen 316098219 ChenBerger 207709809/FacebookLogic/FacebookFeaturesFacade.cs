@@ -1,19 +1,19 @@
-﻿using DTO;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using DTO;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookLogic
 {
     public class FacebookFeaturesFacade
     {
-
         private readonly LogicManager r_LogicManager;
 
         public FacebookFeaturesFacade()
         {
             r_LogicManager = LogicManager.Instance;
         }
+
         public FacebookObjectCollection<Page> FetchPages()
         {
             return r_LogicManager.FetchPages();

@@ -1,11 +1,11 @@
-﻿using DTO;
-using FacebookLogic;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using DTO;
+using FacebookLogic;
+using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
