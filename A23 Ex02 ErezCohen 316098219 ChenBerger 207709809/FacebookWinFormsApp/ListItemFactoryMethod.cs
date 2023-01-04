@@ -24,7 +24,7 @@ namespace BasicFacebookFeatures
             {
                 listItem = new PhotoItem(i_FacebookObject as Photo);
             }
-            else if (i_FacebookObject is GroupItem)
+            else if (i_FacebookObject is Group)
             {
                 listItem = new GroupItem(i_FacebookObject as Group);
             }
