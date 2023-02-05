@@ -36,17 +36,17 @@
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label localeLabel;
             System.Windows.Forms.Label firstNameLabel;
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend18 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelFacebook = new System.Windows.Forms.Label();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkLabelPages = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanelPages = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageEvents = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerEventFilter = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.checkBoxFilterDates = new System.Windows.Forms.CheckBox();
             this.linkLabelRefreshEvents = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanelEvents = new System.Windows.Forms.FlowLayoutPanel();
@@ -57,9 +57,8 @@
             this.linkLabelRefreshAlbums = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanelAlbums = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPagePosts = new System.Windows.Forms.TabPage();
-            this.richtextBoxPostContent = new System.Windows.Forms.RichTextBox();
-            this.linkLabelRefreshPosts = new System.Windows.Forms.LinkLabel();
             this.buttonPost = new System.Windows.Forms.Button();
+            this.linkLabelRefreshPosts = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanelPosts = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageFriendsChart = new System.Windows.Forms.TabPage();
             this.linkLabelRefreshChart = new System.Windows.Forms.LinkLabel();
@@ -74,6 +73,7 @@
             this.lastNameLabel1 = new System.Windows.Forms.Label();
             this.localeLabel1 = new System.Windows.Forms.Label();
             this.listViewFriends = new System.Windows.Forms.ListView();
+            this.richtextBoxPostContent = new System.Windows.Forms.RichTextBox();
             this.FriendsSortMethodComboBox = new System.Windows.Forms.ComboBox();
             this.SortFriendsButton = new System.Windows.Forms.Button();
             aboutLabel = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@
             // 
             aboutLabel.AutoSize = true;
             aboutLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            aboutLabel.Location = new System.Drawing.Point(9, 852);
+            aboutLabel.Location = new System.Drawing.Point(8, 679);
             aboutLabel.Name = "aboutLabel";
             aboutLabel.Size = new System.Drawing.Size(70, 25);
             aboutLabel.TabIndex = 68;
@@ -108,7 +108,7 @@
             // 
             birthdayLabel.AutoSize = true;
             birthdayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            birthdayLabel.Location = new System.Drawing.Point(9, 670);
+            birthdayLabel.Location = new System.Drawing.Point(8, 497);
             birthdayLabel.Name = "birthdayLabel";
             birthdayLabel.Size = new System.Drawing.Size(89, 25);
             birthdayLabel.TabIndex = 70;
@@ -118,7 +118,7 @@
             // 
             emailLabel.AutoSize = true;
             emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            emailLabel.Location = new System.Drawing.Point(9, 729);
+            emailLabel.Location = new System.Drawing.Point(8, 556);
             emailLabel.Name = "emailLabel";
             emailLabel.Size = new System.Drawing.Size(66, 25);
             emailLabel.TabIndex = 72;
@@ -128,7 +128,7 @@
             // 
             lastNameLabel.AutoSize = true;
             lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            lastNameLabel.Location = new System.Drawing.Point(9, 609);
+            lastNameLabel.Location = new System.Drawing.Point(8, 436);
             lastNameLabel.Name = "lastNameLabel";
             lastNameLabel.Size = new System.Drawing.Size(112, 25);
             lastNameLabel.TabIndex = 78;
@@ -138,7 +138,7 @@
             // 
             localeLabel.AutoSize = true;
             localeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            localeLabel.Location = new System.Drawing.Point(9, 791);
+            localeLabel.Location = new System.Drawing.Point(8, 618);
             localeLabel.Name = "localeLabel";
             localeLabel.Size = new System.Drawing.Size(76, 25);
             localeLabel.TabIndex = 80;
@@ -148,7 +148,7 @@
             // 
             firstNameLabel.AutoSize = true;
             firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            firstNameLabel.Location = new System.Drawing.Point(12, 548);
+            firstNameLabel.Location = new System.Drawing.Point(11, 375);
             firstNameLabel.Name = "firstNameLabel";
             firstNameLabel.Size = new System.Drawing.Size(112, 25);
             firstNameLabel.TabIndex = 74;
@@ -163,7 +163,7 @@
             this.labelFacebook.Location = new System.Drawing.Point(0, 0);
             this.labelFacebook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFacebook.Name = "labelFacebook";
-            this.labelFacebook.Size = new System.Drawing.Size(1781, 210);
+            this.labelFacebook.Size = new System.Drawing.Size(1698, 210);
             this.labelFacebook.TabIndex = 1;
             this.labelFacebook.Text = "Facebook";
             this.labelFacebook.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -173,7 +173,7 @@
             this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.buttonLogout.ForeColor = System.Drawing.Color.Red;
-            this.buttonLogout.Location = new System.Drawing.Point(11, 901);
+            this.buttonLogout.Location = new System.Drawing.Point(10, 767);
             this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(135, 46);
@@ -214,14 +214,14 @@
             this.flowLayoutPanelPages.Location = new System.Drawing.Point(5, 31);
             this.flowLayoutPanelPages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(1036, 651);
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(948, 651);
             this.flowLayoutPanelPages.TabIndex = 0;
             // 
             // tabPageEvents
             // 
             this.tabPageEvents.AutoScroll = true;
-            this.tabPageEvents.Controls.Add(this.label1);
             this.tabPageEvents.Controls.Add(this.dateTimePickerEventFilter);
+            this.tabPageEvents.Controls.Add(this.label1);
             this.tabPageEvents.Controls.Add(this.checkBoxFilterDates);
             this.tabPageEvents.Controls.Add(this.linkLabelRefreshEvents);
             this.tabPageEvents.Controls.Add(this.flowLayoutPanelEvents);
@@ -234,6 +234,14 @@
             this.tabPageEvents.Text = "Events";
             this.tabPageEvents.UseVisualStyleBackColor = true;
             // 
+            // dateTimePickerEventFilter
+            // 
+            this.dateTimePickerEventFilter.Location = new System.Drawing.Point(435, 58);
+            this.dateTimePickerEventFilter.Name = "dateTimePickerEventFilter";
+            this.dateTimePickerEventFilter.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerEventFilter.TabIndex = 9;
+            this.dateTimePickerEventFilter.ValueChanged += new System.EventHandler(this.checkBoxFilterDates_CheckedChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -243,17 +251,6 @@
             this.label1.Size = new System.Drawing.Size(262, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Filter events by specific date:";
-            // 
-            // dateTimePickerEventFilter
-            // 
-            this.dateTimePickerEventFilter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePickerEventFilter.Enabled = false;
-            this.dateTimePickerEventFilter.Location = new System.Drawing.Point(27, -532);
-            this.dateTimePickerEventFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePickerEventFilter.Name = "dateTimePickerEventFilter";
-            this.dateTimePickerEventFilter.Size = new System.Drawing.Size(385, 22);
-            this.dateTimePickerEventFilter.TabIndex = 7;
-            this.dateTimePickerEventFilter.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
             // checkBoxFilterDates
             // 
@@ -371,28 +368,27 @@
             // 
             this.tabPagePosts.AutoScroll = true;
             this.tabPagePosts.Controls.Add(this.richtextBoxPostContent);
-            this.tabPagePosts.Controls.Add(this.linkLabelRefreshPosts);
             this.tabPagePosts.Controls.Add(this.buttonPost);
+            this.tabPagePosts.Controls.Add(this.linkLabelRefreshPosts);
             this.tabPagePosts.Controls.Add(this.flowLayoutPanelPosts);
             this.tabPagePosts.Location = new System.Drawing.Point(4, 25);
-            this.tabPagePosts.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPagePosts.Margin = new System.Windows.Forms.Padding(4, 4, 0, 4);
             this.tabPagePosts.Name = "tabPagePosts";
             this.tabPagePosts.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPagePosts.Size = new System.Drawing.Size(1048, 707);
+            this.tabPagePosts.Size = new System.Drawing.Size(965, 806);
             this.tabPagePosts.TabIndex = 0;
             this.tabPagePosts.Text = "Posts";
             this.tabPagePosts.UseVisualStyleBackColor = true;
             // 
-            // richtextBoxPostContent
+            // buttonPost
             // 
-            this.richtextBoxPostContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richtextBoxPostContent.Location = new System.Drawing.Point(8, 533);
-            this.richtextBoxPostContent.Margin = new System.Windows.Forms.Padding(4);
-            this.richtextBoxPostContent.Name = "richtextBoxPostContent";
-            this.richtextBoxPostContent.Size = new System.Drawing.Size(1032, 130);
-            this.richtextBoxPostContent.TabIndex = 0;
-            this.richtextBoxPostContent.Text = "";
+            this.buttonPost.Location = new System.Drawing.Point(789, 444);
+            this.buttonPost.Name = "buttonPost";
+            this.buttonPost.Size = new System.Drawing.Size(137, 130);
+            this.buttonPost.TabIndex = 4;
+            this.buttonPost.Text = "Post";
+            this.buttonPost.UseVisualStyleBackColor = true;
+            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
             // 
             // linkLabelRefreshPosts
             // 
@@ -407,19 +403,6 @@
             this.linkLabelRefreshPosts.UseMnemonic = false;
             this.linkLabelRefreshPosts.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRefreshPosts_LinkClicked);
             // 
-            // buttonPost
-            // 
-            this.buttonPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.buttonPost.Location = new System.Drawing.Point(1181, 385);
-            this.buttonPost.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(255, 217);
-            this.buttonPost.TabIndex = 1;
-            this.buttonPost.Text = "Post";
-            this.buttonPost.UseVisualStyleBackColor = true;
-            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
-            // 
             // flowLayoutPanelPosts
             // 
             this.flowLayoutPanelPosts.AutoScroll = true;
@@ -427,7 +410,7 @@
             this.flowLayoutPanelPosts.Location = new System.Drawing.Point(8, 39);
             this.flowLayoutPanelPosts.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelPosts.Name = "flowLayoutPanelPosts";
-            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(1032, 486);
+            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(918, 401);
             this.flowLayoutPanelPosts.TabIndex = 2;
             // 
             // tabPageFriendsChart
@@ -458,28 +441,28 @@
             // 
             // chart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
+            chartArea18.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea18);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart.Legends.Add(legend1);
+            legend18.Name = "Legend1";
+            this.chart.Legends.Add(legend18);
             this.chart.Location = new System.Drawing.Point(3, 2);
             this.chart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart.Name = "chart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.Name = "FriendsCitiesChart";
-            this.chart.Series.Add(series1);
+            series18.ChartArea = "ChartArea1";
+            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series18.IsValueShownAsLabel = true;
+            series18.Legend = "Legend1";
+            series18.Name = "FriendsCitiesChart";
+            this.chart.Series.Add(series18);
             this.chart.Size = new System.Drawing.Size(1042, 703);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPageFriendsChart);
             this.tabControl1.Controls.Add(this.tabPagePosts);
@@ -487,11 +470,11 @@
             this.tabControl1.Controls.Add(this.tabPageGroups);
             this.tabControl1.Controls.Add(this.tabPageEvents);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(575, 215);
+            this.tabControl1.Location = new System.Drawing.Point(404, 214);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1056, 736);
+            this.tabControl1.Size = new System.Drawing.Size(973, 835);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 65;
             // 
@@ -503,34 +486,34 @@
             // 
             this.aboutLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "About", true));
             this.aboutLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.aboutLabel1.Location = new System.Drawing.Point(163, 854);
+            this.aboutLabel1.Location = new System.Drawing.Point(73, 683);
             this.aboutLabel1.Name = "aboutLabel1";
-            this.aboutLabel1.Size = new System.Drawing.Size(411, 39);
+            this.aboutLabel1.Size = new System.Drawing.Size(324, 39);
             this.aboutLabel1.TabIndex = 69;
             // 
             // birthdayLabel1
             // 
             this.birthdayLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Birthday", true));
             this.birthdayLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.birthdayLabel1.Location = new System.Drawing.Point(163, 672);
+            this.birthdayLabel1.Location = new System.Drawing.Point(117, 501);
             this.birthdayLabel1.Name = "birthdayLabel1";
-            this.birthdayLabel1.Size = new System.Drawing.Size(292, 28);
+            this.birthdayLabel1.Size = new System.Drawing.Size(284, 28);
             this.birthdayLabel1.TabIndex = 71;
             // 
             // emailLabel1
             // 
             this.emailLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Email", true));
             this.emailLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.emailLabel1.Location = new System.Drawing.Point(153, 729);
+            this.emailLabel1.Location = new System.Drawing.Point(73, 556);
             this.emailLabel1.Name = "emailLabel1";
-            this.emailLabel1.Size = new System.Drawing.Size(356, 25);
+            this.emailLabel1.Size = new System.Drawing.Size(328, 25);
             this.emailLabel1.TabIndex = 73;
             // 
             // firstNameLabel1
             // 
             this.firstNameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "FirstName", true));
             this.firstNameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.firstNameLabel1.Location = new System.Drawing.Point(163, 551);
+            this.firstNameLabel1.Location = new System.Drawing.Point(140, 379);
             this.firstNameLabel1.Name = "firstNameLabel1";
             this.firstNameLabel1.Size = new System.Drawing.Size(173, 25);
             this.firstNameLabel1.TabIndex = 75;
@@ -538,10 +521,10 @@
             // imageNormalPictureBox
             // 
             this.imageNormalPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.userBindingSource, "ImageNormal", true));
-            this.imageNormalPictureBox.Location = new System.Drawing.Point(25, 270);
+            this.imageNormalPictureBox.Location = new System.Drawing.Point(16, 214);
             this.imageNormalPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.imageNormalPictureBox.Name = "imageNormalPictureBox";
-            this.imageNormalPictureBox.Size = new System.Drawing.Size(484, 242);
+            this.imageNormalPictureBox.Size = new System.Drawing.Size(162, 141);
             this.imageNormalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageNormalPictureBox.TabIndex = 77;
             this.imageNormalPictureBox.TabStop = false;
@@ -550,7 +533,7 @@
             // 
             this.lastNameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "LastName", true));
             this.lastNameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.lastNameLabel1.Location = new System.Drawing.Point(163, 613);
+            this.lastNameLabel1.Location = new System.Drawing.Point(140, 440);
             this.lastNameLabel1.Name = "lastNameLabel1";
             this.lastNameLabel1.Size = new System.Drawing.Size(215, 26);
             this.lastNameLabel1.TabIndex = 79;
@@ -559,7 +542,7 @@
             // 
             this.localeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Locale", true));
             this.localeLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.localeLabel1.Location = new System.Drawing.Point(163, 795);
+            this.localeLabel1.Location = new System.Drawing.Point(140, 622);
             this.localeLabel1.Name = "localeLabel1";
             this.localeLabel1.Size = new System.Drawing.Size(160, 21);
             this.localeLabel1.TabIndex = 81;
@@ -567,12 +550,20 @@
             // listViewFriends
             // 
             this.listViewFriends.HideSelection = false;
-            this.listViewFriends.Location = new System.Drawing.Point(1637, 242);
-            this.listViewFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listViewFriends.Location = new System.Drawing.Point(1384, 239);
+            this.listViewFriends.Margin = new System.Windows.Forms.Padding(3, 2, 0, 2);
             this.listViewFriends.Name = "listViewFriends";
-            this.listViewFriends.Size = new System.Drawing.Size(132, 682);
+            this.listViewFriends.Size = new System.Drawing.Size(132, 577);
             this.listViewFriends.TabIndex = 82;
             this.listViewFriends.UseCompatibleStateImageBehavior = false;
+            // 
+            // richtextBoxPostContent
+            // 
+            this.richtextBoxPostContent.Location = new System.Drawing.Point(8, 447);
+            this.richtextBoxPostContent.Name = "richtextBoxPostContent";
+            this.richtextBoxPostContent.Size = new System.Drawing.Size(775, 130);
+            this.richtextBoxPostContent.TabIndex = 5;
+            this.richtextBoxPostContent.Text = "";
             // 
             // FriendsSortMethodComboBox
             // 
@@ -600,7 +591,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1781, 954);
+            this.ClientSize = new System.Drawing.Size(1698, 1053);
             this.Controls.Add(this.SortFriendsButton);
             this.Controls.Add(this.FriendsSortMethodComboBox);
             this.Controls.Add(this.listViewFriends);
@@ -652,7 +643,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPages;
         private System.Windows.Forms.LinkLabel linkLabelPages;
         private System.Windows.Forms.TabPage tabPageEvents;
-        private System.Windows.Forms.DateTimePicker dateTimePickerEventFilter;
         private System.Windows.Forms.LinkLabel linkLabelRefreshEvents;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEvents;
@@ -664,9 +654,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAlbums;
         private System.Windows.Forms.TabPage tabPagePosts;
         private System.Windows.Forms.LinkLabel linkLabelRefreshPosts;
-        private System.Windows.Forms.Button buttonPost;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPosts;
-        private System.Windows.Forms.RichTextBox richtextBoxPostContent;
         private System.Windows.Forms.TabPage tabPageFriendsChart;
         private System.Windows.Forms.LinkLabel linkLabelRefreshChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
@@ -681,6 +669,9 @@
         private System.Windows.Forms.Label lastNameLabel1;
         private System.Windows.Forms.Label localeLabel1;
         private System.Windows.Forms.ListView listViewFriends;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEventFilter;
+        private System.Windows.Forms.Button buttonPost;
+        private System.Windows.Forms.RichTextBox richtextBoxPostContent;
         private System.Windows.Forms.ComboBox FriendsSortMethodComboBox;
         private System.Windows.Forms.Button SortFriendsButton;
     }
