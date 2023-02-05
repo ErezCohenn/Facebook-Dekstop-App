@@ -74,6 +74,8 @@
             this.localeLabel1 = new System.Windows.Forms.Label();
             this.listViewFriends = new System.Windows.Forms.ListView();
             this.richtextBoxPostContent = new System.Windows.Forms.RichTextBox();
+            this.FriendsSortMethodComboBox = new System.Windows.Forms.ComboBox();
+            this.SortFriendsButton = new System.Windows.Forms.Button();
             aboutLabel = new System.Windows.Forms.Label();
             birthdayLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
@@ -563,11 +565,35 @@
             this.richtextBoxPostContent.TabIndex = 5;
             this.richtextBoxPostContent.Text = "";
             // 
+            // FriendsSortMethodComboBox
+            // 
+            this.FriendsSortMethodComboBox.FormattingEnabled = true;
+            this.FriendsSortMethodComboBox.Items.AddRange(new object[] {
+            "Ascending",
+            "Descending"});
+            this.FriendsSortMethodComboBox.Location = new System.Drawing.Point(1637, 215);
+            this.FriendsSortMethodComboBox.Name = "FriendsSortMethodComboBox";
+            this.FriendsSortMethodComboBox.Size = new System.Drawing.Size(132, 24);
+            this.FriendsSortMethodComboBox.TabIndex = 83;
+            this.FriendsSortMethodComboBox.Text = "sort(asc/desc)";
+            // 
+            // SortFriendsButton
+            // 
+            this.SortFriendsButton.Location = new System.Drawing.Point(1638, 929);
+            this.SortFriendsButton.Name = "SortFriendsButton";
+            this.SortFriendsButton.Size = new System.Drawing.Size(131, 23);
+            this.SortFriendsButton.TabIndex = 8;
+            this.SortFriendsButton.Text = "Sort";
+            this.SortFriendsButton.UseVisualStyleBackColor = true;
+            this.SortFriendsButton.Click += new System.EventHandler(this.buttonSortFriends_Click);
+            // 
             // FormFacebookApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1698, 1053);
+            this.Controls.Add(this.SortFriendsButton);
+            this.Controls.Add(this.FriendsSortMethodComboBox);
             this.Controls.Add(this.listViewFriends);
             this.Controls.Add(aboutLabel);
             this.Controls.Add(this.aboutLabel1);
@@ -646,5 +672,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerEventFilter;
         private System.Windows.Forms.Button buttonPost;
         private System.Windows.Forms.RichTextBox richtextBoxPostContent;
+        private System.Windows.Forms.ComboBox FriendsSortMethodComboBox;
+        private System.Windows.Forms.Button SortFriendsButton;
     }
 }

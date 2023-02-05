@@ -319,6 +319,43 @@ namespace BasicFacebookFeatures
         {
             new Thread(fetchPosts).Start();
             r_FacebookFeaturesFacade.PostCollectionChanged -= FacebookFeaturesFacade_PostCollectionChanged;
+
+        private void buttonSortFriends_Click(object sender, EventArgs e)
+        {
+            string sortMethod = FriendsSortMethodComboBox.SelectedIndex.ToString();
+            try
+            {
+                if (FriendsSortMethodComboBox.SelectedIndex != -1)
+                {
+                    new Thread(() => sortFriendsList(sortMethod)).Start();
+                }
+            }
+            catch (Exception ignore)
+            {
+            }
+        }
+
+        private void sortFriendsList(string i_SortMethod)
+        {
+            FriendsListDTO sortedfriendsListDTO;
+            int sortedFriendIndex = 0;
+
+            listViewFriends.Invoke(new Action(() => listViewFriends.Items.Clear()));
+            try
+            {
+                sortedfriendsListDTO = r_FacebookFeaturesFacade.SortFriendsByStrategy(i_SortMethod);
+                foreach (KeyValuePair<string, Image> friend in sortedfriendsListDTO.FriendsList)
+                {
+                    listViewFriends.Invoke(new Action(() => listViewFriends.Items.Add(friend.Key, sortedFriendIndex++)));
+                    m_FriendsImagesList.Images.Add(friend.Value);
+                }
+
+                listViewFriends.Invoke(new Action(() => listViewFriends.SmallImageList = m_FriendsImagesList));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Failed to sort friends list");
+            }
         }
     }
 }

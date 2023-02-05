@@ -2,12 +2,14 @@
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace FacebookLogic
 {
     public class FacebookFeaturesFacade
     {
         private readonly LogicManager r_LogicManager;
+        private SortStrategy m_FriendsSortStrategy;
 
         public event Action<FacebookObjectCollection<Post>> PostCollectionChanged
         {
@@ -18,6 +20,7 @@ namespace FacebookLogic
         public FacebookFeaturesFacade()
         {
             r_LogicManager = LogicManager.Instance;
+            m_FriendsSortStrategy = new SortStrategy();
         }
 
         public FacebookObjectCollection<Page> FetchPages()
@@ -73,6 +76,30 @@ namespace FacebookLogic
         public User GetCurrentUser()
         {
             return r_LogicManager.CurrentUser;
+        }
+
+        public FriendsListDTO SortFriendsByStrategy(String i_SortMethod)
+        {
+            FriendsListDTO friends = r_LogicManager.FetchFriendsList();
+            if (i_SortMethod.Equals("Ascending"))
+            {
+                SortFriendsAscending(friends.FriendsList);
+            }
+            else
+            {
+                SortFriendsDescending(friends.FriendsList);
+            }
+            return friends;
+        }
+        public void SortFriendsAscending(List<KeyValuePair<string, Image>> i_Friends)
+        {
+            m_FriendsSortStrategy.Comparer = new UpComparer();
+            m_FriendsSortStrategy.Sort(i_Friends);
+        }
+        public void SortFriendsDescending(List<KeyValuePair<string, Image>> i_Friends)
+        {
+            m_FriendsSortStrategy.Comparer = new DownComparer();
+            m_FriendsSortStrategy.Sort(i_Friends);
         }
     }
 }
