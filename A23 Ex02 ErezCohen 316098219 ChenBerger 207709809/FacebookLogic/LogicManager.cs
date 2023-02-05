@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using DTO;
+﻿using DTO;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System;
+using System.Collections.Generic;
 
 namespace FacebookLogic
 {
     public sealed class LogicManager
     {
+        public event Action<FacebookObjectCollection<Post>> PostCollectionChanged;
+
         private static LogicManager s_Instance = null;
         private static object s_LockObj = new object();
         private readonly FriendsCitiesManager r_FriendsCitiesManager;
@@ -143,7 +145,21 @@ namespace FacebookLogic
 
         public void AddPost(string i_PostContent)
         {
-            m_CurrentUser.PostStatus(i_PostContent);
+            Status statusPost = null;
+
+            try
+            {
+                statusPost = m_CurrentUser.PostStatus(i_PostContent);
+
+                statusPost.ReFetch();
+                OnPostCollectionChanged();
+            }
+            catch (Exception) { }
+        }
+
+        private void OnPostCollectionChanged()
+        {
+            PostCollectionChanged?.Invoke(FetchPosts());
         }
 
         public FacebookObjectCollection<Post> FetchPosts()

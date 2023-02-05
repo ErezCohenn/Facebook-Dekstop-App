@@ -1,11 +1,11 @@
-﻿using System;
+﻿using DTO;
+using FacebookLogic;
+using FacebookWrapper.ObjectModel;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using DTO;
-using FacebookLogic;
-using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
@@ -249,18 +249,6 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void buttonPost_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                new Thread(() => r_FacebookFeaturesFacade.AddPost(richtextBoxPostContent.Text));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             r_FacebookFeaturesFacade.Logout();
@@ -311,6 +299,26 @@ namespace BasicFacebookFeatures
         private void checkBoxFilterDates_CheckedChanged(object sender, EventArgs e)
         {
             dateTimePickerEventFilter.Enabled = checkBoxFilterDates.Checked;
+        }
+
+        private void buttonPost_Click(object sender, EventArgs e)
+        {
+            string postContent = richtextBoxPostContent.Text;
+            try
+            {
+                new Thread(() => r_FacebookFeaturesFacade.AddPost(postContent)).Start();
+                r_FacebookFeaturesFacade.PostCollectionChanged += FacebookFeaturesFacade_PostCollectionChanged;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void FacebookFeaturesFacade_PostCollectionChanged(FacebookObjectCollection<Post> obj)
+        {
+            new Thread(fetchPosts).Start();
+            r_FacebookFeaturesFacade.PostCollectionChanged -= FacebookFeaturesFacade_PostCollectionChanged;
         }
     }
 }

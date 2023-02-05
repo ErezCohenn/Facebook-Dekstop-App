@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using DTO;
+﻿using DTO;
 using FacebookWrapper.ObjectModel;
+using System;
+using System.Collections.Generic;
 
 namespace FacebookLogic
 {
     public class FacebookFeaturesFacade
     {
         private readonly LogicManager r_LogicManager;
+
+        public event Action<FacebookObjectCollection<Post>> PostCollectionChanged
+        {
+            add => r_LogicManager.PostCollectionChanged += value;
+            remove => r_LogicManager.PostCollectionChanged -= value;
+        }
 
         public FacebookFeaturesFacade()
         {

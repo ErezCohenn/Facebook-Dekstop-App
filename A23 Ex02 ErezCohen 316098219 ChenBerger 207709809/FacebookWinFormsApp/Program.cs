@@ -11,10 +11,9 @@ namespace BasicFacebookFeatures
         /// </summary>
         [STAThread]
         public static void Main()
-        {
+      {
             UIManager uIManager = new UIManager();
 
-            Clipboard.SetText("design.patterns20cc");
             FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
