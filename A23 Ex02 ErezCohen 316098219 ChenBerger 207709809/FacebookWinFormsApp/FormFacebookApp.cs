@@ -319,6 +319,7 @@ namespace BasicFacebookFeatures
         {
             new Thread(fetchPosts).Start();
             r_FacebookFeaturesFacade.PostCollectionChanged -= FacebookFeaturesFacade_PostCollectionChanged;
+        }
 
         private void buttonSortFriends_Click(object sender, EventArgs e)
         {
