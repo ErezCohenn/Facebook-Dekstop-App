@@ -37,7 +37,7 @@ namespace BasicFacebookFeatures
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            if (comboAppID.SelectedIndex == -1)
+            if (comboAppID.SelectedIndex == -1 || comboAppID.SelectedItem.ToString() == string.Empty)
             {
                 MessageBox.Show("AppId not selected!", "Apply Settings Failed");
             }

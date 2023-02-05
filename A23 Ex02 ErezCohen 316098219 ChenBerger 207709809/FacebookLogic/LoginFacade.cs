@@ -11,7 +11,14 @@
 
         public void Login()
         {
-            r_LogicManager.Login();
+            try
+            {
+                r_LogicManager.Login();
+            }
+            catch
+            {
+                throw new LoginException();
+            }
         }
 
         public void RememberLastUser(bool i_IsRememberMeCheckBoxChecked)
