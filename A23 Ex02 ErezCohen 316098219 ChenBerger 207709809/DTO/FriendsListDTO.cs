@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace DTO
@@ -16,9 +17,16 @@ namespace DTO
 
         public void AddFriend(string i_FriendName, string i_FriendImageURL)
         {
-            Image friendImage = Image.FromFile(i_FriendImageURL);
-
-            r_FriendsList.Add(new KeyValuePair<string, Image>(i_FriendName, friendImage));
+            try
+            {
+                Image friendImage = null;//Image.FromFile(i_FriendImageURL);
+                r_FriendsList.Add(new KeyValuePair<string, Image>(i_FriendName, friendImage));
+            }
+            catch (Exception ignore)
+            {
+            }
         }
     }
 }
+
+{

@@ -45,6 +45,7 @@
     <Compile Include="LogicManager.cs" />
     <Compile Include="LoginException.cs" />
     <Compile Include="LoginFacade.cs" />
+    <Compile Include="SortStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DTO">
