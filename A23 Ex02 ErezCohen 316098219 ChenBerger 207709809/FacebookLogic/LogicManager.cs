@@ -87,12 +87,10 @@ namespace FacebookLogic
         {
             FriendsListDTO friendsListDTO = new FriendsListDTO();
             FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
-
             foreach (User friend in friendsList)
             {
                 friendsListDTO.AddFriend(friend.Name, friend.PictureSmallURL);
             }
-
             return friendsListDTO;
         }
 
@@ -168,6 +166,7 @@ namespace FacebookLogic
 
         public FacebookObjectCollection<Group> FetchGroups()
         {
+
             return m_CurrentUser.Groups;
         }
 
@@ -203,5 +202,6 @@ namespace FacebookLogic
 
             return eventsAfterFilterByDate;
         }
+
     }
 }
