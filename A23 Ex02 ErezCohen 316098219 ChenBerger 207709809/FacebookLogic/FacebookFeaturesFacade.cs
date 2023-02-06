@@ -78,10 +78,10 @@ namespace FacebookLogic
             return r_LogicManager.CurrentUser;
         }
 
-        public FriendsListDTO SortFriendsByStrategy(String i_SortMethod)
+        public FriendsListDTO SortFriendsByStrategy(int i_SortMethod)
         {
             FriendsListDTO friends = r_LogicManager.FetchFriendsList();
-            if (i_SortMethod.Equals("Ascending"))
+            if (i_SortMethod == 0)
             {
                 SortFriendsAscending(friends.FriendsList);
             }

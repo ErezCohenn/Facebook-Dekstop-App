@@ -27,18 +27,18 @@ namespace FacebookLogic
                     {
                         if (Comparer.ShouldSwap(i_Friends[j], i_Friends[j + g]))
                         {
-                            doSwap(i_Friends[j], i_Friends[j + g]);
+                            doSwap(i_Friends, j, j + g);
                         }
                     }
                 }
             }
         }
 
-        private void doSwap(KeyValuePair<string, Image> i_FirstFriend, KeyValuePair<string, Image> i_SecondFriend)
+        private void doSwap(List<KeyValuePair<string, Image>> i_Friends, int i_FirstFriendIndex, int i_SecondFriendIndex)
         {
-            KeyValuePair<string, Image> temp = i_FirstFriend;
-            i_FirstFriend = i_SecondFriend;
-            i_SecondFriend = temp;
+            KeyValuePair<string, Image> temp = i_Friends[i_FirstFriendIndex];
+            i_Friends[i_FirstFriendIndex] = i_Friends[i_SecondFriendIndex];
+            i_Friends[i_SecondFriendIndex] = temp;
         }
     }
 
@@ -51,7 +51,7 @@ namespace FacebookLogic
     {
         public bool ShouldSwap(KeyValuePair<string, Image> i_FirstFriend, KeyValuePair<string, Image> i_SecondFriend)
         {
-            return string.Compare(i_FirstFriend.Key, i_SecondFriend.Key) > 0;
+            return string.Compare(i_FirstFriend.Key, i_SecondFriend.Key) < 0;
         }
     }
 
@@ -59,7 +59,7 @@ namespace FacebookLogic
     {
         public bool ShouldSwap(KeyValuePair<string, Image> i_FirstFriend, KeyValuePair<string, Image> i_SecondFriend)
         {
-            return string.Compare(i_FirstFriend.Key, i_SecondFriend.Key) <= 0;
+            return string.Compare(i_FirstFriend.Key, i_SecondFriend.Key) >= 0;
         }
     }
 }

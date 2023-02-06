@@ -178,7 +178,7 @@ namespace BasicFacebookFeatures
                 foreach (KeyValuePair<string, Image> friend in friendsListDTO.FriendsList)
                 {
                     listViewFriends.Invoke(new Action(() => listViewFriends.Items.Add(friend.Key, friendIndex++)));
-                    m_FriendsImagesList.Images.Add(friend.Value);
+                    //m_FriendsImagesList.Images.Add(friend.Value);
                 }
 
                 listViewFriends.Invoke(new Action(() => listViewFriends.SmallImageList = m_FriendsImagesList));
@@ -323,7 +323,7 @@ namespace BasicFacebookFeatures
 
         private void buttonSortFriends_Click(object sender, EventArgs e)
         {
-            string sortMethod = FriendsSortMethodComboBox.SelectedIndex.ToString();
+            int sortMethod = FriendsSortMethodComboBox.SelectedIndex;
             try
             {
                 if (FriendsSortMethodComboBox.SelectedIndex != -1)
@@ -336,7 +336,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void sortFriendsList(string i_SortMethod)
+        private void sortFriendsList(int i_SortMethod)
         {
             FriendsListDTO sortedfriendsListDTO;
             int sortedFriendIndex = 0;
@@ -348,7 +348,7 @@ namespace BasicFacebookFeatures
                 foreach (KeyValuePair<string, Image> friend in sortedfriendsListDTO.FriendsList)
                 {
                     listViewFriends.Invoke(new Action(() => listViewFriends.Items.Add(friend.Key, sortedFriendIndex++)));
-                    m_FriendsImagesList.Images.Add(friend.Value);
+                    //m_FriendsImagesList.Images.Add(friend.Value);
                 }
 
                 listViewFriends.Invoke(new Action(() => listViewFriends.SmallImageList = m_FriendsImagesList));
