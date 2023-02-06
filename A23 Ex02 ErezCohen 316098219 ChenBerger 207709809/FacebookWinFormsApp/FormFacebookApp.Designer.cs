@@ -36,9 +36,9 @@
             System.Windows.Forms.Label lastNameLabel;
             System.Windows.Forms.Label localeLabel;
             System.Windows.Forms.Label firstNameLabel;
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend18 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelFacebook = new System.Windows.Forms.Label();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -57,6 +57,7 @@
             this.linkLabelRefreshAlbums = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanelAlbums = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPagePosts = new System.Windows.Forms.TabPage();
+            this.richtextBoxPostContent = new System.Windows.Forms.RichTextBox();
             this.buttonPost = new System.Windows.Forms.Button();
             this.linkLabelRefreshPosts = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanelPosts = new System.Windows.Forms.FlowLayoutPanel();
@@ -73,7 +74,6 @@
             this.lastNameLabel1 = new System.Windows.Forms.Label();
             this.localeLabel1 = new System.Windows.Forms.Label();
             this.listViewFriends = new System.Windows.Forms.ListView();
-            this.richtextBoxPostContent = new System.Windows.Forms.RichTextBox();
             this.FriendsSortMethodComboBox = new System.Windows.Forms.ComboBox();
             this.SortFriendsButton = new System.Windows.Forms.Button();
             aboutLabel = new System.Windows.Forms.Label();
@@ -163,7 +163,7 @@
             this.labelFacebook.Location = new System.Drawing.Point(0, 0);
             this.labelFacebook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFacebook.Name = "labelFacebook";
-            this.labelFacebook.Size = new System.Drawing.Size(1698, 210);
+            this.labelFacebook.Size = new System.Drawing.Size(1487, 210);
             this.labelFacebook.TabIndex = 1;
             this.labelFacebook.Text = "Facebook";
             this.labelFacebook.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -173,7 +173,7 @@
             this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.buttonLogout.ForeColor = System.Drawing.Color.Red;
-            this.buttonLogout.Location = new System.Drawing.Point(10, 767);
+            this.buttonLogout.Location = new System.Drawing.Point(10, 794);
             this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(135, 46);
@@ -190,7 +190,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1048, 707);
+            this.tabPage1.Size = new System.Drawing.Size(927, 606);
             this.tabPage1.TabIndex = 6;
             this.tabPage1.Text = "Pages";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -214,7 +214,7 @@
             this.flowLayoutPanelPages.Location = new System.Drawing.Point(5, 31);
             this.flowLayoutPanelPages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanelPages.Name = "flowLayoutPanelPages";
-            this.flowLayoutPanelPages.Size = new System.Drawing.Size(948, 651);
+            this.flowLayoutPanelPages.Size = new System.Drawing.Size(922, 651);
             this.flowLayoutPanelPages.TabIndex = 0;
             // 
             // tabPageEvents
@@ -229,7 +229,7 @@
             this.tabPageEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPageEvents.Name = "tabPageEvents";
             this.tabPageEvents.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPageEvents.Size = new System.Drawing.Size(1048, 707);
+            this.tabPageEvents.Size = new System.Drawing.Size(927, 606);
             this.tabPageEvents.TabIndex = 3;
             this.tabPageEvents.Text = "Events";
             this.tabPageEvents.UseVisualStyleBackColor = true;
@@ -297,7 +297,7 @@
             this.tabPageGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPageGroups.Name = "tabPageGroups";
             this.tabPageGroups.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPageGroups.Size = new System.Drawing.Size(1048, 707);
+            this.tabPageGroups.Size = new System.Drawing.Size(927, 606);
             this.tabPageGroups.TabIndex = 2;
             this.tabPageGroups.Text = "Groups";
             this.tabPageGroups.UseVisualStyleBackColor = true;
@@ -334,7 +334,7 @@
             this.tabPageAlbums.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageAlbums.Name = "tabPageAlbums";
             this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPageAlbums.Size = new System.Drawing.Size(1048, 707);
+            this.tabPageAlbums.Size = new System.Drawing.Size(927, 606);
             this.tabPageAlbums.TabIndex = 1;
             this.tabPageAlbums.Text = "Albums";
             this.tabPageAlbums.UseVisualStyleBackColor = true;
@@ -375,10 +375,18 @@
             this.tabPagePosts.Margin = new System.Windows.Forms.Padding(4, 4, 0, 4);
             this.tabPagePosts.Name = "tabPagePosts";
             this.tabPagePosts.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPagePosts.Size = new System.Drawing.Size(965, 806);
+            this.tabPagePosts.Size = new System.Drawing.Size(927, 606);
             this.tabPagePosts.TabIndex = 0;
             this.tabPagePosts.Text = "Posts";
             this.tabPagePosts.UseVisualStyleBackColor = true;
+            // 
+            // richtextBoxPostContent
+            // 
+            this.richtextBoxPostContent.Location = new System.Drawing.Point(8, 447);
+            this.richtextBoxPostContent.Name = "richtextBoxPostContent";
+            this.richtextBoxPostContent.Size = new System.Drawing.Size(775, 130);
+            this.richtextBoxPostContent.TabIndex = 5;
+            this.richtextBoxPostContent.Text = "";
             // 
             // buttonPost
             // 
@@ -421,7 +429,7 @@
             this.tabPageFriendsChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPageFriendsChart.Name = "tabPageFriendsChart";
             this.tabPageFriendsChart.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPageFriendsChart.Size = new System.Drawing.Size(1048, 707);
+            this.tabPageFriendsChart.Size = new System.Drawing.Size(927, 606);
             this.tabPageFriendsChart.TabIndex = 4;
             this.tabPageFriendsChart.Text = "Cities Distribution";
             this.tabPageFriendsChart.UseVisualStyleBackColor = true;
@@ -441,28 +449,28 @@
             // 
             // chart
             // 
-            chartArea18.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea18);
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend18.Name = "Legend1";
-            this.chart.Legends.Add(legend18);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
             this.chart.Location = new System.Drawing.Point(3, 2);
             this.chart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart.Name = "chart";
-            series18.ChartArea = "ChartArea1";
-            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series18.IsValueShownAsLabel = true;
-            series18.Legend = "Legend1";
-            series18.Name = "FriendsCitiesChart";
-            this.chart.Series.Add(series18);
-            this.chart.Size = new System.Drawing.Size(1042, 703);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "FriendsCitiesChart";
+            this.chart.Series.Add(series1);
+            this.chart.Size = new System.Drawing.Size(921, 602);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPageFriendsChart);
             this.tabControl1.Controls.Add(this.tabPagePosts);
@@ -474,7 +482,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(973, 835);
+            this.tabControl1.Size = new System.Drawing.Size(935, 635);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 65;
             // 
@@ -486,9 +494,9 @@
             // 
             this.aboutLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "About", true));
             this.aboutLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.aboutLabel1.Location = new System.Drawing.Point(73, 683);
+            this.aboutLabel1.Location = new System.Drawing.Point(77, 679);
             this.aboutLabel1.Name = "aboutLabel1";
-            this.aboutLabel1.Size = new System.Drawing.Size(324, 39);
+            this.aboutLabel1.Size = new System.Drawing.Size(328, 49);
             this.aboutLabel1.TabIndex = 69;
             // 
             // birthdayLabel1
@@ -550,20 +558,12 @@
             // listViewFriends
             // 
             this.listViewFriends.HideSelection = false;
-            this.listViewFriends.Location = new System.Drawing.Point(1384, 239);
+            this.listViewFriends.Location = new System.Drawing.Point(1346, 241);
             this.listViewFriends.Margin = new System.Windows.Forms.Padding(3, 2, 0, 2);
             this.listViewFriends.Name = "listViewFriends";
             this.listViewFriends.Size = new System.Drawing.Size(132, 577);
             this.listViewFriends.TabIndex = 82;
             this.listViewFriends.UseCompatibleStateImageBehavior = false;
-            // 
-            // richtextBoxPostContent
-            // 
-            this.richtextBoxPostContent.Location = new System.Drawing.Point(8, 447);
-            this.richtextBoxPostContent.Name = "richtextBoxPostContent";
-            this.richtextBoxPostContent.Size = new System.Drawing.Size(775, 130);
-            this.richtextBoxPostContent.TabIndex = 5;
-            this.richtextBoxPostContent.Text = "";
             // 
             // FriendsSortMethodComboBox
             // 
@@ -571,7 +571,7 @@
             this.FriendsSortMethodComboBox.Items.AddRange(new object[] {
             "Ascending",
             "Descending"});
-            this.FriendsSortMethodComboBox.Location = new System.Drawing.Point(1637, 215);
+            this.FriendsSortMethodComboBox.Location = new System.Drawing.Point(1346, 214);
             this.FriendsSortMethodComboBox.Name = "FriendsSortMethodComboBox";
             this.FriendsSortMethodComboBox.Size = new System.Drawing.Size(132, 24);
             this.FriendsSortMethodComboBox.TabIndex = 83;
@@ -579,7 +579,7 @@
             // 
             // SortFriendsButton
             // 
-            this.SortFriendsButton.Location = new System.Drawing.Point(1638, 929);
+            this.SortFriendsButton.Location = new System.Drawing.Point(1346, 823);
             this.SortFriendsButton.Name = "SortFriendsButton";
             this.SortFriendsButton.Size = new System.Drawing.Size(131, 23);
             this.SortFriendsButton.TabIndex = 8;
@@ -591,7 +591,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1698, 1053);
+            this.ClientSize = new System.Drawing.Size(1487, 853);
             this.Controls.Add(this.SortFriendsButton);
             this.Controls.Add(this.FriendsSortMethodComboBox);
             this.Controls.Add(this.listViewFriends);
