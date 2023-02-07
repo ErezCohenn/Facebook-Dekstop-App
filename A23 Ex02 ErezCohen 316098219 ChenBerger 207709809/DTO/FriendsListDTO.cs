@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -18,15 +17,18 @@ namespace DTO
 
         public void AddFriend(string i_FriendName, string i_FriendImageURL)
         {
+            Image friendImage = null;
+
             try
             {
-                Image friendImage = null; // Image.FromFile(i_FriendImageURL); // replaced with null because facebook doesn't gives us the permission to get the photos.
+                friendImage = Image.FromFile(i_FriendImageURL);
+            }
+            finally
+            {
                 r_FriendsList.Add(new KeyValuePair<string, Image>(i_FriendName, friendImage));
             }
-            catch (Exception ignore)
-            {
-            }
         }
+
         public IEnumerator<KeyValuePair<string, Image>> GetEnumerator()
         {
             foreach (KeyValuePair<string, Image> entry in FriendsList)
