@@ -164,21 +164,23 @@ namespace BasicFacebookFeatures
 
         private void fetchFriendsList()
         {
-            FriendsListDTO friendsListDTO;
-            int friendIndex = 0;
-
             listViewFriends.Invoke(new Action(() => listViewFriends.Items.Clear()));
             listViewFriends.Invoke(new Action(() => listViewFriends.View = View.Details));
             listViewFriends.Invoke(new Action(() => listViewFriends.Columns.Add("Friends list:", 200)));
+            setFriendsListView(r_FacebookFeaturesFacade.FetchFriendsList());
+        }
+        private void setFriendsListView(FriendsListDTO i_Friends)
+        {
+            int friendIndex = 0;
+
             m_FriendsImagesList = new ImageList();
             m_FriendsImagesList.ImageSize = new Size(50, 50);
             try
             {
-                friendsListDTO = r_FacebookFeaturesFacade.FetchFriendsList();
-                foreach (KeyValuePair<string, Image> friend in friendsListDTO.FriendsList)
+                foreach (KeyValuePair<string, Image> friend in i_Friends)
                 {
                     listViewFriends.Invoke(new Action(() => listViewFriends.Items.Add(friend.Key, friendIndex++)));
-                    //m_FriendsImagesList.Images.Add(friend.Value);
+                    m_FriendsImagesList.Images.Add(Image.FromFile(Resources.FacebookDefultPicturePath));
                 }
 
                 listViewFriends.Invoke(new Action(() => listViewFriends.SmallImageList = m_FriendsImagesList));
@@ -188,7 +190,6 @@ namespace BasicFacebookFeatures
                 MessageBox.Show(ex.Message, "Failed to load friends list");
             }
         }
-
         private void fetchGroups()
         {
             FacebookObjectCollection<Group> groups = r_FacebookFeaturesFacade.FetchGroups();
@@ -338,25 +339,8 @@ namespace BasicFacebookFeatures
 
         private void sortFriendsList(int i_SortMethod)
         {
-            FriendsListDTO sortedfriendsListDTO;
-            int sortedFriendIndex = 0;
-
             listViewFriends.Invoke(new Action(() => listViewFriends.Items.Clear()));
-            try
-            {
-                sortedfriendsListDTO = r_FacebookFeaturesFacade.SortFriendsByStrategy(i_SortMethod);
-                foreach (KeyValuePair<string, Image> friend in sortedfriendsListDTO.FriendsList)
-                {
-                    listViewFriends.Invoke(new Action(() => listViewFriends.Items.Add(friend.Key, sortedFriendIndex++)));
-                    //m_FriendsImagesList.Images.Add(friend.Value);
-                }
-
-                listViewFriends.Invoke(new Action(() => listViewFriends.SmallImageList = m_FriendsImagesList));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Failed to sort friends list");
-            }
+            setFriendsListView(r_FacebookFeaturesFacade.SortFriendsByStrategy(i_SortMethod));
         }
     }
 }

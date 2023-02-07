@@ -567,6 +567,7 @@
             // 
             // FriendsSortMethodComboBox
             // 
+            this.FriendsSortMethodComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FriendsSortMethodComboBox.FormattingEnabled = true;
             this.FriendsSortMethodComboBox.Items.AddRange(new object[] {
             "Ascending",
@@ -575,7 +576,6 @@
             this.FriendsSortMethodComboBox.Name = "FriendsSortMethodComboBox";
             this.FriendsSortMethodComboBox.Size = new System.Drawing.Size(132, 24);
             this.FriendsSortMethodComboBox.TabIndex = 83;
-            this.FriendsSortMethodComboBox.Text = "sort(asc/desc)";
             // 
             // SortFriendsButton
             // 
@@ -613,6 +613,8 @@
             this.Controls.Add(this.labelFacebook);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormFacebookApp";
             this.Text = "Facebook App";
             this.tabPage1.ResumeLayout(false);
