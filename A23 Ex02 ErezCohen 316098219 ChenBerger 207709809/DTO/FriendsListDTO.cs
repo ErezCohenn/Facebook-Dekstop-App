@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -22,6 +23,9 @@ namespace DTO
             try
             {
                 friendImage = Image.FromFile(i_FriendImageURL);
+            }
+            catch (ArgumentException)
+            {
             }
             finally
             {
