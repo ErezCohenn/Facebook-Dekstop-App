@@ -386,7 +386,7 @@
             this.richtextBoxPostContent.Name = "richtextBoxPostContent";
             this.richtextBoxPostContent.Size = new System.Drawing.Size(775, 130);
             this.richtextBoxPostContent.TabIndex = 5;
-            this.richtextBoxPostContent.Text = string.Empty;
+            this.richtextBoxPostContent.Text = "";
             // 
             // buttonPost
             // 
@@ -635,7 +635,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion        

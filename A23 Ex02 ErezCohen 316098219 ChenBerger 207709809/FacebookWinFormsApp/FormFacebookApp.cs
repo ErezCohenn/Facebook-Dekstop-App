@@ -91,11 +91,6 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show(ex.Message);
             }
-
-            if (chart.Series.FindByName(k_SeriesCityFriendsName).Points.Count == 0)
-            {
-                chart.Invoke(new Action(() => Text = k_NoDataToShowMessage));
-            }
         }
 
         private void fetchAlbums()
