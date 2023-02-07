@@ -386,7 +386,7 @@
             this.richtextBoxPostContent.Name = "richtextBoxPostContent";
             this.richtextBoxPostContent.Size = new System.Drawing.Size(775, 130);
             this.richtextBoxPostContent.TabIndex = 5;
-            this.richtextBoxPostContent.Text = "";
+            this.richtextBoxPostContent.Text = string.Empty;
             // 
             // buttonPost
             // 

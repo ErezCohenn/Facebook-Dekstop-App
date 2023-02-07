@@ -169,6 +169,7 @@ namespace BasicFacebookFeatures
             listViewFriends.Invoke(new Action(() => listViewFriends.Columns.Add("Friends list:", 200)));
             setFriendsListView(r_FacebookFeaturesFacade.FetchFriendsList());
         }
+
         private void setFriendsListView(FriendsListDTO i_Friends)
         {
             int friendIndex = 0;
@@ -190,6 +191,7 @@ namespace BasicFacebookFeatures
                 MessageBox.Show(ex.Message, "Failed to load friends list");
             }
         }
+
         private void fetchGroups()
         {
             FacebookObjectCollection<Group> groups = r_FacebookFeaturesFacade.FetchGroups();
@@ -223,14 +225,14 @@ namespace BasicFacebookFeatures
             showEvents(r_FacebookFeaturesFacade.FetchEvents());
         }
 
-        private void showEvents(FacebookObjectCollection<Event> events)
+        private void showEvents(FacebookObjectCollection<Event> i_Events)
         {
             ListItem eventItem = null;
 
             flowLayoutPanelEvents.Invoke(new Action(() => flowLayoutPanelEvents.Controls.Clear()));
             try
             {
-                foreach (Event eventToAdd in events)
+                foreach (Event eventToAdd in i_Events)
                 {
                     eventItem = ListItemFactoryMethod.CreateListItem(eventToAdd);
                     flowLayoutPanelEvents.Invoke(new Action(() => flowLayoutPanelEvents.Controls.Add(eventItem)));
@@ -316,7 +318,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void FacebookFeaturesFacade_PostCollectionChanged(FacebookObjectCollection<Post> obj)
+        private void FacebookFeaturesFacade_PostCollectionChanged(FacebookObjectCollection<Post> i_PostCollection)
         {
             new Thread(fetchPosts).Start();
             r_FacebookFeaturesFacade.PostCollectionChanged -= FacebookFeaturesFacade_PostCollectionChanged;
@@ -332,15 +334,17 @@ namespace BasicFacebookFeatures
                     new Thread(() => sortFriendsList(sortMethod)).Start();
                 }
             }
-            catch (Exception ignore)
+            catch (Exception)
             {
             }
         }
 
         private void sortFriendsList(int i_SortMethod)
         {
+            eSortType eSortType = i_SortMethod == 0 ? eSortType.Ascending : eSortType.Desending;
+
             listViewFriends.Invoke(new Action(() => listViewFriends.Items.Clear()));
-            setFriendsListView(r_FacebookFeaturesFacade.SortFriendsByStrategy(i_SortMethod));
+            setFriendsListView(r_FacebookFeaturesFacade.SortFriendsByStrategy(eSortType));
         }
     }
 }

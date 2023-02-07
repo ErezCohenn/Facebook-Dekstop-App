@@ -40,12 +40,16 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="AppSettingsFacade.cs" />
+    <Compile Include="DownComparer.cs" />
+    <Compile Include="eSortType.cs" />
     <Compile Include="FacebookFeaturesFacade.cs" />
     <Compile Include="FriendsCitiesManager.cs" />
+    <Compile Include="IComparer.cs" />
     <Compile Include="LogicManager.cs" />
     <Compile Include="LoginException.cs" />
     <Compile Include="LoginFacade.cs" />
     <Compile Include="SortStrategy.cs" />
+    <Compile Include="UpComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DTO">

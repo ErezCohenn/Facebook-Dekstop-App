@@ -13,6 +13,7 @@ namespace FacebookLogic
         private static LogicManager s_Instance = null;
         private static object s_LockObj = new object();
         private readonly FriendsCitiesManager r_FriendsCitiesManager;
+        private readonly SortStrategy r_FriendsSortStrategy;
         private readonly AppSettings r_AppSettings;
         private User m_CurrentUser;
         private LoginResult m_LoginResult;
@@ -43,6 +44,25 @@ namespace FacebookLogic
             FacebookService.s_CollectionLimit = 100;
             r_AppSettings = AppSettings.LoadFromFile();
             r_FriendsCitiesManager = new FriendsCitiesManager();
+            r_FriendsSortStrategy = new SortStrategy();
+        }
+
+        public FriendsListDTO SortFriendsByStrategy(eSortType i_SortType)
+        {
+            FriendsListDTO friends = FetchFriendsList();
+
+            if (i_SortType == eSortType.Ascending)
+            {
+                r_FriendsSortStrategy.Comparer = new UpComparer();
+            }
+            else if (i_SortType == eSortType.Desending)
+            {
+                r_FriendsSortStrategy.Comparer = new DownComparer();
+            }
+
+            r_FriendsSortStrategy.Sort(friends.FriendsList);
+
+            return friends;
         }
 
         public void Login()
@@ -89,10 +109,12 @@ namespace FacebookLogic
         {
             FriendsListDTO friendsListDTO = new FriendsListDTO();
             FacebookObjectCollection<User> friendsList = m_CurrentUser.Friends;
+
             foreach (User friend in friendsList)
             {
                 friendsListDTO.AddFriend(friend.Name, friend.PictureSmallURL);
             }
+
             return friendsListDTO;
         }
 
@@ -152,7 +174,9 @@ namespace FacebookLogic
                 statusPost.ReFetch();
                 OnPostCollectionChanged();
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         private void OnPostCollectionChanged()
@@ -182,7 +206,6 @@ namespace FacebookLogic
 
         public FacebookObjectCollection<Group> FetchGroups()
         {
-
             return m_CurrentUser.Groups;
         }
 
@@ -218,6 +241,5 @@ namespace FacebookLogic
 
             return eventsAfterFilterByDate;
         }
-
     }
 }
