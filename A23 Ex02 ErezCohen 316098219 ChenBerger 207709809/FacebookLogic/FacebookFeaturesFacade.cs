@@ -1,7 +1,7 @@
-﻿using DTO;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using DTO;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookLogic
 {
